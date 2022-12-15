@@ -43,4 +43,10 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
   ],
+  devServer: {
+    static: path.resolve(__dirname, "./dist"),
+    watchFiles: ["src/**/*"],
+    open: true,
+    hot: true,
+  },
 };
