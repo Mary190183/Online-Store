@@ -1,5 +1,7 @@
 body {
-  background-color: rgb(195, 238, 238);
+  background-image: url("https://images.unsplash.com/photo-1561296180-e8100fd714e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1234&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
   color: aliceblue;
   margin: 0;
   display: flex;
