@@ -35,5 +35,10 @@
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "@toba/html-webpack-inline-svg": "^1.0.10",
+    "svg-to-ts": "^8.9.0",
+    "webpack5-svg-sprite-loader": "^5.1.1"
   }
 }
