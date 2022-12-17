@@ -1,21 +1,45 @@
+
+
+@font-face {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 140%;
+  src: url("./assets/fonts/Red_Hat_Text/RedHatText-Light.ttf");
+}
+@font-face {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 140%;
+  src: url("./assets/fonts/Red_Hat_Text/RedHatText-Medium.ttf");
+}
+
 body {
   background-image: url("https://images.unsplash.com/photo-1561296180-e8100fd714e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1234&q=80");
   background-repeat: no-repeat;
   background-size: cover;
-  color: aliceblue;
+  color: #F9F0DA;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 140%;
 }
 
 header {
-  height: 10vh;
+  height: 100px;
   width: 100vw;
-  background-color:rgba(106, 73, 126, 0.541);
+  background-color:rgba(72, 104, 18, 0.72);
 }
 nav {
-  width: 80%;
+  width: 90%;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -26,10 +50,134 @@ nav {
 }
 .nav-link a {
   text-decoration: none;
-  color: aliceblue;
+  color: #F9F0DA;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.content {
-  height: 80vh;
+.tea-time-logo {
+  width: 50px;
+  height: 50px;
+  
+  background-image: url("./assets/svg/tea-cup.svg");
+}
+.tea-time-logo-h1 {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 140%;
+  
+  margin-top: 40px;
+}
+* {box-sizing: border-box;}
+form {
+  position: relative;
+  width: 500px;
+  margin: 0 auto;
+}
+input {
+  width: 100%;
+  height: 62px;
+  padding-left: 10px;
+  border: 2px solid #093b0a;
+  border-radius: 5px;
+  outline: none;
+  /* background: #F9F0DA; */
+  background: #F9F0DA;
+  color: #9E9C9C;
+}
+button {
+  position: absolute; 
+  top: 0;
+  right: 0px;
+  width: 66px;
+  height: 62px;
+  border: none;
+  background: #093b0a;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+.search-icon {
+  width: 54px;
+  height: 54px;
+  background-image: url("./assets/svg/arrow-right.svg");
+}
+.header-cart {
+  width: 50px;
+  height: 50px;
+  background-image: url("./assets/svg/cart-header.svg");
+}
+#content {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  
+}
+.container-filtres {
+  width: 20vw;
+  height: 50%;
+  margin-right: 15px;
+  border-radius: 10px;
+  background-color:rgba(135, 130, 120, 0.657);
+  display: flex;
+  flex-direction: column;
+}
+.container_tea-cards {
+  width: 70vw;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* background-color:rgba(194, 207, 192, 0.361); */
+}
+.tea-image {
+  width: 100%;
+  height: 620px;
+  background-size: cover;
+  background-position: 100%;
+  border-radius: 10px;
+  background-image: url("https://images.unsplash.com/photo-1607528971899-2e89e6c0ec69?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80")
+}
+.tea-card-info {
+  background-color:rgba(194, 207, 192, 0.361);
+  border: none;
+  width: 250px;
+  height: 300px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.tea-card {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: 100%;
+  border-radius: 10px;
+  margin: auto;
+}
+.img1 {
+  background-image: url("https://taplink.st/p/c/8/f/e/30656667.jpg");
+}
+.img2 {
+  background-image: url("https://taplink.st/p/a/9/a/1/27584290.jpg");
+}
+.img3 {
+  background-image: url("https://taplink.st/p/c/8/f/e/30656667.jpg");
+}
+.img4 {
+  background-image: url("https://taplink.st/p/c/8/f/e/30656667.jpg");
+}
+.img5 {
+  background-image: url("https://taplink.st/p/c/8/f/e/30656667.jpg");
+}
+.img6 {
+  background-image: url("https://taplink.st/p/c/8/f/e/30656667.jpg");
+}
+.img7 {
+  background-image: url("https://taplink.st/p/c/8/f/e/30656667.jpg");
 }
 .footer {
   width: 100%;
@@ -38,7 +186,7 @@ nav {
   align-self: flex-end;
   align-items: center;
   justify-content: center;
-  background-color:rgba(106, 73, 126, 0.541);
+  background-color: rgba(72, 104, 18, 0.72);
 }
 
  .footer-container {
@@ -63,7 +211,7 @@ nav {
  .footer-link {
   margin-left: 15px;
   align-self: center;
-  color: aliceblue;
+  color: #F9F0DA;
   text-decoration: none;
   font-size: 20px;
  }
