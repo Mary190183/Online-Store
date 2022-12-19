@@ -1,6 +1,10 @@
 import "./index.css";
+import listBuys from "./list-buys";
 
-console.log("Index");
+
+const info1: any = document.querySelector('.info1');
+const img1: any = document.querySelector('.img1');
+info1.textContent = listBuys[20].sort;
 
 
-alert('Hello')
+img1.style.backgroundImage =  `url(${listBuys[20].image1})`;
