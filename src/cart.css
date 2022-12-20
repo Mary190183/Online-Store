@@ -1,0 +1,302 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1561296180-e8100fd714e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1234&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #f9f0da;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 140%;
+}
+
+header {
+  height: 100px;
+  width: 100vw;
+  background-color: rgba(72, 104, 18, 0.72);
+}
+nav {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-link a {
+  text-decoration: none;
+  color: #f9f0da;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.tea-time-logo {
+  width: 50px;
+  height: 50px;
+
+  background-image: url("./assets/svg/tea-cup.svg");
+}
+.tea-time-logo-h1 {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 140%;
+
+  margin-top: 40px;
+}
+
+form {
+  position: relative;
+  width: 500px;
+  margin: 0 auto;
+}
+.search-input {
+  width: 100%;
+  height: 62px;
+  padding-left: 10px;
+  border: 2px solid #093b0a;
+  border-radius: 5px;
+  outline: none;
+  /* background: #F9F0DA; */
+  background: #f9f0da;
+  color: #9e9c9c;
+}
+.submit-button {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 66px;
+  height: 62px;
+  border: none;
+  background: #093b0a;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+.search-icon {
+  width: 54px;
+  height: 54px;
+  background-image: url("./assets/svg/arrow-right.svg");
+}
+.header-cart {
+  width: 50px;
+  height: 50px;
+  background-image: url("./assets/svg/cart-header.svg");
+  z-index: 1;
+}
+.amount-buys {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  background-color: #093b0a;
+  text-align: center;
+  padding-top: 8px;
+  margin-left: -20px;
+  margin-top: -30px;
+  z-index: 2;
+}
+
+.content {
+  height: 80vh;
+}
+.footer {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(72, 104, 18, 0.72);
+}
+
+.footer-container {
+  width: 80%;
+}
+
+.footer-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer-link {
+  margin-left: 15px;
+  align-self: center;
+  color: aliceblue;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.section-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.section-wrapper {
+  border-radius: 10px;
+  background-color: rgba(135, 130, 120, 0.657);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  margin: 4vw 15vw;
+  border-radius: 10px;
+}
+
+.title-checkout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: space-between;
+  gap: 120px;
+  margin: 10px 30px;
+}
+
+.title {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 140%;
+}
+
+.checkout-total {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: rgba(199, 191, 182, 0.5);
+  padding: 15px 25px;
+  gap: 20px;
+}
+
+.total {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 140%;
+}
+
+.total-price {
+  font-size: 2rem;
+}
+
+.checkout-button {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 140%;
+  color: aliceblue;
+  background-color: darkgreen;
+  border-radius: 10px;
+}
+
+.cart-description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: solid 1px #eee380;
+  border-bottom: solid 1px #eee380;
+  margin-bottom: 10px;
+  padding: 20px 30px;
+}
+
+.img-main {
+  width: 200px;
+  height: 150px;
+}
+
+.sort {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 140%;
+}
+
+.country {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 140%;
+  margin-bottom: 10px;
+}
+
+.amount-stock {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+}
+
+.amount-form {
+  position: relative;
+}
+
+.amount-input {
+  width: 80px;
+  height: 20px;
+  padding: 5px 5px 5px 30px;
+}
+
+.static-value {
+  position: absolute;
+  left: 50px;
+  color: #444;
+  top: 4px;
+}
+
+.stock {
+  align-self: flex-end;
+}
+
+.text-price {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 140%;
+}
+
+.item-price {
+  width: 120px;
+  box-sizing: border-box;
+  background-color: red;
+  padding: 6px 12px;
+  font-size: 1.3rem;
+  border: solid 0.5px black;
+  color: #f9f0da;
+  text-align: center;
+}
+
+.delete-button {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  width: auto;
+  font-size: 30px;
+  background-color: rgba(135, 130, 120, 0.2);
+  color: #fcf1d6;
+}
