@@ -66,27 +66,38 @@ nav {
   font-size: 20px;
 }
 
+.section-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .section-wrapper {
+  width: 80%;
   display: flex;
   flex-direction: row;
-  margin: 40px 100px;
+  justify-content: center;
+  flex: 1;
+  margin: 4vw 10vw;
   gap: 10px;
   border-radius: 10px;
 }
 
 .section-imgs {
+  width: 45%;
   border-radius: 10px;
   background-color: rgba(135, 130, 120, 0.657);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
+  padding-bottom: 5px;
 }
 
 .img-main {
   border-radius: 10px;
-  width: 500px;
-  height: 400px;
+  width: 100%;
+  height: 30vw;
 }
 
 .img-extra {
@@ -96,6 +107,8 @@ nav {
 }
 
 .section-item {
+  width: 45%;
+  padding: 5px;
   border-radius: 10px;
   background-color: rgba(135, 130, 120, 0.657);
 }
@@ -154,15 +167,18 @@ nav {
 }
 
 .price {
+  width: 120px;
   box-sizing: border-box;
   background-color: red;
   padding: 6px 12px;
   font-size: 1.3rem;
-  border: solid 1px black;
+  border: solid 0.5px black;
   color: #f9f0da;
+  text-align: center;
 }
 
 .cart-button {
+  width: 120px;
   font-family: "Red-Hat-Text";
   font-style: normal;
   font-weight: 400;
@@ -174,4 +190,33 @@ nav {
 
 .cart-button:hover {
   background-color: red;
+}
+
+@media screen and (min-width: 360px) and (max-width: 1050px) {
+  .section-content {
+    width: 100%;
+  }
+
+  .section-control {
+    flex-direction: column;
+  }
+
+  .section-list {
+    padding-left: 25px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+  .section-content {
+    width: 100%;
+  }
+
+  .item-title {
+    font-size: 1.2rem;
+  }
+
+  .section-list {
+    font-size: 1rem;
+    padding-left: 15px;
+  }
 }
