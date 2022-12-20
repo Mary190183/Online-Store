@@ -9,26 +9,71 @@
   <body>
     <header>
       <nav>
-        <li class="nav-link"><a href="index.html">Index1</a></li>
+        <li class="nav-link">
+          <a href="https://online-store-tea-time.netlify.app/">
+            <div class="tea-time-logo"></div>
+            <h1 class="tea-time-logo-h1">Tea-time</h1>
+          </a>
+        </li>
+        <li class="nav-link">
+          <form action="" method="get">
+            <input name="s" placeholder="Search tea..." type="search" class="search-input" />
+            <button type="submit" class="submit-button">
+              <div class="search-icon"></div>
+            </button>
+          </form>
+        </li>
+        <li class="nav-link">
+          <a href="item.html">
+            <span>total-price: 00</span>
+            <div class="header-cart"></div>
+            <div class="amount-buys">0</div>
+          </a>
+        </li>
       </nav>
     </header>
-    <div class="content">Item</div>
+    <section class="section-content">
+      <div class="section-wrapper">
+        <div class="section-imgs">
+          <img src="https://taplink.st/p/d/4/d/b/30656601.jpg" alt="tea" class="img-main" />
+          <img src="https://taplink.st/p/8/8/4/9/30656604.jpg" alt="tea-2" class="img-extra" />
+        </div>
+        <div class="section-item">
+          <ul class="section-list">
+            <li class="item-title">Gyokuro And Ji</li>
+            <li>Сountry: Taiwan</li>
+            <li>Sort: Green tea</li>
+            <li>Description: First grade Steamed</li>
+          </ul>
+          <div class="section-control">
+            <div class="amount-form">
+              <input type="number" min="1" max="1000" step="1" value="1" id="youridhere" class="amount-input" />
+              <label for="youridhere" class="static-value">pcs.</label>
+            </div>
+            <div class="price">2 $</div>
+            <button type="button" class="cart-button">Add to сart</button>
+          </div>
+        </div>
+      </div>
+    </section>
     <footer class="footer">
       <div class="footer-container">
-        <ul class=" footer-list">
-           <li class="footer-item">
-            <img src="assets/icon/github.svg" class="masha-github" alt="github" style="width: 30px;">
-            <a class="footer-link" href="https://github.com/Mary190183/">Mary190183</a>
-          </li> 
-           <li class="footer-item">
-            <img src="assets/icon/github.svg" class="masha-github" alt="github" style="width: 30px;">
-            <a class="footer-link" href="https://github.com/balabanova-iu/">balabanova-iu</a>
-          </li> 
+        <ul class="footer-list">
           <li class="footer-item">
-            <a href="https://rs.school/js/"><img src="assets/icon/rsschool.svg" class="rsschool" alt="rs_school" style="width: 70px;"></a> 
+            <img src="assets/icon/github.svg" class="masha-github" alt="github" style="width: 30px" />
+            <a class="footer-link" href="https://github.com/Mary190183/">Mary190183</a>
+          </li>
+          <li class="footer-item">
+            <img src="assets/icon/github.svg" class="masha-github" alt="github" style="width: 30px" />
+            <a class="footer-link" href="https://github.com/balabanova-iu/">balabanova-iu</a>
+          </li>
+          <li class="footer-item">
+            <a href="https://rs.school/js/"
+              ><img src="assets/icon/rsschool.svg" class="rsschool" alt="rs_school" style="width: 70px"
+            /></a>
           </li>
         </ul>
-    </div>
-  </footer>
+      </div>
+    </footer>
   </body>
 </html>
