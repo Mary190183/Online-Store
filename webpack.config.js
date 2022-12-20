@@ -11,6 +11,7 @@ module.exports = {
   entry: {
     index: path.resolve(__dirname, "./src/index.ts"),
     item: path.resolve(__dirname, "./src/item.ts"),
+    cart: path.resolve(__dirname, "./src/cart.ts"),
   },
   module: {
     rules: [
@@ -39,35 +40,34 @@ module.exports = {
   //           use: ['style-loader', 'css-loader'],
   //       },
   //              //Шрифты
-  
+
   //   {
   //       test: /\.(woff2?|eot|ttf|otf)$/i,
   //       type: 'asset/resource',
   //     },
 
-    //     // изображения
-    //     {
-    //       test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-    //       type: mode === 'production' ? 'asset' : 'asset/resource'
-    //     },
-    //   //  шрифты и SVG
-    //       {
-    //           test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-    //           type: mode === 'production' ? 'asset' : 'asset/inline'
-    //       },
-    //       //аудио
-    //       {
-           
+  //     // изображения
+  //     {
+  //       test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+  //       type: mode === 'production' ? 'asset' : 'asset/resource'
+  //     },
+  //   //  шрифты и SVG
+  //       {
+  //           test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+  //           type: mode === 'production' ? 'asset' : 'asset/inline'
+  //       },
+  //       //аудио
+  //       {
 
-    //         test: /\.(?:mp3|wav|ogg|mp4)$/i,
-    //         use: "file-loader",
-    //         type: mode === 'production' ? 'asset' : 'asset/resource'
-    //         // generator: {
-    //         //   filename: 'assets/sounds/[hash][ext]',
-    //         // },
-    //       },
-    // ],
-// },
+  //         test: /\.(?:mp3|wav|ogg|mp4)$/i,
+  //         use: "file-loader",
+  //         type: mode === 'production' ? 'asset' : 'asset/resource'
+  //         // generator: {
+  //         //   filename: 'assets/sounds/[hash][ext]',
+  //         // },
+  //       },
+  // ],
+  // },
   resolve: {
     extensions: [".ts", ".js"],
   },
@@ -88,10 +88,15 @@ module.exports = {
       filename: "item.html",
       chunks: ["item"],
     }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "./src/cart.html"),
+      filename: "cart.html",
+      chunks: ["cart"],
+    }),
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [{ from: path.resolve(__dirname, "./src/assets"), to: path.resolve(__dirname, "./dist/assets") }],
-    })
+    }),
   ],
   devServer: {
     static: path.resolve(__dirname, "./dist"),
