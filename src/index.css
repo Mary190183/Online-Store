@@ -88,7 +88,7 @@ input {
   background: #F9F0DA;
   color: #9E9C9C;
 }
-button {
+.button {
   position: absolute; 
   top: 0;
   right: 0px;
@@ -121,7 +121,7 @@ button {
   margin-top: -30px;
   z-index: 2;
 }
-#content {
+main {
   display: flex;
   flex-direction: row;
   margin: 10px;
@@ -141,6 +141,7 @@ button {
   height: 80%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
   /* background-color:rgba(194, 207, 192, 0.361); */
 }
@@ -153,14 +154,18 @@ button {
   background-image: url("https://images.unsplash.com/photo-1607528971899-2e89e6c0ec69?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80")
 }
 .tea-card-info {
-  background-color:rgba(194, 207, 192, 0.361);
+  background-color:rgba(194, 207, 192, 0.561);
   border: none;
-  width: 250px;
-  height: 300px;
+  width: 270px;
+  height: 400px;
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px;
   margin: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+ align-items: center;
 }
 
 .tea-card {
@@ -169,28 +174,33 @@ button {
   background-size: cover;
   background-position: 100%;
   border-radius: 10px;
-  margin: auto;
+  /* margin: auto; */
 }
-/* .img1 {
-  background-image: url("https://taplink.st/p/c/8/f/e/30656667.jpg");
-} */
-.img2 {
-  background-image: url("https://taplink.st/p/a/9/a/1/27584290.jpg");
+.tea-card-name {
+  text-decoration: underline;
+  margin: 0;
 }
-.img3 {
-  background-image: url("https://taplink.st/p/c/8/f/e/30656667.jpg");
+.tea-card-sort, .tea-card-description {
+  margin: 0;
 }
-.img4 {
-  background-image: url("https://taplink.st/p/c/8/f/e/30656667.jpg");
+.buttons-amount {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  
+  justify-content: space-between;
 }
-.img5 {
-  background-image: url("https://taplink.st/p/c/8/f/e/30656667.jpg");
+.add-button {
+  background: #093b0a;
+  color: #F9F0DA;
+  border: none;
+  border-radius: 10px;
 }
-.img6 {
-  background-image: url("https://taplink.st/p/c/8/f/e/30656667.jpg");
-}
-.img7 {
-  background-image: url("https://taplink.st/p/c/8/f/e/30656667.jpg");
+.delete-button {
+  background: #F9F0DA;
+  color: #093b0a;
+  border: none;
+  border-radius: 10px;
 }
 .footer {
   width: 100%;
