@@ -1,15 +1,6 @@
 import "./index.css";
 import listBuys from "./list-buys";
 
-// const info1 = document.querySelector('.info1') as HTMLElement;
-// info1.textContent = listBuys[20].sort;
-
-// const img1 = document.querySelector('.img1') as HTMLElement;
-// img1.style.backgroundImage =  `url(${listBuys[20].image1})`;
-
-// const img2 = document.querySelector('.img2') as HTMLElement;
-// img2.style.backgroundImage =  `url(${listBuys[21].image2})`;
-
 const containerTeaCards = document.querySelector('.container_tea-cards') as HTMLElement;
 
 for (let i = 0; i < 23; i++) {
@@ -19,7 +10,7 @@ teaCardInfo.classList.add('tea-card-info');
 
 const teaCard = teaCardInfo.appendChild(document.createElement(`div`)) as HTMLDivElement;
 teaCard.classList.add('tea-card');
-teaCard.style.backgroundImage =  `url(${listBuys[i].image1})`
+teaCard.style.backgroundImage =  `url(${listBuys[i].image1})`;
 
 const teaCardName = teaCardInfo.appendChild(document.createElement(`p`)) as HTMLElement;
 teaCardName.classList.add('tea-card-name');
@@ -48,11 +39,44 @@ const addButton = buttonsAmount.appendChild(document.createElement(`button`)) as
 addButton.classList.add('add-button');
 addButton.textContent = `Add`;
 
+
+
 const deleteButton = buttonsAmount.appendChild(document.createElement(`button`)) as HTMLButtonElement;
 deleteButton.classList.add('delete-button');
 deleteButton.textContent = `Delete`;
 
 const amount = buttonsAmount.appendChild(document.createElement(`span`)) as HTMLElement;
 amount.classList.add('amount');
-amount.textContent = `1`;
+const price = buttonsAmount.appendChild(document.createElement(`span`)) as HTMLElement;
+price.classList.add('price');
+let amountNumber = 0 as number; 
+let priceGramm = 0 as number;
+
+amount.textContent = `${amountNumber} gramm`;
+price.textContent = `${priceGramm} $`;
+addButton.addEventListener('click', () => {
+  amountNumber = amountNumber + 10;
+  priceGramm = amountNumber * listBuys[i].price;
+  amount.textContent= `${amountNumber} gramm`;
+  price.textContent = `${priceGramm} $`;
+  if (amountNumber > listBuys[i].amount) {
+    amountNumber = listBuys[i].amount;
+    priceGramm = amountNumber * listBuys[i].price;
+    amount.textContent= `${amountNumber} gramm`;
+    price.textContent = `${priceGramm} $`;
+  }
+})
+deleteButton.addEventListener('click', () => {
+  amountNumber= amountNumber - 10;
+  priceGramm = amountNumber * listBuys[i].price;
+  amount.textContent= `${amountNumber} gramm`;
+  price.textContent = `${priceGramm} $`;
+  if (amountNumber < 0) {
+    amountNumber = 0;
+    priceGramm = 0;
+    amount.textContent= `${amountNumber} gramm`;
+    price.textContent = `${priceGramm} $`;
+  }
+})
+
 }
