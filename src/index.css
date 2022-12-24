@@ -58,12 +58,15 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
-.nav-link a {
+.logo-link {
   text-decoration: none;
   color: #F9F0DA;
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.logo-link:hover {
+  color:#fa9a09ea;
 }
 .tea-time-logo {
   width: 50px;
@@ -85,6 +88,7 @@ form {
   width: 500px;
   margin: 0 auto;
 }
+
 input {
   width: 100%;
   height: 62px;
@@ -92,9 +96,16 @@ input {
   border: 2px solid #093b0a;
   border-radius: 5px;
   outline: none;
+  font-size: 1.5rem;
   /* background: #F9F0DA; */
   background: #F9F0DA;
   color: #9E9C9C;
+}
+input:hover {
+  border: 3px solid rgb(250, 154, 10);
+  color: #093b0a;
+  background: #F9F0DA;
+
 }
 .button {
   position: absolute; 
@@ -106,6 +117,9 @@ input {
   background: #093b0a;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
+}
+.button:hover {
+background-color: rgb(250, 154, 10);
 }
 .search-icon {
   width: 54px;
@@ -135,6 +149,7 @@ main {
   margin: 10px;
   
 }
+
 .container-filtres {
   width: 20vw;
   height: 50%;
@@ -143,7 +158,69 @@ main {
   background-color: rgba(194, 207, 192, 0.561);
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
+
+.filter-h2 {
+  text-align: center;
+}
+.filter-form {
+  display: flex;
+  flex-direction: row;
+}
+.filter-input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+  display: block;
+}
+.filter-label {
+  width: 50%;
+  margin: 3px 3px 10px;
+  padding-left: 10px;
+  display: block;
+ }
+ .filter-input:checked + .filter-label, .filter-label:hover {
+  color: rgb(250, 154, 10);
+  font-weight: 600;
+  margin-top: 3px;
+  padding-left: 10px;
+  background-color: #F9F0DA;
+  border-radius: 5px;
+  cursor: pointer;
+ }
+
+ .filter-input[type=checkbox] {
+  position: relative;
+  cursor: pointer;
+}
+.filter-input[type=checkbox]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  border: 2px solid #093b0a;
+  border-radius: 5px;
+  background-color: #F9F0DA;
+}
+.filter-input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid #093b0a;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 4px;
+  left: 9px;
+}
+
 .container_tea-cards {
   width: 70vw;
   height: 80%;
@@ -151,37 +228,49 @@ main {
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  /* background-color:rgba(194, 207, 192, 0.361); */
 }
+
 .tea-image {
   width: 100%;
   height: 410px;
   background-size: cover;
   background-position: 43% 57%;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   background-image: url("https://images.unsplash.com/photo-1607528926952-d4f83df2683c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1154&q=80")
 }
+.tea-filters-ruler {
+  width: 100%;
+  height: 70px;
+  background-color: #093b0a;
+  color: #F9F0DA;
+  border-radius: 0 0 10px 10px;
+}
 .tea-card-info {
+  display: block;
   background-color: rgba(194, 207, 192, 0.561);
   border: none;
   width: 270px;
-  height: 400px;
+  height: 410px;
   border-radius: 10px;
-  padding: 10px 0px;
+  padding: 0 0 10px 0;
   margin: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
  align-items: center;
+ cursor: pointer;
 }
-
+ .hidden {
+  display: none;
+}
 .tea-card {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: 230px;
   background-size: cover;
   background-position: 100%;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
+  
   /* margin: auto; */
 }
 .tea-card-name {
@@ -204,8 +293,12 @@ main {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  width: 50px;
+  height: 30px;
 }
 .delete-button, .add-button:active {
+  width: 50px;
+  height: 30px;
   background: #F9F0DA;
   color: #093b0a;
   border: none;
@@ -252,12 +345,15 @@ main {
   display: flex;
   flex-direction: row;
  }
+ .footer-link:hover {
+  color:#fa9a09ea;
+ }
 .footer-image {
   width: 30px;
   margin-right: 10px;
+  fill: #fa9a09ea;
 }
 
 .rsschool {
   width: 70px;
-  margin: 0;
 }
