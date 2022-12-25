@@ -315,6 +315,92 @@ form {
   display: none;
 }
 
+.section-end {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  border-top: solid 1px #eee380;
+}
+
+.promo {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.promo-text {
+  font-size: 1.3rem;
+}
+
+.promo-activate {
+  box-sizing: border-box;
+  background-color: rgba(72, 104, 18, 0.72);
+  padding: 3px 8px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: solid 1px #093b0a;
+  color: #f9f0da;
+  text-align: center;
+}
+
+.promo-activate:hover {
+  background-color: #093b0a;
+}
+
+.pages {
+  display: flex;
+  flex-direction: row;
+}
+
+.pages-text {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 140%;
+}
+
+.button-left {
+  border: 0;
+  background-color: rgba(135, 130, 120, 0.2);
+  padding: 0;
+}
+
+.button-left:hover {
+  background-color: rgba(72, 104, 18, 0.72);
+}
+
+.pages-img-left {
+  transform: scaleX(-1);
+  width: 30px;
+  height: 30px;
+}
+
+.button-right {
+  border: 0;
+  background-color: rgba(135, 130, 120, 0.2);
+  padding: 0;
+}
+
+.button-right:hover {
+  background-color: rgba(72, 104, 18, 0.72);
+}
+
+.pages-img-right {
+  width: 30px;
+  height: 30px;
+}
+
+.cart-page {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 140%;
+}
+
 @media screen and (min-width: 640px) and (max-width: 800px) {
   .section-content {
     width: 100%;
@@ -345,6 +431,15 @@ form {
   .img-main {
     width: 15vw;
     height: 12vw;
+  }
+
+  .section-end {
+    align-items: flex-start;
+  }
+
+  .promo {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -420,5 +515,15 @@ form {
     width: 20px;
     height: 20px;
     font-size: 20px;
+  }
+
+  .section-end {
+    align-items: flex-start;
+    padding: 20px 10px;
+  }
+
+  .promo {
+    display: flex;
+    flex-direction: column;
   }
 }
