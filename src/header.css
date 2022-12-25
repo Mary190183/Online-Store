@@ -19,6 +19,7 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 .logo-link:hover {
   color:#fa9a09ea;
