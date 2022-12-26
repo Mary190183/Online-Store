@@ -6,13 +6,17 @@ import renderHeader from "./components/header";
 import renderFooter from "./components/footer";
 import renderCartItem from "./components/cart-item";
 
-const currentIndex: number[] = [2, 5];
+import CartController from "./controllers/cart-controller";
+
+declare let window: Window & { cartController: CartController };
+
+window.cartController = new CartController(render);
 
 window.onload = function () {
-  document.body.innerHTML = render();
+  window.cartController.updateView();
 };
 
-function render() {
+function render({ currentIndex }: CartProps) {
   return `
   ${renderHeader()}
     <section class="section-content">
@@ -26,12 +30,13 @@ function render() {
             <button class="checkout-button">Checkout</button>
           </div>
         </div>
-        ${currentIndex.map((item) => {
+        ${currentIndex.map((item, index) => {
           return renderCartItem({
             image: listBuys[item].image1,
             sort: listBuys[item].sort,
             province: listBuys[item].province,
             price: listBuys[item].price,
+            index: index,
           });
         })}
         <div class="section-end">
