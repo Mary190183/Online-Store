@@ -271,8 +271,6 @@ for (let i = 0; i < 24; i++) {
   addButton.classList.add('add-button');
   addButton.textContent = `Add`;
   
-  
-  
   const deleteButton = buttonsAmount.appendChild(document.createElement(`button`)) as HTMLButtonElement;
   deleteButton.classList.add('delete-button');
   deleteButton.textContent = `Delete`;
@@ -312,13 +310,4 @@ for (let i = 0; i < 24; i++) {
       price.textContent = `${priceGramm} $`;
     }
   })
-
 }
-// let priceCart = 0 as number;
-// let amountCartNumber = 0 as number;
-
-
-
-
-
-
