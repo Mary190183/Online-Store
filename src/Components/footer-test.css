@@ -8,11 +8,11 @@
   background-color: rgba(72, 104, 18, 0.72);
 }
 
-.footer-container {
+.footer__container {
   width: 80%;
 }
 
-.footer-list {
+.footer__list {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -20,13 +20,13 @@
   padding-left: 0;
 }
 
-.footer-item {
+.footer__item {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.footer-link {
+.footer__link {
   margin-left: 15px;
   align-self: center;
   color: aliceblue;
