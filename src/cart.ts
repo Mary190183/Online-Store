@@ -1,7 +1,12 @@
 import "./cart.css";
 
-import renderHeader from "./Components/header-test";
-import renderFooter from "./Components/footer-test";
+import listBuys from "./list-buys";
+
+import renderHeader from "./components/header";
+import renderFooter from "./components/footer";
+import renderCartItem from "./components/cart-item";
+
+const currentIndex: number[] = [2, 5];
 
 window.onload = function () {
   document.body.innerHTML = render();
@@ -21,54 +26,14 @@ function render() {
             <button class="checkout-button">Checkout</button>
           </div>
         </div>
-        <div class="cart-description">
-          <img src="https://taplink.st/p/d/4/d/b/30656601.jpg" alt="tea" class="img-main" />
-          <div>
-            <div class="sort">Green tea</div>
-            <div class="country">Gyokuro And Ji</div>
-            <div class="amount-stock">
-              <div class="amount-form">
-                <input type="number" min="1" max="1000" step="1" value="1" id="youridhere" class="amount-input" />
-                <label for="youridhere" class="static-value">pcs.</label>
-              </div>
-              <div class="stock">in stock: 5 pcs.</div>
-            </div>
-            <div class="section-price-item-resp">
-              <div class="text-price">Price:</div>
-              <div class="item-price">2 $</div>
-            </div>
-          </div>
-          <div class="section-price-item">
-            <div class="text-price">Price:</div>
-            <div class="item-price">2 $</div>
-          </div>
-          <button type="button" title="remove from cart" class="delete-button">x</button>
-        </div>
-        <!-- вторая карточка начало-->
-        <div class="cart-description">
-          <img src="https://taplink.st/p/d/4/d/b/30656601.jpg" alt="tea" class="img-main" />
-          <div>
-            <div class="sort">Green tea</div>
-            <div class="country">Gyokuro And Ji</div>
-            <div class="amount-stock">
-              <div class="amount-form">
-                <input type="number" min="0" max="1000" step="1" value="1" id="youridhere" class="amount-input" />
-                <label for="youridhere" class="static-value">pcs.</label>
-              </div>
-              <div class="stock">in stock: 5 pcs.</div>
-            </div>
-            <div class="section-price-item-resp">
-              <div class="text-price">Price:</div>
-              <div class="item-price">2 $</div>
-            </div>
-          </div>
-          <div class="section-price-item">
-            <div class="text-price">Price:</div>
-            <div class="item-price">2 $</div>
-          </div>
-          <button type="button" title="remove from cart" class="delete-button">x</button>
-        </div>
-        <!-- вторая карточка конец-->
+        ${currentIndex.map((item) => {
+          return renderCartItem({
+            image: listBuys[item].image1,
+            sort: listBuys[item].sort,
+            province: listBuys[item].province,
+            price: listBuys[item].price,
+          });
+        })}
         <div class="section-end">
           <div class="promo">
             <div class="promo-text">Promo code</div>

@@ -92,102 +92,6 @@ body {
   border: solid 1px #093b0a;
 }
 
-.cart-description {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border-top: solid 1px #eee380;
-
-  padding: 20px 30px;
-}
-
-.img-main {
-  width: 15vw;
-  height: 12vw;
-}
-
-.sort {
-  font-family: "Red-Hat-Text";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.2rem;
-  line-height: 140%;
-}
-
-.country {
-  font-family: "Red-Hat-Text";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 2rem;
-  line-height: 140%;
-  margin-bottom: 10px;
-}
-
-.amount-stock {
-  display: flex;
-  flex-direction: row;
-  gap: 3px;
-}
-
-.amount-form {
-  position: relative;
-}
-
-.amount-input {
-  width: 80px;
-  height: 20px;
-  padding: 5px 5px 5px 30px;
-}
-
-.static-value {
-  position: absolute;
-  left: 50px;
-  color: #444;
-  top: 4px;
-}
-
-.stock {
-  align-self: flex-end;
-}
-
-.text-price {
-  font-family: "Red-Hat-Text";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.2rem;
-  line-height: 140%;
-}
-
-.item-price {
-  width: 120px;
-  box-sizing: border-box;
-  background-color: rgba(72, 104, 18, 0.72);
-  padding: 6px 12px;
-  font-size: 1.3rem;
-  border-radius: 10px;
-  border: solid 1px #093b0a;
-  color: #f9f0da;
-  text-align: center;
-}
-
-.delete-button {
-  width: 40px;
-  height: 40px;
-  border: 0;
-  width: auto;
-  font-size: 30px;
-  background-color: rgba(135, 130, 120, 0.2);
-  color: #fcf1d6;
-}
-
-.delete-button:hover {
-  color: red;
-}
-
-.section-price-item-resp {
-  display: none;
-}
-
 .section-end {
   display: flex;
   flex-direction: row;
@@ -292,20 +196,6 @@ body {
     height: 34px;
   }
 
-  .section-price-item {
-    display: none;
-  }
-
-  .section-price-item-resp {
-    display: block;
-    margin-top: 5px;
-  }
-
-  .img-main {
-    width: 15vw;
-    height: 12vw;
-  }
-
   .section-end {
     align-items: flex-start;
   }
@@ -340,54 +230,10 @@ body {
   .total-price {
     font-size: 1.5rem;
   }
+
   .checkout-button {
     font-size: 1.5rem;
     height: 34px;
-  }
-
-  .cart-description {
-    padding: 20px 10px;
-  }
-
-  .country {
-    font-size: 1.3rem;
-  }
-
-  .amount-stock {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .stock {
-    align-self: flex-start;
-  }
-
-  .amount-input {
-    width: 60px;
-  }
-
-  .item-price {
-    width: 100px;
-  }
-
-  .section-price-item-resp {
-    display: block;
-    margin-top: 5px;
-  }
-
-  .section-price-item {
-    display: none;
-  }
-
-  .img-main {
-    width: 20vw;
-    height: 18vw;
-  }
-
-  .delete-button {
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
   }
 
   .section-end {
