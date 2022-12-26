@@ -1,0 +1,35 @@
+.footer {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(72, 104, 18, 0.72);
+}
+
+.footer-container {
+  width: 80%;
+}
+
+.footer-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer-link {
+  margin-left: 15px;
+  align-self: center;
+  color: aliceblue;
+  text-decoration: none;
+  font-size: 20px;
+}
