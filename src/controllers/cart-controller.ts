@@ -1,18 +1,20 @@
+import CartModel from "../models/cart-model";
+
 class CartController {
-  renderView: RenderView<CartProps>;
-  currentIndex: number[];
+  private _renderView: RenderView<CartModel>;
+  private _model: CartModel;
 
-  constructor(renderView: RenderView<CartProps>) {
-    this.renderView = renderView;
-    this.currentIndex = [2, 5];
+  public constructor(renderView: RenderView<CartModel>, model: CartModel) {
+    this._renderView = renderView;
+    this._model = model;
   }
 
-  updateView() {
-    document.body.innerHTML = this.renderView({ currentIndex: this.currentIndex });
+  public updateView() {
+    document.body.innerHTML = this._renderView(this._model);
   }
 
-  deleteCartItem(index: number) {
-    this.currentIndex.splice(index, 1);
+  public deleteCartItem(id: number) {
+    this._model.deleteItemById(id);
     this.updateView();
   }
 }

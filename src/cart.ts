@@ -7,16 +7,18 @@ import renderFooter from "./components/footer";
 import renderCartItem from "./components/cart-item";
 
 import CartController from "./controllers/cart-controller";
+import CartModel from "./models/cart-model";
 
-declare let window: Window & { cartController: CartController };
+declare const window: Window & { cartController: CartController; cartModel: CartModel };
 
-window.cartController = new CartController(render);
+window.cartModel = new CartModel();
+window.cartController = new CartController(render, window.cartModel);
 
 window.onload = function () {
   window.cartController.updateView();
 };
 
-function render({ currentIndex }: CartProps) {
+function render({ items }: CartModel) {
   return `
   ${renderHeader()}
     <section class="section-content">
@@ -30,14 +32,20 @@ function render({ currentIndex }: CartProps) {
             <button class="checkout-button">Checkout</button>
           </div>
         </div>
-        ${currentIndex.map((item, index) => {
-          return renderCartItem({
-            image: listBuys[item].image1,
-            sort: listBuys[item].sort,
-            province: listBuys[item].province,
-            price: listBuys[item].price,
-            index: index,
-          });
+        ${items.map((item) => {
+          const product = listBuys.find((prod) => prod.id === item.productId);
+
+          if (product) {
+            return renderCartItem({
+              image: product.image1,
+              sort: product.sort,
+              province: product.province,
+              price: product.price,
+              id: item.id,
+            });
+          } else {
+            return "";
+          }
         })}
         <div class="section-end">
           <div class="promo">

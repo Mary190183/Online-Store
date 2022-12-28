@@ -1,6 +1,6 @@
 import "./cart-item.css";
 
-function renderCartItem({ image, sort, province, price, index }: CartItemProps) {
+function renderCartItem({ image, sort, province, price, id }: CartItemProps) {
   return `
   <div class="cart-item__description">
   <img src="${image}" alt="tea" class="cart-item__img-main" />
@@ -23,7 +23,7 @@ function renderCartItem({ image, sort, province, price, index }: CartItemProps) 
     <div class="cart-item__text-price">Price:</div>
     <div class="cart-item__price">${price} $</div>
   </div>
-  <button type="button" title="remove from cart" class="cart-item__delete-button" onclick="cartController.deleteCartItem(${index})">x</button>
+  <button type="button" title="remove from cart" class="cart-item__delete-button" onclick="cartController.deleteCartItem(${id})">x</button>
   </div>
   `;
 }
