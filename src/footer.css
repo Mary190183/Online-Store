@@ -48,3 +48,39 @@
 .rsschool {
   width: 70px;
 }
+
+@media screen and (max-width: 670px) {
+
+  .footer-container {
+    width: 90%; 
+  }
+
+}
+
+@media screen and (max-width: 620px) {
+
+  .footer-container {
+    width: 95%; 
+  }
+
+}
+
+@media screen and (max-width: 560px) {
+
+/* .footer {
+    height: 13vh;
+} */
+.footer-link { 
+  flex-direction: column;
+  margin-left: 1px;
+}
+.footer-image {
+  margin: auto;
+}
+.footer-p {
+  margin-top: 2px;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+}

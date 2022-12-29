@@ -124,9 +124,6 @@ filterStockRangeInput.classList.add('filter-range-input');
 const filterRangeInput1 = filterStockRangeInput.appendChild(document.createElement(`input`)) as HTMLInputElement;
 filterRangeInput1.classList.add('filter-input-range-1');
 
-
-
-
 filterRangeInput1.type = 'range'
 filterRangeInput1.min = "0";
 filterRangeInput1.max = "24";
@@ -173,12 +170,10 @@ filterCategoryCheckboxInput[7].id = 'hong-pao'
 filterCategoryCheckboxLabel[7].setAttribute('for', `hong-pao`);
 filterCategoryCheckboxLabel[7].textContent = 'Hong Pao';
 
-
 const containerTeaCards = main.appendChild(document.createElement(`div`)) as HTMLDivElement;
 containerTeaCards.classList.add('container_tea-cards');
 const teaImage = containerTeaCards.appendChild(document.createElement(`div`)) as HTMLDivElement;
 teaImage.classList.add('tea-image');
-
 
 const teaFiltersRuler = containerTeaCards.appendChild(document.createElement(`div`)) as HTMLDivElement;
 teaFiltersRuler.classList.add('tea-filters-ruler');
@@ -204,14 +199,10 @@ teaFiltersRulerList.classList.add('tea-filters-ruler-item');
 const teaFiltersRulerListSvg = teaFiltersRulerList.appendChild(document.createElement(`div`)) as HTMLDivElement;
 teaFiltersRulerListSvg.classList.add('tea-filters-ruler-item-list');
 
-
 const teaFiltersRulerTiles = teaFiltersRuler.appendChild(document.createElement(`a`)) as HTMLAnchorElement;
 teaFiltersRulerTiles.classList.add('tea-filters-ruler-item');
 const teaFiltersRulerTilesSvg = teaFiltersRulerTiles.appendChild(document.createElement(`div`)) as HTMLDivElement;
 teaFiltersRulerTilesSvg.classList.add('tea-filters-ruler-item-tiles');
-
-
-
 
 for (let i = 0; i < 24; i++) {
 
@@ -238,7 +229,6 @@ for (let i = 0; i < 24; i++) {
       teaCardInfo.classList.toggle('hidden')
     }
   })
-
 
   const teaCard = teaCardInfo.appendChild(document.createElement(`div`)) as HTMLDivElement;
   teaCard.classList.add('tea-card');
@@ -270,8 +260,6 @@ for (let i = 0; i < 24; i++) {
   const addButton = buttonsAmount.appendChild(document.createElement(`button`)) as HTMLButtonElement;
   addButton.classList.add('add-button');
   addButton.textContent = `Add`;
-  
-  
   
   const deleteButton = buttonsAmount.appendChild(document.createElement(`button`)) as HTMLButtonElement;
   deleteButton.classList.add('delete-button');
