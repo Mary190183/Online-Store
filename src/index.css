@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
 }
-
 @font-face {
   font-family: "Red-Hat-Text";
   font-style: normal;
@@ -18,14 +17,12 @@
   line-height: 140%;
   src: url("./assets/fonts/Red_Hat_Text/RedHatText-Medium.ttf");
 }
-
 html {
   scroll-behavior: smooth;
   cursor: crosshair;
   transition: 1s;
   overflow-x: hidden;
  }
-
 body {
   background-image: url("https://images.unsplash.com/photo-1561296180-e8100fd714e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1234&q=80");
   background-repeat: no-repeat;
@@ -42,15 +39,12 @@ body {
   font-size: 1rem;
   line-height: 140%;
 }
-
-
 main {
   display: flex;
   flex-direction: row;
   margin: 10px;
   
 }
-
 .container-filtres {
   width: 20vw;
   height: 50%;
@@ -152,8 +146,6 @@ background-color: rgba(72, 104, 18, 0.72);
   flex-direction: row;
   justify-content: space-between;
 }
-
-
 input[type=range] {
   -webkit-appearance: none;
   margin: 10px 0;
@@ -249,7 +241,6 @@ input[type=range]:focus::-ms-fill-upper {
   justify-content: center;
   flex-wrap: wrap;
 }
-
 .tea-image {
   width: 100%;
   height: 410px;
@@ -316,8 +307,6 @@ input[type=range]:focus::-ms-fill-upper {
   background-size: cover;
   background-position: 100%;
   border-radius: 10px 10px 0 0;
-  
-  /* margin: auto; */
 }
 .tea-card-name {
   text-decoration: underline;
@@ -362,4 +351,47 @@ input[type=range]:focus::-ms-fill-upper {
 .add-button:active {
   background-color: #F9F0DA;
   color: #093b0a;
+}
+
+@media screen and (max-width: 770px) {
+
+  .container_tea-cards {
+    width: 60vw;
+  }
+  .container-filtres {
+    width: 30vw;
+  }
+  .tea-image {
+    height: 310px;
+  }
+
+}
+@media screen and (max-width: 600px) {
+
+  .container-filtres {
+    width: 35vw;
+    margin-right: 5px;
+  }
+  .tea-image {
+    height: 250px;
+  }
+  .tea-filters-ruler {
+    flex-wrap: wrap;
+    height: 100px;
+  }
+  .tea-filters-ruler-item-list, .tea-filters-ruler-item-tiles {
+    margin: auto !important;
+  }
+  .filter-input[type="checkbox"] {
+    margin-right: 0px;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+
+  .tea-image {
+    height: 180px;
+  }
+
 }
