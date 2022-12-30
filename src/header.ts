@@ -44,7 +44,7 @@ const buttonIcon = button.appendChild(document.createElement(`div`)) as HTMLDivE
 buttonIcon.classList.add('search-icon')
 
 const navLink3 = navLi[2].appendChild(document.createElement(`a`)) as HTMLAnchorElement;
-navLink3.href="item.html"
+navLink3.href="cart.html"
 navLink3.classList.add('cart-link');
 
 const totalPrice = navLink3.appendChild(document.createElement(`span`)) as HTMLSpanElement;
