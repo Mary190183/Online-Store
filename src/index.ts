@@ -229,11 +229,12 @@ for (let i = 0; i < 24; i++) {
       teaCardInfo.classList.toggle('hidden')
     }
   })
-
-  const teaCard = teaCardInfo.appendChild(document.createElement(`div`)) as HTMLDivElement;
-  teaCard.classList.add('tea-card');
-  teaCard.style.backgroundImage =  `url(${listBuys[i].image1})`;
   
+  const teaCard = teaCardInfo.appendChild(document.createElement(`img`)) as HTMLImageElement;
+  teaCard.classList.add('tea-card');
+  teaCard.src =  listBuys[i].image1;
+  teaCard.alt = listBuys[i].name;
+
   const teaCardName = teaCardInfo.appendChild(document.createElement(`p`)) as HTMLParagraphElement;
   teaCardName.classList.add('tea-card-name');
   teaCardName.textContent = listBuys[i].name;

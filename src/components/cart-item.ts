@@ -1,6 +1,6 @@
 import "./cart-item.css";
 
-function renderCartItem({ image, sort, province, price, index }: CartItemProps) {
+function renderCartItem({image, sort, province, price, index }: CartItemProps) {
   return `
   <div class="cart-item__description">
   <img src="${image}" alt="tea" class="cart-item__img-main" />
