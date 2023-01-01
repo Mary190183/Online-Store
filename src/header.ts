@@ -1,7 +1,4 @@
 import "./header.css";
-import "./index.css";
-
-import "./footer.css";
 
 const body = document.querySelector('body') as HTMLBodyElement;
 
