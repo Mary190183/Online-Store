@@ -297,7 +297,7 @@ input[type=range]:focus::-ms-fill-upper {
   background-color: rgba(194, 207, 192, 0.561);
   border: none;
   width: 270px;
-  height: 410px;
+  height: 420px;
   border-radius: 10px;
   padding: 0 0 10px 0;
   margin: 10px;
@@ -322,7 +322,7 @@ input[type=range]:focus::-ms-fill-upper {
   text-decoration: underline;
   margin: 0;
 }
-.tea-card-sort, .tea-card-description {
+.tea-card-sort, .tea-card-description, .tea-card-province {
   margin: 0;
 }
 .buttons-amount {
