@@ -31,3 +31,8 @@ interface CartItem {
   productId: number;
   amount: number;
 }
+
+interface HeaderProps {
+  totalPrice: number;
+  totalAmount: number;
+}

@@ -18,16 +18,16 @@ window.onload = function () {
   window.cartController.updateView();
 };
 
-function render({ items }: CartModel) {
+function render({ items, totalPrice, totalAmount }: CartModel) {
   return `
-  ${renderHeader()}
+  ${renderHeader({ totalAmount, totalPrice })}
     <section class="section-content">
       <div class="section-wrapper">
         <div class="title-checkout">
           <div class="title">Cart</div>
           <div class="checkout-total">
             <div class="total">
-              <div class="total-price">Total: 2$</div>
+              <div class="total-price">Total: ${totalPrice}$</div>
             </div>
             <button class="checkout-button">Checkout</button>
           </div>

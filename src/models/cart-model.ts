@@ -1,3 +1,5 @@
+import listBuys from "../list-buys";
+
 class CartModel {
   private _items: CartItem[];
 
@@ -23,6 +25,27 @@ class CartModel {
 
   public get items() {
     return this._items;
+  }
+
+  public get totalPrice() {
+    let sum = 0;
+    this._items.forEach((item) => {
+      const product = listBuys.find((prod) => prod.id === item.productId);
+      if (product) {
+        sum += product.price * item.amount;
+      } else {
+        sum += 0;
+      }
+    });
+    return sum;
+  }
+
+  public get totalAmount() {
+    let sumAmount = 0;
+    this._items.forEach((item) => {
+      sumAmount += item.amount;
+    });
+    return sumAmount;
   }
 
   public deleteItemById(id: number) {
