@@ -104,15 +104,14 @@ for (let i = 0; i < 24; i++) {
 
   teaFiltersRulerList.addEventListener('click', () => {  
       teaCardInfo.classList.add('card-list');
-      teaFiltersRulerList.style.backgroundColor = "#fa9a09ea"
-      teaFiltersRulerTiles.style.backgroundColor = "#093b0a" 
+      teaFiltersRulerList.classList.add('active');
+      teaFiltersRulerTiles.classList.remove('active');
   })
 
   teaFiltersRulerTiles.addEventListener('click', () => {  
     teaCardInfo.classList.remove('card-list');
-    teaFiltersRulerTiles.style.backgroundColor = "#fa9a09ea" 
-    
-    teaFiltersRulerList.style.backgroundColor = "#093b0a"
+    teaFiltersRulerList.classList.remove('active');
+    teaFiltersRulerTiles.classList.add('active');
 })
 
   const teaCard = teaCardInfo.appendChild(document.createElement(`img`)) as HTMLImageElement;
