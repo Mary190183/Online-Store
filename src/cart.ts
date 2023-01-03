@@ -43,6 +43,7 @@ function render({ items, totalPrice, totalAmount }: CartModel) {
               price: product.price * item.amount,
               id: item.id,
               amount: item.amount,
+              stock: product.stock,
             });
           } else {
             return "";

@@ -9,6 +9,7 @@ interface Product {
   image3?: string;
   amount: number;
   price: number;
+  stock: number;
 }
 
 interface CartItemProps {
@@ -18,6 +19,7 @@ interface CartItemProps {
   price: number;
   id: number;
   amount: number;
+  stock: number;
 }
 
 interface CartProps {

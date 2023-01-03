@@ -9,6 +9,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/8/8/4/9/30656604.jpg",
     amount: 3000,
     price: 2,
+    stock: 100,
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/c/8/f/e/30656667.jpg",
     amount: 2000,
     price: 1.5,
+    stock: 10,
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/6/5/4/f/27322657.jpg",
     amount: 5000,
     price: 1,
+    stock: 15,
   },
   {
     id: 4,
@@ -42,6 +45,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/7/d/5/2/27322189.jpg",
     amount: 4000,
     price: 1,
+    stock: 170,
   },
   {
     id: 5,
@@ -53,6 +57,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/5/9/5/b/27321778.jpg?0",
     amount: 2500,
     price: 0.5,
+    stock: 6,
   },
   {
     id: 6,
@@ -64,6 +69,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/7/f/a/9/27202035.jpg",
     amount: 4500,
     price: 0.2,
+    stock: 150,
   },
 
   {
@@ -76,6 +82,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/4/a/8/5/49318311.jpg",
     amount: 4000,
     price: 3,
+    stock: 11,
   },
   {
     id: 8,
@@ -87,6 +94,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/c/2/6/a/46806027.jpg",
     amount: 2500,
     price: 1,
+    stock: 190,
   },
   {
     id: 9,
@@ -98,6 +106,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/d/9/9/2/42653701.jpg",
     amount: 4000,
     price: 1,
+    stock: 100,
   },
   {
     id: 10,
@@ -110,6 +119,7 @@ const listBuys: Product[] = [
     image3: "https://taplink.st/p/3/6/9/5/36400764.jpg",
     amount: 6000,
     price: 2,
+    stock: 100,
   },
   {
     id: 11,
@@ -121,6 +131,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/4/d/8/e/27481290.jpg",
     amount: 3500,
     price: 1.5,
+    stock: 100,
   },
   {
     id: 12,
@@ -132,6 +143,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/8/4/5/7/34065671.jpg",
     amount: 4000,
     price: 0.8,
+    stock: 100,
   },
 
   {
@@ -144,6 +156,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/2/d/a/2/27201292.jpg",
     amount: 3000,
     price: 3.5,
+    stock: 100,
   },
   {
     id: 14,
@@ -155,6 +168,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/1/6/c/a/27201549.jpg",
     amount: 3500,
     price: 3,
+    stock: 100,
   },
   {
     id: 15,
@@ -166,6 +180,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/3/f/1/4/27201181.jpg",
     amount: 6000,
     price: 6,
+    stock: 100,
   },
   {
     id: 16,
@@ -177,6 +192,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/9/6/f/6/27200944.jpg",
     amount: 2000,
     price: 1,
+    stock: 100,
   },
   {
     id: 17,
@@ -188,6 +204,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/b/a/7/7/27201235.jpg",
     amount: 1500,
     price: 3.5,
+    stock: 100,
   },
   {
     id: 18,
@@ -199,6 +216,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/0/c/5/3/27201373.jpg",
     amount: 2000,
     price: 0.5,
+    stock: 100,
   },
 
   {
@@ -211,6 +229,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/3/6/f/1/43917245.jpg",
     amount: 2000,
     price: 1,
+    stock: 100,
   },
   {
     id: 20,
@@ -222,6 +241,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/4/b/2/8/43917263.jpg",
     amount: 2500,
     price: 2,
+    stock: 100,
   },
   {
     id: 21,
@@ -233,6 +253,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/4/d/a/b/43917191.jpg",
     amount: 1000,
     price: 3.6,
+    stock: 100,
   },
   {
     id: 22,
@@ -244,6 +265,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/3/9/9/5/43917089.jpg",
     amount: 6000,
     price: 4.5,
+    stock: 100,
   },
   {
     id: 23,
@@ -255,6 +277,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/f/f/3/c/43917062.jpg",
     amount: 5500,
     price: 3,
+    stock: 100,
   },
   {
     id: 24,
@@ -266,6 +289,7 @@ const listBuys: Product[] = [
     image2: "https://taplink.st/p/b/3/d/3/43917104.jpg",
     amount: 1000,
     price: 2.5,
+    stock: 100,
   },
 ];
 

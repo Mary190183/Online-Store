@@ -1,6 +1,6 @@
 import "./cart-item.css";
 
-function renderCartItem({ image, sort, province, price, id, amount }: CartItemProps) {
+function renderCartItem({ image, sort, province, price, id, amount, stock }: CartItemProps) {
   return `
   <div class="cart-item__description">
   <img src="${image}" alt="tea" class="cart-item__img-main" />
@@ -9,10 +9,10 @@ function renderCartItem({ image, sort, province, price, id, amount }: CartItemPr
     <div class="cart-item__country">${province}</div>
     <div class="cart-item__amount-stock">
       <div class="cart-item__amount-form">
-        <input type="number" min="1" max="1000" step="1" value="${amount}" onchange="cartController.updateAmount(${id}, event)" id="youridhere" class="cart-item__amount-input" />
+        <input type="number" min="0" max="${stock}" step="1" value="${amount}" onchange="cartController.updateAmount(${id}, event)" id="youridhere" class="cart-item__amount-input" />
         <label for="youridhere" class="cart-item__static-value">pcs.</label>
       </div>
-      <div class="cart-item__stock">in stock: 5 pcs.</div>
+      <div class="cart-item__stock">in stock: ${stock} pcs.</div>
     </div>
     <div class="cart-item__section-price-resp">
       <div class="cart-item__text-price">Price:</div>

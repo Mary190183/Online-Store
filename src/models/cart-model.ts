@@ -53,6 +53,10 @@ class CartModel {
   }
 
   public updateAmountById(id: number, amount: number) {
+    if (amount === 0) {
+      this.deleteItemById(id);
+      return;
+    }
     this._items.forEach((item) => {
       if (item.id === id) {
         item.amount = amount;
