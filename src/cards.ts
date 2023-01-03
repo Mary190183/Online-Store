@@ -190,7 +190,7 @@ for (let i = 0; i < 24; i++) {
     }
   })
  
-  teaCardInfo.addEventListener('click', () => { 
+  teaCardName.addEventListener('click', () => { 
     window.open('./item.html')
     
 

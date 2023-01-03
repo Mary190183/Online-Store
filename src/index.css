@@ -339,6 +339,9 @@ input[type=range]:focus::-ms-fill-upper {
   text-decoration: underline;
   margin: 0;
 }
+.tea-card-name:hover {
+  color: #fa9a09ea;
+}
 .tea-card-sort, .tea-card-description, .tea-card-province {
   margin: 0;
 }
