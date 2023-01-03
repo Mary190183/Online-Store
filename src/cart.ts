@@ -40,8 +40,9 @@ function render({ items }: CartModel) {
               image: product.image1,
               sort: product.sort,
               province: product.province,
-              price: product.price,
+              price: product.price * item.amount,
               id: item.id,
+              amount: item.amount,
             });
           } else {
             return "";

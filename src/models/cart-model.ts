@@ -11,12 +11,12 @@ class CartModel {
       {
         id: 2,
         productId: 7,
-        amount: 1,
+        amount: 2,
       },
       {
         id: 3,
         productId: 18,
-        amount: 1,
+        amount: 3,
       },
     ];
   }
@@ -27,6 +27,14 @@ class CartModel {
 
   public deleteItemById(id: number) {
     this._items = this._items.filter((item) => item.id !== id);
+  }
+
+  public updateAmountById(id: number, amount: number) {
+    this._items.forEach((item) => {
+      if (item.id === id) {
+        item.amount = amount;
+      }
+    });
   }
 }
 

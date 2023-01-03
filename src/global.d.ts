@@ -17,6 +17,7 @@ interface CartItemProps {
   province: string;
   price: number;
   id: number;
+  amount: number;
 }
 
 interface CartProps {

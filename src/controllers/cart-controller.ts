@@ -17,6 +17,11 @@ class CartController {
     this._model.deleteItemById(id);
     this.updateView();
   }
+
+  public updateAmount(id: number, event: Event) {
+    this._model.updateAmountById(id, Number((event.target as HTMLInputElement).value));
+    this.updateView();
+  }
 }
 
 export default CartController;
