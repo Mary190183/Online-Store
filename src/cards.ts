@@ -101,7 +101,19 @@ for (let i = 0; i < 24; i++) {
       
     }
   })
-  
+
+  teaFiltersRulerList.addEventListener('click', () => {  
+      teaCardInfo.classList.add('card-list');
+      teaFiltersRulerList.classList.add('active');
+      teaFiltersRulerTiles.classList.remove('active');
+  })
+
+  teaFiltersRulerTiles.addEventListener('click', () => {  
+    teaCardInfo.classList.remove('card-list');
+    teaFiltersRulerList.classList.remove('active');
+    teaFiltersRulerTiles.classList.add('active');
+})
+
   const teaCard = teaCardInfo.appendChild(document.createElement(`img`)) as HTMLImageElement;
   teaCard.classList.add('tea-card');
   teaCard.src =  listBuys[i].image1;
@@ -178,4 +190,11 @@ for (let i = 0; i < 24; i++) {
     }
   })
  
+  teaCardName.addEventListener('click', () => { 
+    window.open('./item.html')
+    
+
+   })
 }
+
+

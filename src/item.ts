@@ -1,3 +1,5 @@
 import "./item.css";
 
-console.log("Item");
+import listBuys from "./list-buys";
+
+
