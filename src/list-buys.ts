@@ -71,7 +71,7 @@ const listBuys = [
   // [       
     {
       id: 7,
-      name: 'Wishan Oolong Niulankeng Zhou Gui',
+      name: 'Wishan Niulankeng Zhou Gui',
       sort: 'Oolong',
       province: 'Hong Pao',
       description: 'Da Hong Pao Province',
@@ -208,7 +208,7 @@ const listBuys = [
   // [       
     {
       id: 19,
-      name: 'Dian Hong Hua Long Zhu with orange peel',
+      name: 'Dian Hong Hua Long Zhu',
       sort: 'Red tea',
       province: 'Taiwan',
       description: "With orange peel",
@@ -219,7 +219,7 @@ const listBuys = [
     },
     {
       id: 20,
-      name: 'Dian Hong Hua Long Zhu with osmanthus',
+      name: 'Dian Hong Hua Long Zhu',
       sort: 'Red tea',
       province: 'Taiwan',
       description: 'With osmanthus',
@@ -230,7 +230,7 @@ const listBuys = [
     },
     {
       id: 21,
-      name: 'Dian Hong Hua Long Zhu with jasmine',
+      name: 'Dian Hong Hua Long Zhu',
       sort: 'Red tea',
       province: 'Taiwan',
       description: 'With jasmine',
@@ -241,7 +241,7 @@ const listBuys = [
     },
     {
       id: 22,
-      name: 'Dian Hong Hua Long Zhu with red peony',
+      name: 'Dian Hong Hua Long Zhu',
       sort: 'Red tea',
       province: 'Taiwan',
       description: "With red peony",
@@ -252,7 +252,7 @@ const listBuys = [
     },
     {
       id: 23,
-      name: 'Dian Hong Hua Long Zhu with mountain carnation',
+      name: 'Dian Hong Hua Long Zhu',
       sort: 'Red tea',
       province: 'Taiwan',
       description: "With mountain carnation",
@@ -263,7 +263,7 @@ const listBuys = [
     },
     {
       id: 24,
-      name: 'Dian Hong Hua Long Zhu with yellow chrysanthemum',
+      name: 'Dian Hong Hua Long Zhu',
       sort: 'Red tea',
       province: 'Taiwan',
       description: "With yellow chrysanthemum",
