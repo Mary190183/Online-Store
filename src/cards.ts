@@ -14,9 +14,14 @@ const teaFiltersRulerPriceHigh = teaFiltersRuler.appendChild(document.createElem
 teaFiltersRulerPriceHigh.classList.add('tea-filters-ruler-item');
 teaFiltersRulerPriceHigh.textContent = 'Price ↑';
 
+
 const teaFiltersRulerPriceLow = teaFiltersRuler.appendChild(document.createElement(`a`)) as HTMLAnchorElement;
 teaFiltersRulerPriceLow.classList.add('tea-filters-ruler-item');
 teaFiltersRulerPriceLow.textContent = 'Price ↓';
+
+//  const pricesHigh = listBuys.sort((el1.price, el2.price) => el2.price > el1.price);
+ 
+//  const pricesLow = listBuys.sort((el) => el.price).reverse();
 
 const teaFiltersRulerRatingHigh = teaFiltersRuler.appendChild(document.createElement(`a`)) as HTMLAnchorElement;
 teaFiltersRulerRatingHigh.classList.add('tea-filters-ruler-item');
@@ -36,71 +41,95 @@ teaFiltersRulerTiles.classList.add('tea-filters-ruler-item');
 const teaFiltersRulerTilesSvg = teaFiltersRulerTiles.appendChild(document.createElement(`div`)) as HTMLDivElement;
 teaFiltersRulerTilesSvg.classList.add('tea-filters-ruler-item-tiles');
 for (let i = 0; i < 24; i++) {
-  
+
   const teaCardInfo = containerTeaCards.appendChild(document.createElement(`div`)) as HTMLDivElement;
   teaCardInfo.classList.add('tea-card-info');
+let k = 0 as number;
 
- 
   filterCategoryCheckboxInput[0].addEventListener('click', () => {
-    if (teaCardSort.textContent !== "Green tea") {
- 
-      teaCardInfo.classList.toggle('hidden')
- 
-    }   
-
+    k = k + 1;
+    if (k === 1 && teaCardSort.textContent !== "Green tea") {
+      teaCardInfo.classList.toggle('hidden');
+    }
+    if (k > 1 && teaCardSort.textContent === "Green tea") { 
+      teaCardInfo.classList.toggle('hidden'); 
+    } 
   })
-
-  filterCategoryCheckboxInput[1].addEventListener('click', () => {
-    if (teaCardSort.textContent !== "Oolong") {
-  
-      teaCardInfo.classList.toggle('hidden')
-     
+    filterCategoryCheckboxInput[1].addEventListener('click', () => {
+      k = k + 1;
+    if (k === 1 && teaCardSort.textContent !== "Oolong") {
+      teaCardInfo.classList.toggle('hidden');
+    }
+    if (k > 1 && teaCardSort.textContent === "Oolong") {
+      teaCardInfo.classList.toggle('hidden');
     }
   })
-  filterCategoryCheckboxInput[2].addEventListener('click', () => {
-    if (teaCardSort.textContent !== "Puer") {
-      
-      teaCardInfo.classList.toggle('hidden')
-      
+    filterCategoryCheckboxInput[2].addEventListener('click', () => {
+      k = k + 1
+    if (k === 1 && teaCardSort.textContent !== "Puer") {
+      teaCardInfo.classList.toggle('hidden');
+    }
+    if (k > 1 && teaCardSort.textContent === "Puer") {
+      teaCardInfo.classList.toggle('hidden');
     }
   })
   filterCategoryCheckboxInput[3].addEventListener('click', () => {
-    if (teaCardSort.textContent !== "Red tea") {
-      
-      teaCardInfo.classList.toggle('hidden')
-      
-    }
-  })
-  filterCategoryCheckboxInput[4].addEventListener('click', () => {
-    if (teaCardProvince.textContent !== "Taiwan") {
- 
-      teaCardInfo.classList.toggle('hidden')
- 
-    }   
+    k = k + 1;
+    if (k === 1 && teaCardSort.textContent !== "Red tea") {
+      teaCardInfo.classList.toggle('hidden');
+    }  
 
+    if (k > 1 && teaCardSort.textContent === "Red tea") { 
+      teaCardInfo.classList.toggle('hidden'); 
+    } 
+   
   })
-
-  filterCategoryCheckboxInput[5].addEventListener('click', () => {
-    if (teaCardProvince.textContent !== "Huang Shan") {
   
-      teaCardInfo.classList.toggle('hidden')
-     
+
+let m = 0 as number;
+  filterCategoryCheckboxInput[4].addEventListener('click', () => {
+    m = m + 1;
+    
+    if (m === 1 && teaCardProvince.textContent !== "Taiwan") {
+      teaCardInfo.classList.toggle('hidden');
+    }
+    if (m > 1 && teaCardProvince.textContent === "Taiwan") { 
+      teaCardInfo.classList.toggle('hidden'); 
+    } 
+  })
+    filterCategoryCheckboxInput[5].addEventListener('click', () => {
+      m = m + 1;
+    if (m === 1 && teaCardProvince.textContent !== "Huang Shan") {
+      teaCardInfo.classList.toggle('hidden');
+    }
+    if (m > 1 && teaCardProvince.textContent === "Huang Shan") {
+      teaCardInfo.classList.toggle('hidden');
     }
   })
-  filterCategoryCheckboxInput[6].addEventListener('click', () => {
-    if (teaCardProvince.textContent !== "Myung Ku") {
-      
-      teaCardInfo.classList.toggle('hidden')
-      
+    filterCategoryCheckboxInput[6].addEventListener('click', () => {
+      m = m + 1
+    if (m === 1 && teaCardProvince.textContent !== "Myung Ku") {
+      teaCardInfo.classList.toggle('hidden');
+    }
+    if (m > 1 && teaCardProvince.textContent === "Myung Ku") {
+      teaCardInfo.classList.toggle('hidden');
     }
   })
   filterCategoryCheckboxInput[7].addEventListener('click', () => {
-    if (teaCardProvince.textContent !== "Hong Pao") {
-      
-      teaCardInfo.classList.toggle('hidden')
-      
-    }
+    m = m + 1;
+    if (m === 1 && teaCardProvince.textContent !== "Hong Pao") {
+      teaCardInfo.classList.toggle('hidden');
+    }  
+
+    if (m > 1 && teaCardProvince.textContent === "Hong Pao") { 
+      teaCardInfo.classList.toggle('hidden'); 
+    } 
+   
   })
+
+
+
+
 
   teaFiltersRulerList.addEventListener('click', () => {  
       teaCardInfo.classList.add('card-list');
@@ -118,34 +147,40 @@ for (let i = 0; i < 24; i++) {
   teaCard.classList.add('tea-card');
   teaCard.src =  listBuys[i].image1;
   teaCard.alt = listBuys[i].name;
+  const teaCardContainer = teaCardInfo.appendChild(document.createElement(`div`)) as HTMLDivElement;
+  teaCardContainer.classList.add('tea-card-container');
 
-  const teaCardName = teaCardInfo.appendChild(document.createElement(`p`)) as HTMLParagraphElement;
+  const teaCardName = teaCardContainer.appendChild(document.createElement(`p`)) as HTMLParagraphElement;
   teaCardName.classList.add('tea-card-name');
   teaCardName.textContent = listBuys[i].name;
-  
-  const teaCardSort = teaCardInfo.appendChild(document.createElement(`p`)) as HTMLParagraphElement;
+
+  const teaCardProvince = teaCardContainer.appendChild(document.createElement(`p`)) as HTMLParagraphElement;
+  teaCardProvince.classList.add('tea-card-province');
+  teaCardProvince.textContent = listBuys[i].province;
+
+  const teaCardSort = teaCardContainer.appendChild(document.createElement(`p`)) as HTMLParagraphElement;
   teaCardSort.classList.add('tea-card-sort');
   teaCardSort.textContent = listBuys[i].sort;
 
-  const teaCardProvince = teaCardInfo.appendChild(document.createElement(`p`)) as HTMLParagraphElement;
-  teaCardProvince.classList.add('tea-card-province');
-  teaCardProvince.textContent = listBuys[i].province;
-  
-  const teaCardDescription = teaCardInfo.appendChild(document.createElement(`p`)) as HTMLParagraphElement;
+  const teaCardDescription = teaCardContainer.appendChild(document.createElement(`p`)) as HTMLParagraphElement;
   teaCardDescription.classList.add('tea-card-description');
   teaCardDescription.textContent = listBuys[i].description;
   
-  const teaCardAmount = teaCardInfo.appendChild(document.createElement(`span`)) as HTMLSpanElement;
-  teaCardAmount.classList.add('tea-card-description');
+  const teaCardAmount = teaCardContainer.appendChild(document.createElement(`span`)) as HTMLSpanElement;
+  teaCardAmount.classList.add('tea-card-amount');
   teaCardAmount.textContent = `In stock: ${listBuys[i].amount} gramm`;
   
-  const teaCardPrice = teaCardInfo.appendChild(document.createElement(`p`)) as HTMLParagraphElement;
-  teaCardPrice.classList.add('tea-card-description');
-  teaCardPrice.textContent = `Price: ${listBuys[i].price} $ per gramm`;
-  
-  const buttonsAmount = teaCardInfo.appendChild(document.createElement(`div`)) as HTMLDivElement;
+  const teaCardPrice = teaCardContainer.appendChild(document.createElement(`span`)) as HTMLSpanElement;
+  teaCardPrice.classList.add('tea-card-price');
+  teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
+
+
+  const cartInfo = teaCardInfo.appendChild(document.createElement(`div`)) as HTMLDivElement;
+  cartInfo.classList.add('cart-info');
+
+  const buttonsAmount = cartInfo .appendChild(document.createElement(`div`)) as HTMLDivElement;
   buttonsAmount.classList.add('buttons-amount');
-  
+
   const addButton = buttonsAmount.appendChild(document.createElement(`button`)) as HTMLButtonElement;
   addButton.classList.add('add-button');
   addButton.textContent = `Add`;
@@ -153,11 +188,16 @@ for (let i = 0; i < 24; i++) {
   const deleteButton = buttonsAmount.appendChild(document.createElement(`button`)) as HTMLButtonElement;
   deleteButton.classList.add('delete-button');
   deleteButton.textContent = `Delete`;
-  
-  const amount = buttonsAmount.appendChild(document.createElement(`span`)) as HTMLSpanElement;
+
+  const amountPrice = cartInfo.appendChild(document.createElement(`span`)) as HTMLSpanElement;
+  amountPrice.classList.add('amount-price');
+
+  const amount = amountPrice.appendChild(document.createElement(`span`)) as HTMLSpanElement;
   amount.classList.add('amount');
-  const price = buttonsAmount.appendChild(document.createElement(`span`)) as HTMLSpanElement;
+
+  const price = amountPrice.appendChild(document.createElement(`span`)) as HTMLSpanElement;
   price.classList.add('price');
+  
   let amountNumber = 0 as number; 
   let priceGramm = 0 as number;
   amount.textContent = `${amountNumber} gramm`;
@@ -195,6 +235,34 @@ for (let i = 0; i < 24; i++) {
     
 
    })
-}
 
+
+   teaFiltersRulerPriceLow.addEventListener('click', () => { 
+    listBuys.sort((a, b) => b.price - a.price);
+    teaFiltersRulerPriceLow.classList.add('active');
+    teaFiltersRulerPriceHigh.classList.remove('active');
+    teaCard.src =  listBuys[i].image1;
+    teaCardName.textContent = listBuys[i].name;
+    teaCardSort.textContent = listBuys[i].sort;
+    teaCardProvince.textContent = listBuys[i].province;
+    teaCardDescription.textContent = listBuys[i].description;
+    teaCardAmount.textContent = `In stock: ${listBuys[i].amount} gramm`;
+    teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
+    
+    })
+    teaFiltersRulerPriceHigh.addEventListener('click', () => { 
+      teaFiltersRulerPriceHigh.classList.add('active');
+      teaFiltersRulerPriceLow.classList.remove('active');
+      listBuys.sort((a, b) => a.price - b.price);
+      teaCard.src =  listBuys[i].image1;
+      teaCardName.textContent = listBuys[i].name;
+      teaCardSort.textContent = listBuys[i].sort;
+      teaCardProvince.textContent = listBuys[i].province;
+      teaCardDescription.textContent = listBuys[i].description;
+      teaCardAmount.textContent = `In stock: ${listBuys[i].amount} gramm`;
+      teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
+      
+      })
+
+}
 
