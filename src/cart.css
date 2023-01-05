@@ -131,6 +131,26 @@ body {
   flex-direction: row;
 }
 
+.limit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  gap: 5px;
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 140%;
+}
+
+.limit-input {
+  text-align: center;
+  width: 40px;
+  height: 20px;
+}
+
 .pages-text {
   font-family: "Red-Hat-Text";
   font-style: normal;
@@ -176,6 +196,13 @@ body {
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 140%;
+}
+
+.empty {
+  text-align: center;
+  border-top: solid 1px #eee380;
+  padding: 80px 0;
+  margin: 0;
 }
 
 @media screen and (min-width: 640px) and (max-width: 800px) {
