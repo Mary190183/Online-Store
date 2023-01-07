@@ -18,7 +18,7 @@ window.onload = function () {
   window.cartController.updateView();
 };
 
-function render({ items, totalPrice, totalAmount, page, limitItems }: CartModel) {
+function render({ items, totalPrice, totalAmount, page, limitItems, promo }: CartModel) {
   return `
   ${renderHeader({ totalAmount, totalPrice })}
     <section class="section-content">
@@ -27,7 +27,21 @@ function render({ items, totalPrice, totalAmount, page, limitItems }: CartModel)
           <div class="title">Cart</div>
           <div class="checkout-total">
             <div class="total">
-              <div class="total-price">Total: ${totalPrice}$</div>
+              ${
+                promo.length === 0
+                  ? `<div class="total-price">Total: ${totalPrice}$</div>`
+                  : promo.length === 1
+                  ? `
+                        <div class=".section-promo" >
+                        <div class="total-price" style="text-decoration:line-through; font-size: 1.6rem">Total: ${totalPrice}$</div>
+                        <div class="total-price">Total: ${(totalPrice * 0.9).toFixed(2)}$</div>
+                        </div>`
+                  : `
+                        <div class=".section-promo" >
+                        <div class="total-price" style="text-decoration:line-through; font-size: 1.6rem" >Total: ${totalPrice}$</div>
+                        <div class="total-price">Total: ${(totalPrice * 0.8).toFixed(2)}$</div>
+                        </div>`
+              }
             </div>
             <button class="checkout-button">Checkout</button>
           </div>
@@ -54,15 +68,30 @@ function render({ items, totalPrice, totalAmount, page, limitItems }: CartModel)
             : `<h2 class="empty">Empty</h2>`
         }
         <div class="section-end">
+        <div class="section-promo">
           <div class="promo">
             <div class="promo-text">Promo code</div>
-            <input type="text" />
-            <button class="promo-activate">Activate</button>
+            <input type="text" value="" onchange="cartController.updatePromo(event)" />
+            <button type="button" class="promo-activate">Activate</button>
           </div>
+          <div class="promo-test">Promo for test: 'RS', 'EPM'</div>
+          ${promo
+            .map((item) => {
+              if (item === "RS" || item === "EPM") {
+                return `<div>
+              ${item === "RS" ? `<spain>RS - 10%</spain>` : `<spain>EPM - 10%</spain>`}
+              <button type="button" onclick="cartController.deletePromoItem()">DROP</button>
+              </div>`;
+              } else {
+                return ``;
+              }
+            })
+            .join("")}
+        </div>
           <div class="pages">
             <div class="limit">
               <div>Limit</div>
-              <input type="number" min="1" max="10" step="1" value="${limitItems}" onchange="cartController.updateLimitItems(event)" class="limit-input"/>
+              <input type="number" min="1" max="10" step="1" value="${limitItems}" oninput="cartController.updateLimitItems(event)" class="limit-input"/>
             </div>
             <div class="pages-text">Page</div>
             <button class="button-left" onclick="cartController.onclickLeft()">

@@ -4,6 +4,7 @@ class CartModel {
   private _items: CartItem[];
   public page: number;
   public limitItems: number;
+  public promo: string[];
 
   public constructor() {
     this._items = [
@@ -30,6 +31,7 @@ class CartModel {
     ];
     this.page = 1;
     this.limitItems = 2;
+    this.promo = [];
   }
 
   public get items() {
@@ -96,6 +98,19 @@ class CartModel {
     } else {
       this.page = this.page - 1;
     }
+  }
+  public updatePromoById(promo: string) {
+    if (this.promo.includes(promo)) {
+      this.promo;
+    } else {
+      if (promo === "RS" || promo === "EPM") {
+        this.promo.push(promo);
+      }
+    }
+  }
+
+  public deletePromoById() {
+    this.promo = this.promo.filter((item) => item !== "RS");
   }
 }
 

@@ -51,6 +51,16 @@ class CartController {
     this._model.onclickLeftPageNumber();
     this.updateView();
   }
+
+  public updatePromo(event: Event) {
+    this._model.updatePromoById((event.target as HTMLInputElement).value);
+    this.updateView();
+  }
+
+  public deletePromoItem() {
+    this._model.deletePromoById();
+    this.updateView();
+  }
 }
 
 export default CartController;
