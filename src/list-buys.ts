@@ -1,6 +1,4 @@
-
-const listBuys = [
-  // [       
+const listBuys = [     
     {
       id: 1,
       name: 'Gyokuro And Ji',
@@ -9,7 +7,7 @@ const listBuys = [
       description: 'First grade Steamed',
       image1: `./assets/img/id1_1.jpg`,
       image2: `./assets/img/id1_2.jpg`,
-      amount: 3000,
+      stock: 30,
       price: 2
     },
     {
@@ -20,7 +18,7 @@ const listBuys = [
       description: 'It has a thick velvety floral-fruity, honey aroma with notes of prunes',
       image1: `./assets/img/id2_1.jpg`,
       image2: `./assets/img/id2_2.jpg`,
-      amount: 2000,
+      stock: 20,
       price: 1.5 
     },
     {
@@ -31,7 +29,7 @@ const listBuys = [
       description: 'Snow green tea 2021',
       image1: `./assets/img/id3_1.jpg`,
       image2: `./assets/img/id3_2.jpg`,
-      amount: 5000,
+      stock: 50,
       price: 1
     },
     {
@@ -42,7 +40,7 @@ const listBuys = [
       description: "(Petrel's Beak grade C1) 2021 Meng Ding Shan",
       image1: `./assets/img/id4_1.jpg`,
       image2: `./assets/img/id4_2.jpg`,
-      amount: 4000,
+      stock: 40,
       price: 1
     },
     {
@@ -53,7 +51,7 @@ const listBuys = [
       description: "Monkey King 2021 Bei Huang Shan Anhui Province",
       image1: `./assets/img/id5_1.jpg`,
       image2: `./assets/img/id5_2.jpg`,
-      amount: 2500,
+      stock: 25,
       price: 0.5
     },
     {
@@ -64,11 +62,9 @@ const listBuys = [
       description: "Cloud green tea 2019",
       image1: `./assets/img/id6_1.jpg`,
       image2: `./assets/img/id6_2.jpg`,
-      amount: 4500,
+      stock: 45,
       price: 0.2
-    },
-  // ],
-  // [       
+    },      
     {
       id: 7,
       name: 'Wishan Niulankeng Zhou Gui',
@@ -77,7 +73,7 @@ const listBuys = [
       description: 'Da Hong Pao Province',
       image1: `./assets/img/id7_1.jpg`,
       image2: `./assets/img/id7_2.jpg`,
-      amount: 4000,
+      stock: 40,
       price: 3
     },
     {
@@ -88,7 +84,7 @@ const listBuys = [
       description: 'Chocolate taste',
       image1: `./assets/img/id8_1.jpg`,
       image2: `./assets/img/id8_2.jpg`,
-      amount: 2500,
+      stock: 25,
       price: 1 
     },
     {
@@ -99,7 +95,7 @@ const listBuys = [
       description: 'Spring Taiwan',
       image1: `./assets/img/id9_1.jpg`,
       image2: `./assets/img/id9_2.jpg`,
-      amount: 4000,
+      stock: 40,
       price: 1
     },
     {
@@ -111,7 +107,7 @@ const listBuys = [
       image1: `./assets/img/id10_1.jpg`,
       image2: `./assets/img/id10_2.jpg`,
       image3: `./assets/img/id10_3.jpg`,
-      amount: 6000,
+      stock: 60,
       price: 2
     },
     {
@@ -122,7 +118,7 @@ const listBuys = [
       description: "Class AAAA",
       image1: `./assets/img/id11_1.jpg`,
       image2: `./assets/img/id11_2.jpg`,
-      amount: 3500,
+      stock: 35,
       price: 1.5
     },
     {
@@ -133,11 +129,9 @@ const listBuys = [
       description: "The aroma is high, light, fruity and sweet.",
       image1: `./assets/img/id12_1.jpg`,
       image2: `./assets/img/id12_2.jpg`,
-      amount: 4000,
+      stock: 40,
       price: 0.8
-    },
-  // ],
-  // [       
+    },      
     {
       id: 13,
       name: 'Shen Puer Bai Hao Yin Zhen',
@@ -146,7 +140,7 @@ const listBuys = [
       description: "White Yunnan Shen Pu'er 2022",
       image1: `./assets/img/id13_1.jpg`,
       image2: `./assets/img/id13_2.jpg`,
-      amount: 3000,
+      stock: 30,
       price: 3.5
     },
     {
@@ -157,7 +151,7 @@ const listBuys = [
       description: 'Dragon Balls from Da Huang Shan Mountain 2018',
       image1: `./assets/img/id14_1.jpg`,
       image2: `./assets/img/id14_2.jpg`,
-      amount: 3500,
+      stock: 35,
       price: 3 
     },
     {
@@ -168,7 +162,7 @@ const listBuys = [
       description: 'Ancient trees Myung Ku place 2016',
       image1: `./assets/img/id15_1.jpg`,
       image2: `./assets/img/id15_2.jpg`,
-      amount: 6000,
+      stock: 60,
       price: 6
     },
     {
@@ -179,7 +173,7 @@ const listBuys = [
       description: "Shen Puer Pigtail Tea Mountain Da Huang Shan",
       image1: `./assets/img/id16_1.jpg`,
       image2: `./assets/img/id16_2.jpg`,
-      amount: 2000,
+      stock: 20,
       price: 1
     },
     {
@@ -190,7 +184,7 @@ const listBuys = [
       description: "Red Tongues purple buds Yes Huang Shan 2018",
       image2: `./assets/img/id17_1.jpg`,
       image1: `./assets/img/id17_2.jpg`,
-      amount: 1500,
+      stock: 15,
       price: 3.5
     },
     {
@@ -201,11 +195,9 @@ const listBuys = [
       description: "Wild white buds",
       image1: `./assets/img/id18_1.jpg`,
       image2: `./assets/img/id18_2.jpg`,
-      amount: 2000,
+      stock: 20,
       price: 0.5
-    },
-  // ],
-  // [       
+    },      
     {
       id: 19,
       name: 'Dian Hong Hua Long Zhu',
@@ -214,7 +206,7 @@ const listBuys = [
       description: "With orange peel",
       image1: `./assets/img/id19_1.jpg`,
       image2: `./assets/img/id19_2.jpg`,
-      amount: 2000,
+      stock: 20,
       price: 1
     },
     {
@@ -225,7 +217,7 @@ const listBuys = [
       description: 'With osmanthus',
       image1: `./assets/img/id20_1.jpg`,
       image2: `./assets/img/id20_2.jpg`,
-      amount: 2500,
+      stock: 25,
       price: 2 
     },
     {
@@ -236,7 +228,7 @@ const listBuys = [
       description: 'With jasmine',
       image1: `./assets/img/id21_1.jpg`,
       image2: `./assets/img/id21_2.jpg`,
-      amount: 1000,
+      stock: 10,
       price: 3.6
     },
     {
@@ -247,7 +239,7 @@ const listBuys = [
       description: "With red peony",
       image1: `./assets/img/id22_1.jpg`,
       image2: `./assets/img/id22_2.jpg`,
-      amount: 6000,
+      stock: 60,
       price: 4.5
     },
     {
@@ -258,7 +250,7 @@ const listBuys = [
       description: "With mountain carnation",
       image1: `./assets/img/id23_1.jpg`,
       image2: `./assets/img/id23_2.jpg`,
-      amount: 5500,
+      stock: 55,
       price: 3
     },
     {
@@ -269,10 +261,9 @@ const listBuys = [
       description: "With yellow chrysanthemum",
       image1: `./assets/img/id24_1.jpg`,
       image2: `./assets/img/id24_2.jpg`,
-      amount: 1000,
+      stock: 10,
       price: 2.5
     },
-  // ]
-]
+];
 
 export default listBuys;

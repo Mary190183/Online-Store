@@ -1,6 +1,6 @@
 import "./header.css";
 
-function renderHeader() {
+function renderHeader({ totalAmount, totalPrice }: HeaderProps) {
   return `
   <header class="header">
   <nav class="header__nav">
@@ -20,9 +20,9 @@ function renderHeader() {
     </li>
     <li class="header__nav-link">
       <a href="item.html">
-        <span>total-price: 00</span>
+        <span>Total price: ${totalPrice}$</span>
         <div class="header__cart"></div>
-        <div class="header__amount-buys">0</div>
+        <div class="header__amount-buys">${totalAmount}</div>
       </a>
     </li>
   </nav>
