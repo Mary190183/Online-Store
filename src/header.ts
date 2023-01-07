@@ -28,10 +28,10 @@ navLink2.classList.add('nav__input');
 navLink2.method="get"
 const inputNavLink2 = navLink2.appendChild(document.createElement(`input`)) as HTMLInputElement;
 
-inputNavLink2.name = 's'
+inputNavLink2.name = 'search'
 inputNavLink2.placeholder = 'Search tea...'
-inputNavLink2.type = "search"
-
+inputNavLink2.type = "text"
+inputNavLink2.id = 'search'
 
 const button = navLink2.appendChild(document.createElement(`button`)) as HTMLButtonElement;
 button.classList.add('button');
