@@ -203,49 +203,49 @@ let k = 0 as number;
 
   let amountNumber = 0 as number; 
   let priceGramm = 0 as number;
-  amount.textContent = `${amountNumber} gramm`;
+  amount.textContent = `${amountNumber} piece`;
   price.textContent = `${priceGramm} $`;
   let j = 0;
   let finish = 0;
 
   addButton.addEventListener('click', () => {
     j =  j + 1;
-    amountNumber = amountNumber + 10;
+    amountNumber = amountNumber + 1;
     priceGramm = amountNumber * listBuys[i].price;
-    amount.textContent= `${amountNumber} gramm`;
+    amount.textContent= `${amountNumber} piece`;
     price.textContent = `${priceGramm} $`;
-    teaCardAmount.textContent = `In stock: ${listBuys[i].amount - j * 10} gramm`;
-    if (amountNumber > listBuys[i].amount) {
+    teaCardAmount.textContent = `In stock: ${listBuys[i].stock - j} piece`;
+    if (amountNumber > listBuys[i].stock) {
       j = 0;
       finish = 1;
-      listBuys[i].amount = listBuys[i].amount + 0;
-      amountNumber = listBuys[i].amount;
+      listBuys[i].stock = listBuys[i].stock + 0;
+      amountNumber = listBuys[i].stock;
       priceGramm = amountNumber * listBuys[i].price;
-      amount.textContent= `${amountNumber} gramm`;
+      amount.textContent= `${amountNumber} piece`;
       price.textContent = `${priceGramm} $`;
-      teaCardAmount.textContent = `In stock: ${0} gramm`;
+      teaCardAmount.textContent = `In stock: ${0} piece`;
     }
     
   })
   
   deleteButton.addEventListener('click', () => {
     j = j - 1
-    amountNumber = amountNumber - 10;
+    amountNumber = amountNumber - 1;
     priceGramm = amountNumber * listBuys[i].price;
-    amount.textContent= `${amountNumber} gramm`;
+    amount.textContent= `${amountNumber} piece`;
     price.textContent = `${priceGramm} $`;
-    teaCardAmount.textContent = `In stock: ${listBuys[i].amount - j * 10} gramm`;
+    teaCardAmount.textContent = `In stock: ${listBuys[i].stock - j} piece`;
     if (amountNumber < 0) {
       j = 0;
       finish = 0;
       amountNumber = 0;
       priceGramm = 0;
-      amount.textContent= `${amountNumber} gramm`;
+      amount.textContent= `${amountNumber} piece`;
       price.textContent = `${priceGramm} $`;
-      teaCardAmount.textContent = `In stock: ${listBuys[i].amount} gramm`;
+      teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
     }
     if (finish >= 1) {
-      teaCardAmount.textContent = `In stock: ${- j * 10} gramm`;
+      teaCardAmount.textContent = `In stock: ${- j} piece`;
     }
   })
  
@@ -266,7 +266,7 @@ let k = 0 as number;
     teaCardSort.textContent = listBuys[i].sort;
     teaCardProvince.textContent = listBuys[i].province;
     teaCardDescription.textContent = listBuys[i].description;
-    teaCardAmount.textContent = `In stock: ${listBuys[i].amount} gramm`;
+    teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
     teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
 
     getParamsUrl('pricehigh', 'true');
@@ -278,7 +278,10 @@ let k = 0 as number;
 
       teaFiltersRulerPriceHigh.classList.add('active');
       teaFiltersRulerPriceLow.classList.remove('active');
-
+// set
+localStorage.setItem("teaCard", "src");
+// get
+localStorage.getItem("teaCard");
       
 
       teaCard.src =  listBuys[i].image1;
@@ -287,7 +290,7 @@ let k = 0 as number;
       teaCardSort.textContent = listBuys[i].sort;
       teaCardProvince.textContent = listBuys[i].province;
       teaCardDescription.textContent = listBuys[i].description;
-      teaCardAmount.textContent = `In stock: ${listBuys[i].amount} gramm`;
+      teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
       teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
 
       getParamsUrl('pricehigh', 'false');
@@ -301,7 +304,7 @@ let k = 0 as number;
       teaCardProvince.textContent = listBuys[i].province;
       teaCardSort.textContent = listBuys[i].sort;
       teaCardDescription.textContent = listBuys[i].description;
-      teaCardAmount.textContent = `In stock: ${listBuys[i].amount} gramm`;
+      teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
       teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
 }
 

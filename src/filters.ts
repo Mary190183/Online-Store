@@ -80,19 +80,19 @@ const filterPriceRangeInput1 = filterPriceRangeInput.appendChild(document.create
 filterPriceRangeInput1.classList.add('filter-input-range-1');
 filterPriceRangeInput1.id = 'min';
 filterPriceRangeInput1.type = 'range'
-filterPriceRangeInput1.min = "0";
-filterPriceRangeInput1.max = "7";
+filterPriceRangeInput1.min = "0.2";
+filterPriceRangeInput1.max = "6";
 filterPriceRangeInput1.step = "0.1";
-filterPriceRangeInput1.value = '0.5';
+filterPriceRangeInput1.value = '0.7';
 
 const filterPriceRangeInput2 = filterPriceRangeInput.appendChild(document.createElement(`input`)) as HTMLInputElement;
 filterPriceRangeInput2.classList.add('filter-input-range-2');
 filterPriceRangeInput2.id = 'max';
 filterPriceRangeInput2.type = 'range'
-filterPriceRangeInput2.min = "0";
-filterPriceRangeInput2.max = "7";
+filterPriceRangeInput2.min = "0.2";
+filterPriceRangeInput2.max = "6";
 filterPriceRangeInput2.step = "0.1";
-filterPriceRangeInput2.value = '6.5';
+filterPriceRangeInput2.value = '5.5';
 
 function rangeMove(labelId: string, inputId: string) {
   const value = document.querySelector(labelId) as HTMLLabelElement
@@ -160,7 +160,7 @@ filterStockRange.classList.add('filter-range');
 
 const filterStockRange1 = filterStockRange.appendChild(document.createElement(`label`)) as HTMLLabelElement;
 filterStockRange1.classList.add('filter-range-points-1');
-filterStockRange1.textContent = '0';
+filterStockRange1.textContent = '10';
 filterStockRange1.setAttribute(`for`, `min-stock`);
 filterStockRange1.id = 'value-min-stock'
 
@@ -170,7 +170,7 @@ filterStockRange2.textContent = '⟷';
 
 const filterStockRange3 = filterStockRange.appendChild(document.createElement(`label`)) as HTMLLabelElement;
 filterStockRange3.classList.add('filter-range-points-2');
-filterStockRange3.textContent = '24';
+filterStockRange3.textContent = '60';
 filterStockRange3.setAttribute(`for`, `max-stock`);
 filterStockRange3.id = 'value-max-stock'
 
@@ -181,18 +181,18 @@ const filterRangeInput3 = filterStockRangeInput.appendChild(document.createEleme
 filterRangeInput3.classList.add('filter-input-range-1');
 
 filterRangeInput3.type = 'range'
-filterRangeInput3.min = "0";
-filterRangeInput3.max = "24";
-filterRangeInput3.value = '4';
+filterRangeInput3.min = "10";
+filterRangeInput3.max = "60";
+filterRangeInput3.value = '20';
 filterRangeInput3.id = 'min-stock';
 
 const filterRangeInput4 = filterStockRangeInput.appendChild(document.createElement(`input`)) as HTMLInputElement;
 filterRangeInput4.classList.add('filter-input-range-2');
 
 filterRangeInput4.type = 'range'
-filterRangeInput4.min = "0";
-filterRangeInput4.max = "24";
-filterRangeInput4.value = '20';
+filterRangeInput4.min = "10";
+filterRangeInput4.max = "60";
+filterRangeInput4.value = '50';
 filterRangeInput4.id = 'max-stock';
 
 rangeMove('#value-min-stock', '#min-stock');
