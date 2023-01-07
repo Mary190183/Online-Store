@@ -1,6 +1,4 @@
-
-const listBuys = [
-  // [       
+const listBuys = [     
     {
       id: 1,
       name: 'Gyokuro And Ji',
@@ -66,9 +64,7 @@ const listBuys = [
       image2: `./assets/img/id6_2.jpg`,
       stock: 45,
       price: 0.2
-    },
-  // ],
-  // [       
+    },      
     {
       id: 7,
       name: 'Wishan Niulankeng Zhou Gui',
@@ -135,9 +131,7 @@ const listBuys = [
       image2: `./assets/img/id12_2.jpg`,
       stock: 40,
       price: 0.8
-    },
-  // ],
-  // [       
+    },      
     {
       id: 13,
       name: 'Shen Puer Bai Hao Yin Zhen',
@@ -203,9 +197,7 @@ const listBuys = [
       image2: `./assets/img/id18_2.jpg`,
       stock: 20,
       price: 0.5
-    },
-  // ],
-  // [       
+    },      
     {
       id: 19,
       name: 'Dian Hong Hua Long Zhu',
@@ -272,7 +264,6 @@ const listBuys = [
       stock: 10,
       price: 2.5
     },
-  // ]
-]
+];
 
 export default listBuys;
