@@ -1,7 +1,4 @@
 import "./header.css";
-import "./index.css";
-
-import "./footer.css";
 
 const body = document.querySelector('body') as HTMLBodyElement;
 
@@ -13,6 +10,9 @@ for ( let i = 0; i<3; i++) {
   navLink.classList.add('nav-link')
 }
 const navLi = document.querySelectorAll('.nav-link') as NodeListOf<HTMLLIElement>
+navLi[0].classList.add('nav__logo')
+navLi[1].classList.add('nav__form')
+navLi[2].classList.add('nav__cart')
 const navLink1 = navLi[0].appendChild(document. createElement(`a`)) as HTMLAnchorElement;
 navLink1.classList.add('logo-link');
 navLink1.href="https://online-store-tea-time.netlify.app/"
@@ -24,13 +24,14 @@ teaTimeLogoH1.textContent = 'Tea-time';
 
 
 const navLink2 = navLi[1].appendChild(document.createElement(`form`)) as HTMLFormElement;
+navLink2.classList.add('nav__input');
 navLink2.method="get"
 const inputNavLink2 = navLink2.appendChild(document.createElement(`input`)) as HTMLInputElement;
 
-inputNavLink2.name = 's'
+inputNavLink2.name = 'search'
 inputNavLink2.placeholder = 'Search tea...'
-inputNavLink2.type = "search"
-
+inputNavLink2.type = "text"
+inputNavLink2.id = 'search'
 
 const button = navLink2.appendChild(document.createElement(`button`)) as HTMLButtonElement;
 button.classList.add('button');
@@ -40,10 +41,11 @@ const buttonIcon = button.appendChild(document.createElement(`div`)) as HTMLDivE
 buttonIcon.classList.add('search-icon')
 
 const navLink3 = navLi[2].appendChild(document.createElement(`a`)) as HTMLAnchorElement;
-navLink3.href="item.html"
-navLink3.classList.add('logo-link');
+navLink3.href="cart.html"
+navLink3.classList.add('cart-link');
 
 const totalPrice = navLink3.appendChild(document.createElement(`span`)) as HTMLSpanElement;
+totalPrice.classList.add('total-price')
 totalPrice.textContent = 'Total-price: 00';
 
 const headerCart = navLink3.appendChild(document.createElement(`div`)) as HTMLDivElement;
