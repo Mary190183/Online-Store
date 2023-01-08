@@ -63,7 +63,7 @@ const listBuys = [
       image1: `./assets/img/id6_1.jpg`,
       image2: `./assets/img/id6_2.jpg`,
       stock: 45,
-      price: 0.2
+      price: 0.5
     },      
     {
       id: 7,
@@ -130,7 +130,7 @@ const listBuys = [
       image1: `./assets/img/id12_1.jpg`,
       image2: `./assets/img/id12_2.jpg`,
       stock: 40,
-      price: 0.8
+      price: 0.5
     },      
     {
       id: 13,
@@ -229,7 +229,7 @@ const listBuys = [
       image1: `./assets/img/id21_1.jpg`,
       image2: `./assets/img/id21_2.jpg`,
       stock: 10,
-      price: 3.6
+      price: 3.5
     },
     {
       id: 22,

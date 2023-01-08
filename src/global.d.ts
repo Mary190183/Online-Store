@@ -17,6 +17,7 @@ interface CartItemProps {
   province: string;
   price: number;
   id: number;
+  amount: number;
   stock: number;
 }
 
@@ -29,7 +30,7 @@ type RenderView<T> = (model: T) => string;
 interface CartItem {
   id: number;
   productId: number;
-  stock: number;
+  amount: number;
 }
 
 interface HeaderProps {

@@ -46,13 +46,16 @@ navLink3.classList.add('cart-link');
 
 const totalPrice = navLink3.appendChild(document.createElement(`span`)) as HTMLSpanElement;
 totalPrice.classList.add('total-price')
-totalPrice.textContent = 'Total-price: 00';
+
 
 const headerCart = navLink3.appendChild(document.createElement(`div`)) as HTMLDivElement;
 headerCart.classList.add('header-cart')
 
 const amountCart = navLink3.appendChild(document. createElement(`div`)) as HTMLDivElement;
 amountCart.classList.add('amount-buys');
-amountCart.textContent = '0';
+
+
+export {totalPrice};
+export {amountCart};
 
 

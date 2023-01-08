@@ -1,7 +1,9 @@
 import listBuys from "./list-buys";
 import main from "./filters";
-
+import {totalPrice} from "./header";
+import {amountCart} from "./header";
 import {filterCategoryCheckboxInput} from "./filters"
+
 const containerTeaCards = main.appendChild(document.createElement(`div`)) as HTMLDivElement;
 containerTeaCards.classList.add('container_tea-cards');
 const teaImage = containerTeaCards.appendChild(document.createElement(`div`)) as HTMLDivElement;
@@ -18,10 +20,6 @@ teaFiltersRulerPriceHigh.textContent = 'Price ↑';
 const teaFiltersRulerPriceLow = teaFiltersRuler.appendChild(document.createElement(`a`)) as HTMLAnchorElement;
 teaFiltersRulerPriceLow.classList.add('tea-filters-ruler-item');
 teaFiltersRulerPriceLow.textContent = 'Price ↓';
-
-//  const pricesHigh = listBuys.sort((el1.price, el2.price) => el2.price > el1.price);
- 
-//  const pricesLow = listBuys.sort((el) => el.price).reverse();
 
 const teaFiltersRulerRatingHigh = teaFiltersRuler.appendChild(document.createElement(`a`)) as HTMLAnchorElement;
 teaFiltersRulerRatingHigh.classList.add('tea-filters-ruler-item');
@@ -41,11 +39,10 @@ teaFiltersRulerTiles.classList.add('tea-filters-ruler-item');
 const teaFiltersRulerTilesSvg = teaFiltersRulerTiles.appendChild(document.createElement(`div`)) as HTMLDivElement;
 teaFiltersRulerTilesSvg.classList.add('tea-filters-ruler-item-tiles');
 
-
-
+const arrAmount: number[] = [];
+const arrPrice: number[] = [];
 
 for (let i = 0; i < listBuys.length ; i++) {
-
 
   const teaCardInfo = containerTeaCards.appendChild(document.createElement(`div`)) as HTMLDivElement;
   teaCardInfo.classList.add('tea-card-info');
@@ -207,34 +204,73 @@ let k = 0 as number;
   price.textContent = `${priceGramm} $`;
   let j = 0;
   let finish = 0;
+ 
+  totalPrice.textContent = `Total price: ${0} $`;
+  amountCart.textContent = `${0}`;
+
+  let amountItem = 0 as number;
+  let priceItem = 0 as number;
 
   addButton.addEventListener('click', () => {
     j =  j + 1;
+    
     amountNumber = amountNumber + 1;
     priceGramm = amountNumber * listBuys[i].price;
     amount.textContent= `${amountNumber} piece`;
     price.textContent = `${priceGramm} $`;
     teaCardAmount.textContent = `In stock: ${listBuys[i].stock - j} piece`;
+
+    amountItem = 1;
+    priceItem = listBuys[i].price;
+  if (amountNumber < listBuys[i].stock) {
+    arrAmount.push(amountItem);
+    arrPrice.push(priceItem)
+  }
+   
+
+    
     if (amountNumber > listBuys[i].stock) {
       j = 0;
       finish = 1;
+
       listBuys[i].stock = listBuys[i].stock + 0;
       amountNumber = listBuys[i].stock;
       priceGramm = amountNumber * listBuys[i].price;
       amount.textContent= `${amountNumber} piece`;
       price.textContent = `${priceGramm} $`;
-      teaCardAmount.textContent = `In stock: ${0} piece`;
+      teaCardAmount.textContent = `In stock: ${0} piece`;      
+
     }
-    
-  })
+    const resultAmount = arrAmount.reduce((partialSum, a) => partialSum + a, 0);
+    const resultPrice = arrPrice.reduce((partialSum, a) => partialSum + a, 0);
   
+    totalPrice.textContent = `Total price: ${resultPrice} $`;
+    amountCart.textContent = `${resultAmount}`;
+  })
+
+  
+  
+  
+
   deleteButton.addEventListener('click', () => {
-    j = j - 1
+    j = j - 1;
+
+    const index = arrPrice.indexOf(listBuys[i].price);
+    if (index >= 0) {
+      arrPrice.splice( index, 1 );
+      arrAmount.splice( index, 1 );
+    }
+     
     amountNumber = amountNumber - 1;
     priceGramm = amountNumber * listBuys[i].price;
     amount.textContent= `${amountNumber} piece`;
-    price.textContent = `${priceGramm} $`;
-    teaCardAmount.textContent = `In stock: ${listBuys[i].stock - j} piece`;
+    price.textContent = `${priceGramm}`;
+
+   
+    
+   
+    
+    // amountCart.textContent = `${result}`;
     if (amountNumber < 0) {
       j = 0;
       finish = 0;
@@ -243,12 +279,22 @@ let k = 0 as number;
       amount.textContent= `${amountNumber} piece`;
       price.textContent = `${priceGramm} $`;
       teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
+ 
     }
     if (finish >= 1) {
       teaCardAmount.textContent = `In stock: ${- j} piece`;
     }
+    const resultAmount = arrAmount.reduce((partialSum, a) => partialSum + a, 0);
+    const resultPrice = arrPrice.reduce((partialSum, a) => partialSum + a, 0);
+  
+    totalPrice.textContent = `Total price: ${resultPrice} $`;
+    amountCart.textContent = `${resultAmount}`;
   })
  
+ 
+
+
+
   teaCardName.addEventListener('click', () => {
     window.open('./item.html')
    })
@@ -272,16 +318,44 @@ let k = 0 as number;
     getParamsUrl('pricehigh', 'true');
     
     })
+
+
+
+const inputMax = document.querySelector('#max') as HTMLInputElement;
+inputMax.addEventListener('click', () => { 
+    if(Number(inputMax.value) < listBuys[i].price) {
+       teaCardInfo.classList.add('hidden-max')
+    }   else teaCardInfo.classList.remove('hidden-max')
+})
+
+const inputMin = document.querySelector('#min') as HTMLInputElement;
+inputMin.addEventListener('click', () => { 
+    if(Number(inputMin.value) > listBuys[i].price) {
+       teaCardInfo.classList.add('hidden-min')
+    }   else teaCardInfo.classList.remove('hidden-min')
+})
+
+const inputMaxStock = document.querySelector('#max-stock') as HTMLInputElement;
+inputMaxStock.addEventListener('click', () => { 
+    if(Number(inputMaxStock.value) < listBuys[i].stock) {
+       teaCardInfo.classList.add('hidden-max-stock')
+    }   else teaCardInfo.classList.remove('hidden-max-stock')
+})
+
+const inputMinStock = document.querySelector('#min-stock') as HTMLInputElement;
+inputMinStock.addEventListener('click', () => { 
+    if(Number(inputMinStock.value) > listBuys[i].stock) {
+       teaCardInfo.classList.add('hidden-min-stock')
+    }   else teaCardInfo.classList.remove('hidden-min-stock')
+})
+
     teaFiltersRulerPriceHigh.addEventListener('click', () => { 
 
       listBuys.sort((a, b) => a.price - b.price);
 
       teaFiltersRulerPriceHigh.classList.add('active');
       teaFiltersRulerPriceLow.classList.remove('active');
-// set
-localStorage.setItem("teaCard", "src");
-// get
-localStorage.getItem("teaCard");
+  
       
 
       teaCard.src =  listBuys[i].image1;
@@ -306,6 +380,13 @@ localStorage.getItem("teaCard");
       teaCardDescription.textContent = listBuys[i].description;
       teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
       teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
+
+      
+ 
+      
+      
+
+
 }
 
 function getParamsUrl(x: string, y: string) {
@@ -313,6 +394,3 @@ function getParamsUrl(x: string, y: string) {
   url.searchParams.set(x, y);
   window.history.pushState({ path: url.href }, '', url.href);
 }
-
-
-

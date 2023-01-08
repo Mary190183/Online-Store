@@ -11,22 +11,22 @@ class CartModel {
       {
         id: 1,
         productId: 1,
-        stock: 1,
+        amount: 1,
       },
       {
         id: 2,
         productId: 7,
-        stock: 2,
+        amount: 2,
       },
       {
         id: 3,
         productId: 18,
-        stock: 3,
+        amount: 3,
       },
       {
         id: 4,
         productId: 10,
-        stock: 3,
+        amount: 3,
       },
     ];
     this.page = 1;
@@ -43,7 +43,7 @@ class CartModel {
     this._items.forEach((item) => {
       const product = listBuys.find((prod) => prod.id === item.productId);
       if (product) {
-        sum += product.price * item.stock;
+        sum += product.price * item.amount;
       } else {
         sum += 0;
       }
@@ -54,7 +54,7 @@ class CartModel {
   public get totalAmount() {
     let sumAmount = 0;
     this._items.forEach((item) => {
-      sumAmount += item.stock;
+      sumAmount += item.amount;
     });
     return sumAmount;
   }
@@ -74,7 +74,7 @@ class CartModel {
     }
     this._items.forEach((item) => {
       if (item.id === id) {
-        item.stock = amount;
+        item.amount = amount;
       }
     });
   }
