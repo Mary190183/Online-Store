@@ -56,9 +56,9 @@ function render({ items, totalPrice, totalAmount, page, limitItems, promo }: Car
                     image: product.image1,
                     sort: product.sort,
                     province: product.province,
-                    price: product.price * item.stock,
+                    price: product.price * item.amount,
                     id: item.id,
-                    // stock: item.stock,
+                    amount: item.amount,
                     stock: product.stock,
                   });
                 } else {
@@ -74,7 +74,7 @@ function render({ items, totalPrice, totalAmount, page, limitItems, promo }: Car
             <input type="text" value="" onchange="cartController.updatePromo(event)" />
             <button type="button" class="promo-activate">Activate</button>
           </div>
-          <div class="promo-test">Promo for test: 'RS', 'EPM'</div>
+          <div class="promo-test">Promo for test: RS, EPM</div>
           ${promo
             .map((item) => {
               if (item === "RS" || item === "EPM") {
