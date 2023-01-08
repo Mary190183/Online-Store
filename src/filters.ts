@@ -1,3 +1,5 @@
+import listBuys from "./list-buys";
+
 const body = document.querySelector('body') as HTMLBodyElement;
 const main = body.appendChild(document.createElement(`main`)) as HTMLElement;
 
@@ -10,6 +12,7 @@ const buttonResert = buttonsContainer.appendChild(document.createElement(`button
 buttonsContainer.classList.add('buttons-container')
 buttonResert.classList.add('button-filtres');
 buttonResert.textContent = 'Resert filtres'
+buttonResert.type = 'submit';
 const buttonCopy= buttonsContainer.appendChild(document.createElement(`button`)) as HTMLButtonElement;
 buttonCopy.classList.add('button-filtres');
 buttonCopy.textContent = 'Copy link'
@@ -80,41 +83,20 @@ const filterPriceRangeInput1 = filterPriceRangeInput.appendChild(document.create
 filterPriceRangeInput1.classList.add('filter-input-range-1');
 filterPriceRangeInput1.id = 'min';
 filterPriceRangeInput1.type = 'range'
-filterPriceRangeInput1.min = "0.2";
+filterPriceRangeInput1.min = "0.5";
 filterPriceRangeInput1.max = "6";
-filterPriceRangeInput1.step = "0.1";
-filterPriceRangeInput1.value = '0.7';
+filterPriceRangeInput1.step = "0.5";
+filterPriceRangeInput1.value = '0';
 
 const filterPriceRangeInput2 = filterPriceRangeInput.appendChild(document.createElement(`input`)) as HTMLInputElement;
 filterPriceRangeInput2.classList.add('filter-input-range-2');
 filterPriceRangeInput2.id = 'max';
 filterPriceRangeInput2.type = 'range'
-filterPriceRangeInput2.min = "0.2";
+filterPriceRangeInput2.min = "0.5";
 filterPriceRangeInput2.max = "6";
-filterPriceRangeInput2.step = "0.1";
-filterPriceRangeInput2.value = '5.5';
+filterPriceRangeInput2.step = "0.5";
+filterPriceRangeInput2.value = '6';
 
-function rangeMove(labelId: string, inputId: string) {
-  const value = document.querySelector(labelId) as HTMLLabelElement
-  const input = document.querySelector(inputId) as HTMLInputElement
-  value.textContent = input.value;
-  if (!inputId.includes('stock')) {
-    value.textContent = input.value + ' $';
-  }
-  input.addEventListener("input", () => {
-    if (!inputId.includes('stock')) {
-      value.textContent = input.value + ' $';
-    }
-  value.textContent = input.value;
-  if (!inputId.includes('stock')) {
-    value.textContent = input.value + ' $';
-  }
-})
-}
-
-rangeMove('#value-min', '#min');
-
-rangeMove('#value-max', '#max');
 
 // const lowerSlider = document.querySelector('#min') as HTMLInputElement;
 //   const upperSlider = document.querySelector('#max') as HTMLInputElement;
@@ -181,22 +163,21 @@ const filterRangeInput3 = filterStockRangeInput.appendChild(document.createEleme
 filterRangeInput3.classList.add('filter-input-range-1');
 
 filterRangeInput3.type = 'range'
-filterRangeInput3.min = "10";
+filterRangeInput3.min = "5";
 filterRangeInput3.max = "60";
-filterRangeInput3.value = '20';
+filterRangeInput3.value = '0';
 filterRangeInput3.id = 'min-stock';
 
 const filterRangeInput4 = filterStockRangeInput.appendChild(document.createElement(`input`)) as HTMLInputElement;
 filterRangeInput4.classList.add('filter-input-range-2');
 
 filterRangeInput4.type = 'range'
-filterRangeInput4.min = "10";
+filterRangeInput4.min = "5";
 filterRangeInput4.max = "60";
-filterRangeInput4.value = '50';
+filterRangeInput4.value = '60';
 filterRangeInput4.id = 'max-stock';
 
-rangeMove('#value-min-stock', '#min-stock');
-rangeMove('#value-max-stock', '#max-stock');
+
 
 const filterCategoryCheckboxInput = document.querySelectorAll('.filter-input') as NodeListOf<HTMLInputElement>;
 const filterCategoryCheckboxLabel= document.querySelectorAll('.filter-label') as NodeListOf<HTMLLabelElement>;
@@ -234,6 +215,46 @@ filterCategoryCheckboxLabel[7].setAttribute('for', `hong-pao`);
 filterCategoryCheckboxLabel[7].textContent = 'Hong Pao';
 
 
+
+
+function rangeMove(labelId: string, inputId: string) {
+  const value = document.querySelector(labelId) as HTMLLabelElement
+  const input = document.querySelector(inputId) as HTMLInputElement
+  value.textContent = input.value;
+  if (!inputId.includes('stock')) {
+    value.textContent = input.value + ' $';
+  }
+  input.addEventListener("input", () => {
+    if (!inputId.includes('stock')) {
+      value.textContent = input.value + ' $';
+
+
+    // for (let i=0; i < listBuys.length; i++) {
+
+    //   const teaCardInfo = document.querySelectorAll('.tea-card-info') as NodeListOf<HTMLDivElement>;
+
+        // if(inputId === '#min') {
+        //   if(Number(input.value) > listBuys[i].price) {
+        //      teaCardInfo[i].classList.add('hidden')
+        //   } 
+
+
+    // }
+
+
+
+    }
+  value.textContent = input.value;
+  if (!inputId.includes('stock')) {
+    value.textContent = input.value + ' $';
+  }
+})
+}
+
+rangeMove('#value-min', '#min');
+rangeMove('#value-max', '#max');
+rangeMove('#value-min-stock', '#min-stock');
+rangeMove('#value-max-stock', '#max-stock'); 
 
 
 
