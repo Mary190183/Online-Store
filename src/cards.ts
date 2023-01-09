@@ -6,6 +6,7 @@ import {filterCategoryCheckboxInput} from "./filters"
 import {inputNavLink2} from "./header";
 import {navLink2} from "./header";
 import { AutomaticPrefetchPlugin } from "webpack";
+import {buttonResert} from './filters'
 const containerTeaCards = main.appendChild(document.createElement(`div`)) as HTMLDivElement;
 containerTeaCards.classList.add('container_tea-cards');
 const teaImage = containerTeaCards.appendChild(document.createElement(`div`)) as HTMLDivElement;
@@ -162,8 +163,6 @@ for (let i = 0; i < listBuys.length ; i++) {
     })
     
 
-      
-      
   teaFiltersRulerList.addEventListener('click', () => {  
       teaCardInfo.classList.add('card-list');
       teaFiltersRulerList.classList.add('active');
@@ -473,26 +472,74 @@ for (let i = 0; i < listBuys.length ; i++) {
 
 
 
+        
           
           // window.addEventListener('load', inputMinStock);
       })   
-      
+     
+
+
       const setLocalStorage = () => {
-        localStorage.setItem('inputMinStock', inputMinStock.value);
+        
         localStorage.setItem('inputMaxStock', inputMaxStock.value);
         localStorage.setItem('inputMax', inputMax.value);
         
       };
       
       const getLocalStorage = () => {
-        if (localStorage.getItem('inputMinStock')) {inputMinStock.value = `localStorage.getItem('inputMinStock')`;}
+        if (localStorage.getItem('inputMinStock')) {inputMinStock.value = JSON.stringify(localStorage.getItem('inputMinStock'));}
         if (localStorage.getItem('inputMaxStock')) {inputMaxStock.value = `localStorage.getItem('inputMaxStock')`;}
         if (localStorage.getItem('inputMax')) {inputMax.value = `localStorage.getItem('inputMax')`;}
       };
+
+
+
+
+
       window.addEventListener('beforeunload', setLocalStorage);
       window.addEventListener('load', getLocalStorage);
-    }
 
+      buttonResert.addEventListener('click', () => { 
+        m = 0; k = 0;
+        buttonResert.classList.add('resert-active')
+        teaCardInfo.classList.remove('hidden-2');
+        teaCardInfo.classList.remove('hidden-1');
+        filterCategoryCheckboxInput[0].checked = false;
+        filterCategoryCheckboxInput[1].checked = false;
+        filterCategoryCheckboxInput[2].checked = false;
+        filterCategoryCheckboxInput[3].checked = false;
+        filterCategoryCheckboxInput[4].checked = false;
+        filterCategoryCheckboxInput[5].checked = false;
+        filterCategoryCheckboxInput[6].checked = false;
+        filterCategoryCheckboxInput[7].checked = false;
+        inputMinStock.value = inputMinStock.min;
+        inputMaxStock.value = inputMinStock.max;
+        inputMin.value = inputMin.min;
+        inputMax.value = inputMin.max;
+        teaFiltersRulerPriceHigh.classList.remove('active');
+        teaFiltersRulerPriceLow.classList.remove('active');
+        teaFiltersRulerList.classList.remove('active');
+        teaFiltersRulerTiles.classList.remove('active');
+        teaCardInfo.classList.remove('card-list');
+
+        listBuys.sort((a, b) => a.price - b.price);   
+  
+        teaCard.src =  listBuys[i].image1;
+        teaCard.alt = listBuys[i].name;
+        teaCardName.textContent = listBuys[i].name;
+        teaCardSort.textContent = listBuys[i].sort;
+        teaCardProvince.textContent = listBuys[i].province;
+        teaCardDescription.textContent = listBuys[i].description;
+        teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
+        teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
+  
+        window.history.pushState("object or string", "Title", "/"+window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split("?")[0]);
+
+      })  
+      
+    
+    }    
+   
 
 function getParamsUrl(x: string, y: string) {
   const url = new URL(window.location.href);

@@ -364,7 +364,7 @@ input[type=range]:nth-child(2)::-webkit-slider-thumb {
   border-radius: 5px;
   background-color: rgba(194, 207, 192, 0.561);
 }
-.active {
+.active, .button-filtres:nth-child(1):active, .button-filtres:nth-child(1):checked {
   color:#093b0a;
   text-align: center;
   border-radius: 5px;

@@ -267,10 +267,22 @@ rangeMove('#value-max-stock', '#max-stock');
 
 
 
+buttonCopy.addEventListener('click', function(e) {
+  buttonCopy.classList.toggle('active')
+  const url = document.location.href
 
+  navigator.clipboard.writeText(url).then(function() {
+      console.log('Copied!');
+  }, function() {
+      console.log('Copy error')
+  });
+  if(buttonCopy.classList.contains('active')) {
+  buttonCopy.textContent = 'Copied'
+  } else buttonCopy.textContent = 'Copy link'
+ })
 
 
 export default main; 
 export {filterCategoryCheckboxInput}
 
-
+export {buttonResert}
