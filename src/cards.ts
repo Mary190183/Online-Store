@@ -474,13 +474,15 @@ for (let i = 0; i < listBuys.length ; i++) {
 
         
           
-          // window.addEventListener('load', inputMinStock);
+          
       })   
-     
+
+
+
 
 
       const setLocalStorage = () => {
-        
+        localStorage.setItem('inputMinStock', inputMinStock.value);
         localStorage.setItem('inputMaxStock', inputMaxStock.value);
         localStorage.setItem('inputMax', inputMax.value);
         
@@ -548,3 +550,100 @@ function getParamsUrl(x: string, y: string) {
 }
 
 
+const sort1 = document.querySelector('#green-tea') as HTMLInputElement
+
+      sort1.onclick = function() {
+      if(filterCategoryCheckboxInput[0].checked) {
+        localStorage.setItem('green', "true");
+      } else {
+        localStorage.setItem('green', "false");
+      }
+    }
+    if (localStorage.getItem('green') == "true") {
+      filterCategoryCheckboxInput[0].setAttribute('checked','checked');
+    }
+const sort2 = document.querySelector('#oolong') as HTMLInputElement
+
+sort2.onclick = function() {
+if(filterCategoryCheckboxInput[1].checked) {
+  localStorage.setItem('oolong', "true");
+} else {
+  localStorage.setItem('oolong', "false");
+}
+}
+if (localStorage.getItem('oolong') == "true") {
+filterCategoryCheckboxInput[1].setAttribute('checked','checked');
+}
+const sort3 = document.querySelector('#puer') as HTMLInputElement
+
+sort3.onclick = function() {
+if(filterCategoryCheckboxInput[2].checked) {
+localStorage.setItem('puer', "true");
+} else {
+localStorage.setItem('puer', "false");
+}
+}
+if (localStorage.getItem('puer') == "true") {
+filterCategoryCheckboxInput[2].setAttribute('checked','checked');
+}
+const sort4 = document.querySelector('#red-tea') as HTMLInputElement
+
+sort4.onclick = function() {
+if(filterCategoryCheckboxInput[3].checked) {
+localStorage.setItem('red', "true");
+} else {
+localStorage.setItem('red', "false");
+}
+}
+if (localStorage.getItem('red') == "true") {
+filterCategoryCheckboxInput[3].setAttribute('checked','checked');
+}
+
+const sort5 = document.querySelector('#taiwan') as HTMLInputElement
+
+sort5.onclick = function() {
+if(filterCategoryCheckboxInput[4].checked) {
+  localStorage.setItem('1', "true");
+} else {
+  localStorage.setItem('1', "false");
+}
+}
+if (localStorage.getItem('1') == "true") {
+filterCategoryCheckboxInput[4].setAttribute('checked','checked');
+}
+const sort6 = document.querySelector('#huang-shan') as HTMLInputElement
+
+sort6.onclick = function() {
+if(filterCategoryCheckboxInput[5].checked) {
+  localStorage.setItem('2', "true");
+} else {
+  localStorage.setItem('2', "false");
+}
+}
+if (localStorage.getItem('2') == "true") {
+filterCategoryCheckboxInput[5].setAttribute('checked','checked');
+}
+const sort7 = document.querySelector('#myung-ku') as HTMLInputElement
+
+sort7.onclick = function() {
+if(filterCategoryCheckboxInput[6].checked) {
+localStorage.setItem('3', "true");
+} else {
+localStorage.setItem('3', "false");
+}
+}
+if (localStorage.getItem('3') == "true") {
+filterCategoryCheckboxInput[6].setAttribute('checked','checked');
+}
+const sort8 = document.querySelector('#hong-pao') as HTMLInputElement
+
+sort8.onclick = function() {
+if(filterCategoryCheckboxInput[7].checked) {
+localStorage.setItem('4', "true");
+} else {
+localStorage.setItem('4', "false");
+}
+}
+if (localStorage.getItem('4') == "true") {
+filterCategoryCheckboxInput[7].setAttribute('checked','checked');
+}

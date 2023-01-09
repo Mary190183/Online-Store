@@ -195,11 +195,11 @@ filterCategoryCheckboxInput[0].id = 'green-tea'
 filterCategoryCheckboxLabel[0].setAttribute('for', `green-tea`);
 filterCategoryCheckboxLabel[0].textContent = 'Green tea';
 
-filterCategoryCheckboxInput[1].id = 'Oolong'
+filterCategoryCheckboxInput[1].id = 'oolong'
 filterCategoryCheckboxLabel[1].setAttribute('for', `Oolong`);
 filterCategoryCheckboxLabel[1].textContent = 'Oolong';
 
-filterCategoryCheckboxInput[2].id = 'Puer'
+filterCategoryCheckboxInput[2].id = 'puer'
 filterCategoryCheckboxLabel[2].setAttribute('for', `Puer`);
 filterCategoryCheckboxLabel[2].textContent = 'Puer';
 
