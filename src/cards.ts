@@ -263,12 +263,43 @@ for (let i = 0; i < listBuys.length ; i++) {
 
   let amountItem = 0 as number;
   let priceItem = 0 as number;
+  let products: CartItem[] = [];
+  let a = false;
+  let product: CartItem;
 
   addButton.addEventListener('click', () => {
     j =  j + 1;
     
     amountNumber = amountNumber + 1;
     priceGramm = amountNumber * listBuys[i].price;
+
+    product = {
+      id: Date.now(),
+       productId: listBuys[i].id,
+       amount: amountNumber,
+     };
+ 
+     if (localStorage.getItem("products") !== null) {
+      products = JSON.parse(localStorage.getItem("products") as string);
+     } else {
+      products = [];
+     }
+    
+    if(products.length === 0) {
+      products.push(product);
+    } else {
+      products.forEach(item => {
+      if(item.productId == listBuys[i].id) {
+        item.amount = amountNumber;
+         a = true;
+      } 
+    }) 
+    if(!a) {
+      products.push(product);
+    }
+   }
+    localStorage.setItem("products", JSON.stringify(products));
+
     amount.textContent= `${amountNumber} piece`;
     price.textContent = `${priceGramm} $`;
     teaCardAmount.textContent = `In stock: ${listBuys[i].stock - j} piece`;
