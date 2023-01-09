@@ -7,31 +7,16 @@ class CartModel {
   public promo: string[];
 
   public constructor() {
-    this._items = [
-      {
-        id: 1,
-        productId: 1,
-        amount: 1,
-      },
-      {
-        id: 2,
-        productId: 7,
-        amount: 2,
-      },
-      {
-        id: 3,
-        productId: 18,
-        amount: 3,
-      },
-      {
-        id: 4,
-        productId: 10,
-        amount: 3,
-      },
-    ];
+    this._items = [];
     this.page = 1;
     this.limitItems = 2;
     this.promo = [];
+
+    if (localStorage.getItem("products") !== null) {
+      this._items = JSON.parse(localStorage.getItem("products") as string);
+    } else {
+      this._items = [];
+    }
   }
 
   public get items() {
@@ -61,7 +46,7 @@ class CartModel {
 
   public deleteItemById(id: number) {
     this._items = this._items.filter((item) => item.id !== id);
-
+    localStorage.setItem("products", JSON.stringify(this._items))
     if (this.items.length === 0 && this.page > 1) {
       this.page -= 1;
     }
@@ -77,6 +62,7 @@ class CartModel {
         item.amount = amount;
       }
     });
+    localStorage.setItem("products", JSON.stringify(this._items))
   }
 
   public updateLimitItemsOnPage(limitItems: number) {

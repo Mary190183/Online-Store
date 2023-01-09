@@ -98,39 +98,27 @@ filterPriceRangeInput2.step = "0.5";
 filterPriceRangeInput2.value = '6';
 
 
-// const lowerSlider = document.querySelector('#min') as HTMLInputElement;
-//   const upperSlider = document.querySelector('#max') as HTMLInputElement;
-//  let lowerVal = parseInt(lowerSlider.value);
-//   let upperVal = parseInt(upperSlider.value);
 
-// upperSlider.oninput = function() {
-//   lowerVal = parseInt(lowerSlider.value);
-//   upperVal = parseInt(upperSlider.value);
+let lowerVal = parseInt(filterPriceRangeInput1.value) as number;
+let upperVal = parseInt(filterPriceRangeInput2.value) as number;
+
+filterPriceRangeInput2.oninput = function() {
+  lowerVal = parseInt(filterPriceRangeInput1.value);
+  upperVal = parseInt(filterPriceRangeInput2.value);
   
-//   if (upperVal < lowerVal + 5) {
-//      lowerSlider.value = 'upperVal - 5';
-     
-//      if (lowerVal === parseInt(lowerSlider.min)) {
-//         upperSlider.value = '5';
-//      }
-//   }
-// };
+  if (upperVal < lowerVal + 0.5) {
+    filterPriceRangeInput2.value = String(parseInt(filterPriceRangeInput1.value) + 0.5);
+  };
+}
 
-
-// lowerSlider.oninput = function() {
-//   lowerVal = parseInt(lowerSlider.value);
-//   upperVal = parseInt(upperSlider.value);
-  
-//   if (lowerVal > upperVal - 5) {
-//      upperSlider.value = 'lowerVal + 5';
-     
-//      if (upperVal == parseInt(upperSlider.max)) {
-//         lowerSlider.value = 'parseInt(upperSlider.max) - 5';
-//      }
-
-//   }
-// }
-
+filterPriceRangeInput1.oninput = function() {
+  lowerVal = parseInt(filterPriceRangeInput1.value);
+  upperVal = parseInt(filterPriceRangeInput2.value);
+ 
+  if (lowerVal > upperVal - 0.5) {
+    filterPriceRangeInput1.value = String(parseInt(filterPriceRangeInput2.value));
+  }
+}
 
 const filterStock = containerFiltres.appendChild(document.createElement(`div`)) as HTMLDivElement;
 filterStock.classList.add('filter-stock');
@@ -166,6 +154,7 @@ filterRangeInput3.type = 'range'
 filterRangeInput3.min = "5";
 filterRangeInput3.max = "60";
 filterRangeInput3.value = '0';
+filterRangeInput3.value = '5';
 filterRangeInput3.id = 'min-stock';
 
 const filterRangeInput4 = filterStockRangeInput.appendChild(document.createElement(`input`)) as HTMLInputElement;
@@ -175,9 +164,29 @@ filterRangeInput4.type = 'range'
 filterRangeInput4.min = "5";
 filterRangeInput4.max = "60";
 filterRangeInput4.value = '60';
+filterRangeInput4.step = '5';
 filterRangeInput4.id = 'max-stock';
 
+let lowerValStock = parseInt(filterRangeInput3.value) as number;
+let upperValStock = parseInt(filterRangeInput4.value) as number;
 
+filterRangeInput4.oninput = function() {
+  lowerValStock = parseInt(filterRangeInput3.value);
+  upperValStock = parseInt(filterRangeInput4.value);
+  
+  if (upperValStock < lowerValStock + 5) {
+    filterRangeInput4.value = String(parseInt(filterRangeInput3.value) + 5);
+  };
+}
+
+filterRangeInput3.oninput = function() {
+  lowerValStock = parseInt(filterRangeInput3.value);
+  upperValStock = parseInt(filterRangeInput4.value);
+ 
+  if (lowerValStock > upperValStock - 5) {
+    filterRangeInput3.value = String(parseInt(filterRangeInput4.value));
+  }
+}
 
 const filterCategoryCheckboxInput = document.querySelectorAll('.filter-input') as NodeListOf<HTMLInputElement>;
 const filterCategoryCheckboxLabel= document.querySelectorAll('.filter-label') as NodeListOf<HTMLLabelElement>;
@@ -186,11 +195,11 @@ filterCategoryCheckboxInput[0].id = 'green-tea'
 filterCategoryCheckboxLabel[0].setAttribute('for', `green-tea`);
 filterCategoryCheckboxLabel[0].textContent = 'Green tea';
 
-filterCategoryCheckboxInput[1].id = 'Oolong'
+filterCategoryCheckboxInput[1].id = 'oolong'
 filterCategoryCheckboxLabel[1].setAttribute('for', `Oolong`);
 filterCategoryCheckboxLabel[1].textContent = 'Oolong';
 
-filterCategoryCheckboxInput[2].id = 'Puer'
+filterCategoryCheckboxInput[2].id = 'puer'
 filterCategoryCheckboxLabel[2].setAttribute('for', `Puer`);
 filterCategoryCheckboxLabel[2].textContent = 'Puer';
 
@@ -258,10 +267,22 @@ rangeMove('#value-max-stock', '#max-stock');
 
 
 
+buttonCopy.addEventListener('click', function(e) {
+  buttonCopy.classList.toggle('active')
+  const url = document.location.href
 
+  navigator.clipboard.writeText(url).then(function() {
+      console.log('Copied!');
+  }, function() {
+      console.log('Copy error')
+  });
+  if(buttonCopy.classList.contains('active')) {
+  buttonCopy.textContent = 'Copied'
+  } else buttonCopy.textContent = 'Copy link'
+ })
 
 
 export default main; 
 export {filterCategoryCheckboxInput}
 
-
+export {buttonResert}

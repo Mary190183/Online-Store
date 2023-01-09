@@ -3,7 +3,10 @@ import main from "./filters";
 import {totalPrice} from "./header";
 import {amountCart} from "./header";
 import {filterCategoryCheckboxInput} from "./filters"
-
+import {inputNavLink2} from "./header";
+import {navLink2} from "./header";
+import { AutomaticPrefetchPlugin } from "webpack";
+import {buttonResert} from './filters'
 const containerTeaCards = main.appendChild(document.createElement(`div`)) as HTMLDivElement;
 containerTeaCards.classList.add('container_tea-cards');
 const teaImage = containerTeaCards.appendChild(document.createElement(`div`)) as HTMLDivElement;
@@ -45,22 +48,45 @@ const arrPrice: number[] = [];
 for (let i = 0; i < listBuys.length ; i++) {
 
   const teaCardInfo = containerTeaCards.appendChild(document.createElement(`div`)) as HTMLDivElement;
+  teaCardInfo.id = String(listBuys[i].id)
   teaCardInfo.classList.add('tea-card-info');
-let k = 0 as number;
 
+  let k = 0 as number;
+  let k1 = 0 as number;
   filterCategoryCheckboxInput[0].addEventListener('click', () => {
     k = k + 1; 
-    if (k === 1 && teaCardSort.textContent !== "Green tea") {
+    k1 = k1 ++;
+ 
+    if (
+      k === 1 && 
+    teaCardSort.textContent !== "Green tea") {
       teaCardInfo.classList.toggle('hidden-1');
+
     }
-    if (k > 1 && teaCardSort.textContent === "Green tea") { 
-      teaCardInfo.classList.toggle('hidden-1'); 
-    } 
+    if (
+      k > 1 && 
+    teaCardSort.textContent === "Green tea") {
+      teaCardInfo.classList.toggle('hidden-1');
+      
+      
+    }
+    // if (k > 1 && teaCardSort.textContent === "Green tea") { 
+    //   teaCardInfo.classList.toggle('hidden-1'); 
+     
+    // } 
+    filterCategoryCheckboxInput[0].classList.add('active-1');
+    if (k1 === 1) {
+      filterCategoryCheckboxInput[0].classList.remove('active-1');
+      teaCardInfo.classList.remove('hidden-1');
+      k1 = 0
+    }
     getParamsUrl('sort', 'green');
   })
     filterCategoryCheckboxInput[1].addEventListener('click', () => {
       k = k + 1;
-    if (k === 1 && teaCardSort.textContent !== "Oolong") {
+    if (
+      k === 1 && 
+      teaCardSort.textContent !== "Oolong") {
       teaCardInfo.classList.toggle('hidden-1');
     }
     if (k > 1 && teaCardSort.textContent === "Oolong") {
@@ -95,7 +121,7 @@ let k = 0 as number;
   filterCategoryCheckboxInput[4].addEventListener('click', () => {
     
      m = m + 1;
-      if (m === 1 && teaCardProvince.textContent !== "Taiwan") {
+      if (k === 1 && teaCardProvince.textContent !== "Taiwan") {
       teaCardInfo.classList.toggle('hidden-2');
     }
     if (m > 1 && teaCardProvince.textContent == "Taiwan") { 
@@ -135,6 +161,7 @@ let k = 0 as number;
       } 
       getParamsUrl('province', 'hongpao');
     })
+    
 
   teaFiltersRulerList.addEventListener('click', () => {  
       teaCardInfo.classList.add('card-list');
@@ -148,6 +175,31 @@ let k = 0 as number;
     teaFiltersRulerTiles.classList.add('active');
 })
 
+// navLink2.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   // var keyword = document.getElementById("search_input");
+//   const words = inputNavLink2.value as string;
+//   const word = words;
+//   const queue = [document.body] as HTMLElement[];
+//   let curr;
+//   while (curr = queue.pop()) {
+//       if (!curr.textContent.toUpperCase().match(word.toUpperCase())) continue;
+//       for (let i = 0; i < curr.childNodes.length; ++i) {
+//           switch (curr.childNodes[i].nodeType) {
+//               case Node.TEXT_NODE: // 3
+//                   if (curr.childNodes[i].textContent.toUpperCase().match(word.toUpperCase())) {
+//                       console.log("Found!");
+//                       console.log(curr);
+//                       curr.scrollIntoView();
+//                   }
+//                   break;
+//               case Node.ELEMENT_NODE: // 1
+//                   queue.push(curr.childNodes[i]);
+//                   break;
+//           }
+//       }
+//   }
+// })
   const teaCard = teaCardInfo.appendChild(document.createElement(`img`)) as HTMLImageElement;
   teaCard.classList.add('tea-card');
 
@@ -210,12 +262,43 @@ let k = 0 as number;
 
   let amountItem = 0 as number;
   let priceItem = 0 as number;
+  let products: CartItem[] = [];
+  let a = false;
+  let product: CartItem;
 
   addButton.addEventListener('click', () => {
     j =  j + 1;
     
     amountNumber = amountNumber + 1;
     priceGramm = amountNumber * listBuys[i].price;
+
+    product = {
+      id: Date.now(),
+       productId: listBuys[i].id,
+       amount: amountNumber,
+     };
+ 
+     if (localStorage.getItem("products") !== null) {
+      products = JSON.parse(localStorage.getItem("products") as string);
+     } else {
+      products = [];
+     }
+    
+    if(products.length === 0) {
+      products.push(product);
+    } else {
+      products.forEach(item => {
+      if(item.productId == listBuys[i].id) {
+        item.amount = amountNumber;
+         a = true;
+      } 
+    }) 
+    if(!a) {
+      products.push(product);
+    }
+   }
+    localStorage.setItem("products", JSON.stringify(products));
+
     amount.textContent= `${amountNumber} piece`;
     price.textContent = `${priceGramm} $`;
     teaCardAmount.textContent = `In stock: ${listBuys[i].stock - j} piece`;
@@ -291,7 +374,7 @@ let k = 0 as number;
     amountCart.textContent = `${resultAmount}`;
   })
  
- 
+
 
 
 
@@ -318,38 +401,8 @@ let k = 0 as number;
     getParamsUrl('pricehigh', 'true');
     
     })
-
-
-
-const inputMax = document.querySelector('#max') as HTMLInputElement;
-inputMax.addEventListener('click', () => { 
-    if(Number(inputMax.value) < listBuys[i].price) {
-       teaCardInfo.classList.add('hidden-max')
-    }   else teaCardInfo.classList.remove('hidden-max')
-})
-
-const inputMin = document.querySelector('#min') as HTMLInputElement;
-inputMin.addEventListener('click', () => { 
-    if(Number(inputMin.value) > listBuys[i].price) {
-       teaCardInfo.classList.add('hidden-min')
-    }   else teaCardInfo.classList.remove('hidden-min')
-})
-
-const inputMaxStock = document.querySelector('#max-stock') as HTMLInputElement;
-inputMaxStock.addEventListener('click', () => { 
-    if(Number(inputMaxStock.value) < listBuys[i].stock) {
-       teaCardInfo.classList.add('hidden-max-stock')
-    }   else teaCardInfo.classList.remove('hidden-max-stock')
-})
-
-const inputMinStock = document.querySelector('#min-stock') as HTMLInputElement;
-inputMinStock.addEventListener('click', () => { 
-    if(Number(inputMinStock.value) > listBuys[i].stock) {
-       teaCardInfo.classList.add('hidden-min-stock')
-    }   else teaCardInfo.classList.remove('hidden-min-stock')
-})
-
     teaFiltersRulerPriceHigh.addEventListener('click', () => { 
+
 
       listBuys.sort((a, b) => a.price - b.price);
 
@@ -384,13 +437,213 @@ inputMinStock.addEventListener('click', () => {
       
  
       
+      const inputMax = document.querySelector('#max') as HTMLInputElement;
+      inputMax.addEventListener('click', () => { 
+          if(Number(inputMax.value) < listBuys[i].price) {
+             teaCardInfo.classList.add('hidden-max')
+          }   else teaCardInfo.classList.remove('hidden-max')
+          getParamsUrl('pricemax', inputMax.value);
+      })
       
+      const inputMin = document.querySelector('#min') as HTMLInputElement;
+      inputMin.addEventListener('click', () => { 
+          if(Number(inputMin.value) > listBuys[i].price) {
+             teaCardInfo.classList.add('hidden-min')
+          }   else teaCardInfo.classList.remove('hidden-min')
+          getParamsUrl('pricemin', inputMin.value);
+      })
+      
+      const inputMaxStock = document.querySelector('#max-stock') as HTMLInputElement;
+      inputMaxStock.addEventListener('click', () => { 
+          if(Number(inputMaxStock.value) < listBuys[i].stock) {
+             teaCardInfo.classList.add('hidden-max-stock')
+          }   else teaCardInfo.classList.remove('hidden-max-stock')
+          getParamsUrl('stockmax', inputMaxStock.value);
+
+   
+      })
+      
+      const inputMinStock = document.querySelector('#min-stock') as HTMLInputElement;
+      inputMinStock.addEventListener('click', () => { 
+          if(Number(inputMinStock.value) > listBuys[i].stock) {
+             teaCardInfo.classList.add('hidden-min-stock')
+          }   else teaCardInfo.classList.remove('hidden-min-stock')
+          getParamsUrl('stockmin', inputMinStock.value);
 
 
-}
+
+        
+          
+          
+      })   
+
+
+
+
+
+      const setLocalStorage = () => {
+        localStorage.setItem('inputMinStock', inputMinStock.value);
+        localStorage.setItem('inputMaxStock', inputMaxStock.value);
+        localStorage.setItem('inputMax', inputMax.value);
+        
+      };
+      
+      const getLocalStorage = () => {
+        if (localStorage.getItem('inputMinStock')) {inputMinStock.value = JSON.stringify(localStorage.getItem('inputMinStock'));}
+        if (localStorage.getItem('inputMaxStock')) {inputMaxStock.value = `localStorage.getItem('inputMaxStock')`;}
+        if (localStorage.getItem('inputMax')) {inputMax.value = `localStorage.getItem('inputMax')`;}
+      };
+
+
+
+
+
+      window.addEventListener('beforeunload', setLocalStorage);
+      window.addEventListener('load', getLocalStorage);
+
+      buttonResert.addEventListener('click', () => { 
+        m = 0; k = 0;
+        buttonResert.classList.add('resert-active')
+        teaCardInfo.classList.remove('hidden-2');
+        teaCardInfo.classList.remove('hidden-1');
+        filterCategoryCheckboxInput[0].checked = false;
+        filterCategoryCheckboxInput[1].checked = false;
+        filterCategoryCheckboxInput[2].checked = false;
+        filterCategoryCheckboxInput[3].checked = false;
+        filterCategoryCheckboxInput[4].checked = false;
+        filterCategoryCheckboxInput[5].checked = false;
+        filterCategoryCheckboxInput[6].checked = false;
+        filterCategoryCheckboxInput[7].checked = false;
+        inputMinStock.value = inputMinStock.min;
+        inputMaxStock.value = inputMinStock.max;
+        inputMin.value = inputMin.min;
+        inputMax.value = inputMin.max;
+        teaFiltersRulerPriceHigh.classList.remove('active');
+        teaFiltersRulerPriceLow.classList.remove('active');
+        teaFiltersRulerList.classList.remove('active');
+        teaFiltersRulerTiles.classList.remove('active');
+        teaCardInfo.classList.remove('card-list');
+
+        listBuys.sort((a, b) => a.price - b.price);   
+  
+        teaCard.src =  listBuys[i].image1;
+        teaCard.alt = listBuys[i].name;
+        teaCardName.textContent = listBuys[i].name;
+        teaCardSort.textContent = listBuys[i].sort;
+        teaCardProvince.textContent = listBuys[i].province;
+        teaCardDescription.textContent = listBuys[i].description;
+        teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
+        teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
+  
+        window.history.pushState("object or string", "Title", "/"+window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split("?")[0]);
+
+      })  
+      
+    
+    }    
+   
 
 function getParamsUrl(x: string, y: string) {
   const url = new URL(window.location.href);
   url.searchParams.set(x, y);
   window.history.pushState({ path: url.href }, '', url.href);
+}
+
+
+const sort1 = document.querySelector('#green-tea') as HTMLInputElement
+
+      sort1.onclick = function() {
+      if(filterCategoryCheckboxInput[0].checked) {
+        localStorage.setItem('green', "true");
+      } else {
+        localStorage.setItem('green', "false");
+      }
+    }
+    if (localStorage.getItem('green') == "true") {
+      filterCategoryCheckboxInput[0].setAttribute('checked','checked');
+    }
+const sort2 = document.querySelector('#oolong') as HTMLInputElement
+
+sort2.onclick = function() {
+if(filterCategoryCheckboxInput[1].checked) {
+  localStorage.setItem('oolong', "true");
+} else {
+  localStorage.setItem('oolong', "false");
+}
+}
+if (localStorage.getItem('oolong') == "true") {
+filterCategoryCheckboxInput[1].setAttribute('checked','checked');
+}
+const sort3 = document.querySelector('#puer') as HTMLInputElement
+
+sort3.onclick = function() {
+if(filterCategoryCheckboxInput[2].checked) {
+localStorage.setItem('puer', "true");
+} else {
+localStorage.setItem('puer', "false");
+}
+}
+if (localStorage.getItem('puer') == "true") {
+filterCategoryCheckboxInput[2].setAttribute('checked','checked');
+}
+const sort4 = document.querySelector('#red-tea') as HTMLInputElement
+
+sort4.onclick = function() {
+if(filterCategoryCheckboxInput[3].checked) {
+localStorage.setItem('red', "true");
+} else {
+localStorage.setItem('red', "false");
+}
+}
+if (localStorage.getItem('red') == "true") {
+filterCategoryCheckboxInput[3].setAttribute('checked','checked');
+}
+
+const sort5 = document.querySelector('#taiwan') as HTMLInputElement
+
+sort5.onclick = function() {
+if(filterCategoryCheckboxInput[4].checked) {
+  localStorage.setItem('1', "true");
+} else {
+  localStorage.setItem('1', "false");
+}
+}
+if (localStorage.getItem('1') == "true") {
+filterCategoryCheckboxInput[4].setAttribute('checked','checked');
+}
+const sort6 = document.querySelector('#huang-shan') as HTMLInputElement
+
+sort6.onclick = function() {
+if(filterCategoryCheckboxInput[5].checked) {
+  localStorage.setItem('2', "true");
+} else {
+  localStorage.setItem('2', "false");
+}
+}
+if (localStorage.getItem('2') == "true") {
+filterCategoryCheckboxInput[5].setAttribute('checked','checked');
+}
+const sort7 = document.querySelector('#myung-ku') as HTMLInputElement
+
+sort7.onclick = function() {
+if(filterCategoryCheckboxInput[6].checked) {
+localStorage.setItem('3', "true");
+} else {
+localStorage.setItem('3', "false");
+}
+}
+if (localStorage.getItem('3') == "true") {
+filterCategoryCheckboxInput[6].setAttribute('checked','checked');
+}
+const sort8 = document.querySelector('#hong-pao') as HTMLInputElement
+
+sort8.onclick = function() {
+if(filterCategoryCheckboxInput[7].checked) {
+localStorage.setItem('4', "true");
+} else {
+localStorage.setItem('4', "false");
+}
+}
+if (localStorage.getItem('4') == "true") {
+filterCategoryCheckboxInput[7].setAttribute('checked','checked');
 }

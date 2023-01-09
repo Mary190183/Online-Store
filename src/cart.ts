@@ -1,5 +1,4 @@
 import "./cart.css";
-
 import listBuys from "./list-buys";
 
 import renderHeader from "./components/header";
@@ -20,7 +19,7 @@ window.onload = function () {
 
 function render({ items, totalPrice, totalAmount, page, limitItems, promo }: CartModel) {
   return `
-  ${renderHeader({ totalAmount, totalPrice })}
+  ${renderHeader({ totalAmount, totalPrice })} 
     <section class="section-content">
       <div class="section-wrapper">
         <div class="title-checkout">
@@ -108,3 +107,4 @@ function render({ items, totalPrice, totalAmount, page, limitItems, promo }: Car
     ${renderFooter()}
   `;
 }
+
