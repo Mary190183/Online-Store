@@ -54,7 +54,8 @@ headerCart.classList.add('header-cart')
 const amountCart = navLink3.appendChild(document. createElement(`div`)) as HTMLDivElement;
 amountCart.classList.add('amount-buys');
 
-
+export {navLink2}
+export {inputNavLink2}
 export {totalPrice};
 export {amountCart};
 

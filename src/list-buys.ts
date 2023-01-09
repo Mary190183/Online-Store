@@ -264,6 +264,6 @@ const listBuys = [
       stock: 10,
       price: 2.5
     },
-];
+] as Product[];
 
 export default listBuys;

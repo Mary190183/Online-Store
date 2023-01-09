@@ -3,7 +3,9 @@ import main from "./filters";
 import {totalPrice} from "./header";
 import {amountCart} from "./header";
 import {filterCategoryCheckboxInput} from "./filters"
-
+import {inputNavLink2} from "./header";
+import {navLink2} from "./header";
+import { AutomaticPrefetchPlugin } from "webpack";
 const containerTeaCards = main.appendChild(document.createElement(`div`)) as HTMLDivElement;
 containerTeaCards.classList.add('container_tea-cards');
 const teaImage = containerTeaCards.appendChild(document.createElement(`div`)) as HTMLDivElement;
@@ -45,22 +47,45 @@ const arrPrice: number[] = [];
 for (let i = 0; i < listBuys.length ; i++) {
 
   const teaCardInfo = containerTeaCards.appendChild(document.createElement(`div`)) as HTMLDivElement;
+  teaCardInfo.id = String(listBuys[i].id)
   teaCardInfo.classList.add('tea-card-info');
-let k = 0 as number;
 
+  let k = 0 as number;
+  let k1 = 0 as number;
   filterCategoryCheckboxInput[0].addEventListener('click', () => {
     k = k + 1; 
-    if (k === 1 && teaCardSort.textContent !== "Green tea") {
+    k1 = k1 ++;
+ 
+    if (
+      k === 1 && 
+    teaCardSort.textContent !== "Green tea") {
       teaCardInfo.classList.toggle('hidden-1');
+
     }
-    if (k > 1 && teaCardSort.textContent === "Green tea") { 
-      teaCardInfo.classList.toggle('hidden-1'); 
-    } 
+    if (
+      k > 1 && 
+    teaCardSort.textContent === "Green tea") {
+      teaCardInfo.classList.toggle('hidden-1');
+      
+      
+    }
+    // if (k > 1 && teaCardSort.textContent === "Green tea") { 
+    //   teaCardInfo.classList.toggle('hidden-1'); 
+     
+    // } 
+    filterCategoryCheckboxInput[0].classList.add('active-1');
+    if (k1 === 1) {
+      filterCategoryCheckboxInput[0].classList.remove('active-1');
+      teaCardInfo.classList.remove('hidden-1');
+      k1 = 0
+    }
     getParamsUrl('sort', 'green');
   })
     filterCategoryCheckboxInput[1].addEventListener('click', () => {
       k = k + 1;
-    if (k === 1 && teaCardSort.textContent !== "Oolong") {
+    if (
+      k === 1 && 
+      teaCardSort.textContent !== "Oolong") {
       teaCardInfo.classList.toggle('hidden-1');
     }
     if (k > 1 && teaCardSort.textContent === "Oolong") {
@@ -95,7 +120,7 @@ let k = 0 as number;
   filterCategoryCheckboxInput[4].addEventListener('click', () => {
     
      m = m + 1;
-      if (m === 1 && teaCardProvince.textContent !== "Taiwan") {
+      if (k === 1 && teaCardProvince.textContent !== "Taiwan") {
       teaCardInfo.classList.toggle('hidden-2');
     }
     if (m > 1 && teaCardProvince.textContent == "Taiwan") { 
@@ -135,7 +160,10 @@ let k = 0 as number;
       } 
       getParamsUrl('province', 'hongpao');
     })
+    
 
+      
+      
   teaFiltersRulerList.addEventListener('click', () => {  
       teaCardInfo.classList.add('card-list');
       teaFiltersRulerList.classList.add('active');
@@ -148,6 +176,31 @@ let k = 0 as number;
     teaFiltersRulerTiles.classList.add('active');
 })
 
+// navLink2.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   // var keyword = document.getElementById("search_input");
+//   const words = inputNavLink2.value as string;
+//   const word = words;
+//   const queue = [document.body] as HTMLElement[];
+//   let curr;
+//   while (curr = queue.pop()) {
+//       if (!curr.textContent.toUpperCase().match(word.toUpperCase())) continue;
+//       for (let i = 0; i < curr.childNodes.length; ++i) {
+//           switch (curr.childNodes[i].nodeType) {
+//               case Node.TEXT_NODE: // 3
+//                   if (curr.childNodes[i].textContent.toUpperCase().match(word.toUpperCase())) {
+//                       console.log("Found!");
+//                       console.log(curr);
+//                       curr.scrollIntoView();
+//                   }
+//                   break;
+//               case Node.ELEMENT_NODE: // 1
+//                   queue.push(curr.childNodes[i]);
+//                   break;
+//           }
+//       }
+//   }
+// })
   const teaCard = teaCardInfo.appendChild(document.createElement(`img`)) as HTMLImageElement;
   teaCard.classList.add('tea-card');
 
@@ -291,7 +344,7 @@ let k = 0 as number;
     amountCart.textContent = `${resultAmount}`;
   })
  
- 
+
 
 
 
@@ -318,38 +371,8 @@ let k = 0 as number;
     getParamsUrl('pricehigh', 'true');
     
     })
-
-
-
-const inputMax = document.querySelector('#max') as HTMLInputElement;
-inputMax.addEventListener('click', () => { 
-    if(Number(inputMax.value) < listBuys[i].price) {
-       teaCardInfo.classList.add('hidden-max')
-    }   else teaCardInfo.classList.remove('hidden-max')
-})
-
-const inputMin = document.querySelector('#min') as HTMLInputElement;
-inputMin.addEventListener('click', () => { 
-    if(Number(inputMin.value) > listBuys[i].price) {
-       teaCardInfo.classList.add('hidden-min')
-    }   else teaCardInfo.classList.remove('hidden-min')
-})
-
-const inputMaxStock = document.querySelector('#max-stock') as HTMLInputElement;
-inputMaxStock.addEventListener('click', () => { 
-    if(Number(inputMaxStock.value) < listBuys[i].stock) {
-       teaCardInfo.classList.add('hidden-max-stock')
-    }   else teaCardInfo.classList.remove('hidden-max-stock')
-})
-
-const inputMinStock = document.querySelector('#min-stock') as HTMLInputElement;
-inputMinStock.addEventListener('click', () => { 
-    if(Number(inputMinStock.value) > listBuys[i].stock) {
-       teaCardInfo.classList.add('hidden-min-stock')
-    }   else teaCardInfo.classList.remove('hidden-min-stock')
-})
-
     teaFiltersRulerPriceHigh.addEventListener('click', () => { 
+
 
       listBuys.sort((a, b) => a.price - b.price);
 
@@ -384,13 +407,66 @@ inputMinStock.addEventListener('click', () => {
       
  
       
+      const inputMax = document.querySelector('#max') as HTMLInputElement;
+      inputMax.addEventListener('click', () => { 
+          if(Number(inputMax.value) < listBuys[i].price) {
+             teaCardInfo.classList.add('hidden-max')
+          }   else teaCardInfo.classList.remove('hidden-max')
+          getParamsUrl('pricemax', inputMax.value);
+      })
       
+      const inputMin = document.querySelector('#min') as HTMLInputElement;
+      inputMin.addEventListener('click', () => { 
+          if(Number(inputMin.value) > listBuys[i].price) {
+             teaCardInfo.classList.add('hidden-min')
+          }   else teaCardInfo.classList.remove('hidden-min')
+          getParamsUrl('pricemin', inputMin.value);
+      })
+      
+      const inputMaxStock = document.querySelector('#max-stock') as HTMLInputElement;
+      inputMaxStock.addEventListener('click', () => { 
+          if(Number(inputMaxStock.value) < listBuys[i].stock) {
+             teaCardInfo.classList.add('hidden-max-stock')
+          }   else teaCardInfo.classList.remove('hidden-max-stock')
+          getParamsUrl('stockmax', inputMaxStock.value);
+
+   
+      })
+      
+      const inputMinStock = document.querySelector('#min-stock') as HTMLInputElement;
+      inputMinStock.addEventListener('click', () => { 
+          if(Number(inputMinStock.value) > listBuys[i].stock) {
+             teaCardInfo.classList.add('hidden-min-stock')
+          }   else teaCardInfo.classList.remove('hidden-min-stock')
+          getParamsUrl('stockmin', inputMinStock.value);
 
 
-}
+
+          
+          // window.addEventListener('load', inputMinStock);
+      })   
+      
+      const setLocalStorage = () => {
+        localStorage.setItem('inputMinStock', inputMinStock.value);
+        localStorage.setItem('inputMaxStock', inputMaxStock.value);
+        localStorage.setItem('inputMax', inputMax.value);
+        
+      };
+      
+      const getLocalStorage = () => {
+        if (localStorage.getItem('inputMinStock')) {inputMinStock.value = `localStorage.getItem('inputMinStock')`;}
+        if (localStorage.getItem('inputMaxStock')) {inputMaxStock.value = `localStorage.getItem('inputMaxStock')`;}
+        if (localStorage.getItem('inputMax')) {inputMax.value = `localStorage.getItem('inputMax')`;}
+      };
+      window.addEventListener('beforeunload', setLocalStorage);
+      window.addEventListener('load', getLocalStorage);
+    }
+
 
 function getParamsUrl(x: string, y: string) {
   const url = new URL(window.location.href);
   url.searchParams.set(x, y);
   window.history.pushState({ path: url.href }, '', url.href);
 }
+
+

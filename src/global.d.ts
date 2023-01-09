@@ -37,3 +37,4 @@ interface HeaderProps {
   totalPrice: number;
   totalAmount: number;
 }
+

@@ -54,6 +54,7 @@ main {
   display: flex;
   flex-direction: column;
   padding: 10px;
+  margin-bottom: 300px;
 }
 .buttons-container {
   display: flex;
@@ -112,7 +113,9 @@ background-color: rgba(72, 104, 18, 0.72);
   border-radius: 5px;
   cursor: pointer;
  }
-
+ .filter-input.active {
+  background-color: #F9F0DA;
+ }
  .filter-input[type=checkbox] {
   position: relative;
   cursor: pointer;
@@ -432,6 +435,30 @@ input[type=range]:nth-child(2)::-webkit-slider-thumb {
   display: none;
 }
 .hidden-2 {
+  display: none;
+}
+.hidden-3 {
+  display: none;
+}
+.hidden-4 {
+  display: none;
+}
+.hidden-5 {
+  display: none;
+}
+.hidden-6 {
+  display: none;
+}
+.hidden-7 {
+  display: none;
+}
+.hidden-8 {
+  display: none;
+}
+.hidden-9 {
+  display: none;
+}
+.hidden-10 {
   display: none;
 }
 .tea-card {
