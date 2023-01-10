@@ -196,11 +196,11 @@ filterCategoryCheckboxLabel[0].setAttribute('for', `green-tea`);
 filterCategoryCheckboxLabel[0].textContent = 'Green tea';
 
 filterCategoryCheckboxInput[1].id = 'oolong'
-filterCategoryCheckboxLabel[1].setAttribute('for', `Oolong`);
+filterCategoryCheckboxLabel[1].setAttribute('for', `oolong`);
 filterCategoryCheckboxLabel[1].textContent = 'Oolong';
 
 filterCategoryCheckboxInput[2].id = 'puer'
-filterCategoryCheckboxLabel[2].setAttribute('for', `Puer`);
+filterCategoryCheckboxLabel[2].setAttribute('for', `puer`);
 filterCategoryCheckboxLabel[2].textContent = 'Puer';
 
 filterCategoryCheckboxInput[3].id = 'red-tea'
@@ -286,3 +286,33 @@ export default main;
 export {filterCategoryCheckboxInput}
 
 export {buttonResert}
+
+
+// const setLocalStorage = () => {
+//   localStorage.setItem('inputMinStock', filterRangeInput3.value);
+//   localStorage.setItem('inputMaxStock', filterRangeInput4.value);
+//   localStorage.setItem('inputMax', filterPriceRangeInput2.value);
+//   localStorage.setItem('inputMin', filterPriceRangeInput1.value);
+// };
+
+// const getLocalStorage = () => {
+//   if (localStorage.getItem('inputMinStock')) {filterRangeInput3.value = JSON.stringify(localStorage.getItem('inputMinStock'));}
+//   if (localStorage.getItem('inputMaxStock')) {filterRangeInput4.value = JSON.stringify(localStorage.getItem('inputMaxStock'));}
+//   if (localStorage.getItem('inputMax')) {filterPriceRangeInput2.value = `localStorage.getItem('inputMax')`;}
+//   if (localStorage.getItem('inputMin')) {filterPriceRangeInput1.value = `localStorage.getItem('inputMin')`;}
+// };
+
+// window.addEventListener('beforeunload', setLocalStorage);
+// window.addEventListener('load', getLocalStorage);
+
+
+// filterRangeInput3.onclick = function() {
+//   if(filterRangeInput3.checked) {
+//   localStorage.setItem('4', "filterRangeInput3.value");
+//   } else {
+//   localStorage.setItem('4', "false");
+//   }
+//   }
+//   if (localStorage.getItem('4') == "filterRangeInput3.value") {
+//     filterRangeInput3.setAttribute('checked','checked');
+//   }
