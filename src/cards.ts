@@ -52,11 +52,9 @@ for (let i = 0; i < listBuys.length ; i++) {
   teaCardInfo.classList.add('tea-card-info');
 
   let k = 0 as number;
-  let k1 = 0 as number;
+  let m = 0 as number;
   filterCategoryCheckboxInput[0].addEventListener('click', () => {
     k = k + 1; 
-    k1 = k1 ++;
- 
     if (
       k === 1 && 
     teaCardSort.textContent !== "Green tea") {
@@ -69,18 +67,29 @@ for (let i = 0; i < listBuys.length ; i++) {
       teaCardInfo.classList.toggle('hidden-1');
       
       
-    }
-    // if (k > 1 && teaCardSort.textContent === "Green tea") { 
-    //   teaCardInfo.classList.toggle('hidden-1'); 
-     
-    // } 
-    filterCategoryCheckboxInput[0].classList.add('active-1');
-    if (k1 === 1) {
-      filterCategoryCheckboxInput[0].classList.remove('active-1');
-      teaCardInfo.classList.remove('hidden-1');
-      k1 = 0
-    }
+    } 
+  
     getParamsUrl('sort', 'green');
+    if (
+      filterCategoryCheckboxInput[0].checked === false &&
+    filterCategoryCheckboxInput[1].checked === false &&
+    filterCategoryCheckboxInput[2].checked === false &&
+    filterCategoryCheckboxInput[3].checked === false) {
+      k = 0;
+      teaCardInfo.classList.remove('hidden-1');
+      getParamsUrl('sort', 'none');
+    }
+     if (filterCategoryCheckboxInput[4].checked === false &&
+      filterCategoryCheckboxInput[5].checked === false &&
+      filterCategoryCheckboxInput[6].checked === false &&
+      filterCategoryCheckboxInput[7].checked === false) {
+        m = 0;
+       
+        
+        teaCardInfo.classList.remove('hidden-2');
+        
+        getParamsUrl('province', 'none');
+      }
   })
     filterCategoryCheckboxInput[1].addEventListener('click', () => {
       k = k + 1;
@@ -93,6 +102,27 @@ for (let i = 0; i < listBuys.length ; i++) {
       teaCardInfo.classList.toggle('hidden-1');
     }
     getParamsUrl('sort', 'oolong');
+    if (
+      filterCategoryCheckboxInput[0].checked === false &&
+    filterCategoryCheckboxInput[1].checked === false &&
+    filterCategoryCheckboxInput[2].checked === false &&
+    filterCategoryCheckboxInput[3].checked === false) {
+      k = 0;
+      teaCardInfo.classList.remove('hidden-1');
+      getParamsUrl('sort', 'none');
+    }
+     if (filterCategoryCheckboxInput[4].checked === false &&
+      filterCategoryCheckboxInput[5].checked === false &&
+      filterCategoryCheckboxInput[6].checked === false &&
+      filterCategoryCheckboxInput[7].checked === false) {
+        m = 0;
+       
+        
+        teaCardInfo.classList.remove('hidden-2');
+        
+        getParamsUrl('province', 'none');
+      }
+  
   })
     filterCategoryCheckboxInput[2].addEventListener('click', () => {
       k = k + 1
@@ -103,6 +133,16 @@ for (let i = 0; i < listBuys.length ; i++) {
       teaCardInfo.classList.toggle('hidden-1');
     }
     getParamsUrl('sort', 'puer');
+    if (
+      filterCategoryCheckboxInput[0].checked === false &&
+    filterCategoryCheckboxInput[1].checked === false &&
+    filterCategoryCheckboxInput[2].checked === false &&
+    filterCategoryCheckboxInput[3].checked === false) {
+      k = 0;
+      teaCardInfo.classList.remove('hidden-1');
+      getParamsUrl('sort', 'none');
+    }
+
   })
   filterCategoryCheckboxInput[3].addEventListener('click', () => {
     k = k + 1;
@@ -115,13 +155,34 @@ for (let i = 0; i < listBuys.length ; i++) {
       teaCardInfo.classList.toggle('hidden-1'); 
     } 
     getParamsUrl('sort', 'red');
+    if (
+      filterCategoryCheckboxInput[0].checked === false &&
+    filterCategoryCheckboxInput[1].checked === false &&
+    filterCategoryCheckboxInput[2].checked === false &&
+    filterCategoryCheckboxInput[3].checked === false) {
+      k = 0;
+      teaCardInfo.classList.remove('hidden-1');
+      getParamsUrl('sort', 'none');
+    }
+     if (filterCategoryCheckboxInput[4].checked === false &&
+      filterCategoryCheckboxInput[5].checked === false &&
+      filterCategoryCheckboxInput[6].checked === false &&
+      filterCategoryCheckboxInput[7].checked === false) {
+        m = 0;
+       
+        
+        teaCardInfo.classList.remove('hidden-2');
+        
+        getParamsUrl('province', 'none');
+      }
   })
 
-  let m = 0 as number;
+
+  
   filterCategoryCheckboxInput[4].addEventListener('click', () => {
     
      m = m + 1;
-      if (k === 1 && teaCardProvince.textContent !== "Taiwan") {
+      if (m === 1 && teaCardProvince.textContent !== "Taiwan") {
       teaCardInfo.classList.toggle('hidden-2');
     }
     if (m > 1 && teaCardProvince.textContent == "Taiwan") { 
@@ -129,6 +190,26 @@ for (let i = 0; i < listBuys.length ; i++) {
      
     } 
     getParamsUrl('province', 'taiwan');
+    if (
+      filterCategoryCheckboxInput[0].checked === false &&
+    filterCategoryCheckboxInput[1].checked === false &&
+    filterCategoryCheckboxInput[2].checked === false &&
+    filterCategoryCheckboxInput[3].checked === false) {
+      k = 0;
+      teaCardInfo.classList.remove('hidden-1');
+      getParamsUrl('sort', 'none');
+    }
+     if (filterCategoryCheckboxInput[4].checked === false &&
+      filterCategoryCheckboxInput[5].checked === false &&
+      filterCategoryCheckboxInput[6].checked === false &&
+      filterCategoryCheckboxInput[7].checked === false) {
+        m = 0;
+       
+        
+        teaCardInfo.classList.remove('hidden-2');
+        
+        getParamsUrl('province', 'none');
+      }
   })
       filterCategoryCheckboxInput[5].addEventListener('click', () => {
         m = m + 1;
@@ -139,6 +220,26 @@ for (let i = 0; i < listBuys.length ; i++) {
         teaCardInfo.classList.toggle('hidden-2');
       }
       getParamsUrl('province', 'huangshan');
+      if (
+        filterCategoryCheckboxInput[0].checked === false &&
+      filterCategoryCheckboxInput[1].checked === false &&
+      filterCategoryCheckboxInput[2].checked === false &&
+      filterCategoryCheckboxInput[3].checked === false) {
+        k = 0;
+        teaCardInfo.classList.remove('hidden-1');
+        getParamsUrl('sort', 'none');
+      }
+       if (filterCategoryCheckboxInput[4].checked === false &&
+        filterCategoryCheckboxInput[5].checked === false &&
+        filterCategoryCheckboxInput[6].checked === false &&
+        filterCategoryCheckboxInput[7].checked === false) {
+          m = 0;
+         
+          
+          teaCardInfo.classList.remove('hidden-2');
+          
+          getParamsUrl('province', 'none');
+        }
     })
       filterCategoryCheckboxInput[6].addEventListener('click', () => {
         m = m + 1
@@ -149,6 +250,26 @@ for (let i = 0; i < listBuys.length ; i++) {
         teaCardInfo.classList.toggle('hidden-2');
       }
       getParamsUrl('province', 'myungku');
+      if (
+        filterCategoryCheckboxInput[0].checked === false &&
+      filterCategoryCheckboxInput[1].checked === false &&
+      filterCategoryCheckboxInput[2].checked === false &&
+      filterCategoryCheckboxInput[3].checked === false) {
+        k = 0;
+        teaCardInfo.classList.remove('hidden-1');
+        getParamsUrl('sort', 'none');
+      }
+       if (filterCategoryCheckboxInput[4].checked === false &&
+        filterCategoryCheckboxInput[5].checked === false &&
+        filterCategoryCheckboxInput[6].checked === false &&
+        filterCategoryCheckboxInput[7].checked === false) {
+          m = 0;
+         
+          
+          teaCardInfo.classList.remove('hidden-2');
+          
+          getParamsUrl('province', 'none');
+        }
     })
     filterCategoryCheckboxInput[7].addEventListener('click', () => {
       m = m + 1;
@@ -160,8 +281,29 @@ for (let i = 0; i < listBuys.length ; i++) {
         teaCardInfo.classList.toggle('hidden-2'); 
       } 
       getParamsUrl('province', 'hongpao');
+      if (
+        filterCategoryCheckboxInput[0].checked === false &&
+      filterCategoryCheckboxInput[1].checked === false &&
+      filterCategoryCheckboxInput[2].checked === false &&
+      filterCategoryCheckboxInput[3].checked === false) {
+        k = 0;
+        teaCardInfo.classList.remove('hidden-1');
+        getParamsUrl('sort', 'none');
+      }
+       if (filterCategoryCheckboxInput[4].checked === false &&
+        filterCategoryCheckboxInput[5].checked === false &&
+        filterCategoryCheckboxInput[6].checked === false &&
+        filterCategoryCheckboxInput[7].checked === false) {
+          m = 0;
+         
+          
+          teaCardInfo.classList.remove('hidden-2');
+          
+          getParamsUrl('province', 'none');
+        }
     })
-    
+
+ 
 
   teaFiltersRulerList.addEventListener('click', () => {  
       teaCardInfo.classList.add('card-list');
@@ -481,25 +623,13 @@ for (let i = 0; i < listBuys.length ; i++) {
 
 
 
-      const setLocalStorage = () => {
-        localStorage.setItem('inputMinStock', inputMinStock.value);
-        localStorage.setItem('inputMaxStock', inputMaxStock.value);
-        localStorage.setItem('inputMax', inputMax.value);
-        
-      };
+
+
+
+
+
+
       
-      const getLocalStorage = () => {
-        if (localStorage.getItem('inputMinStock')) {inputMinStock.value = JSON.stringify(localStorage.getItem('inputMinStock'));}
-        if (localStorage.getItem('inputMaxStock')) {inputMaxStock.value = `localStorage.getItem('inputMaxStock')`;}
-        if (localStorage.getItem('inputMax')) {inputMax.value = `localStorage.getItem('inputMax')`;}
-      };
-
-
-
-
-
-      window.addEventListener('beforeunload', setLocalStorage);
-      window.addEventListener('load', getLocalStorage);
 
       buttonResert.addEventListener('click', () => { 
         m = 0; k = 0;
@@ -523,7 +653,7 @@ for (let i = 0; i < listBuys.length ; i++) {
         teaFiltersRulerList.classList.remove('active');
         teaFiltersRulerTiles.classList.remove('active');
         teaCardInfo.classList.remove('card-list');
-
+      
         listBuys.sort((a, b) => a.price - b.price);   
   
         teaCard.src =  listBuys[i].image1;
@@ -647,3 +777,8 @@ localStorage.setItem('4', "false");
 if (localStorage.getItem('4') == "true") {
 filterCategoryCheckboxInput[7].setAttribute('checked','checked');
 }
+
+
+
+
+
