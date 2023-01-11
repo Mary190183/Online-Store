@@ -13,7 +13,43 @@ body {
   font-size: 1rem;
   line-height: 140%;
 }
+.modal-content {
+  
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 140%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+  color: #093b0a;
+  padding: 15px;
+  border-radius: 10px;
+  z-index: 100;
+  max-width: 90%;
+}
 
+.modal {
+  
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+width: 100vw;
+height: 100vh;
+background-color: rgba(0,0,0,.4);
+z-index: 99;
+cursor: pointer;
+}
+.hidden {
+  display: none;
+}
 .section-content {
   width: 100%;
   display: flex;

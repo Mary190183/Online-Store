@@ -99,5 +99,12 @@ class CartModel {
     this.promo = this.promo.filter((item) => item !== "RS");
   }
 }
+// const modal = document.querySelector('.modal-content') as HTMLElement
+// const check = document.querySelector('.checkout-button') as HTMLButtonElement
+// check.addEventListener('click', function(e) {
+//   modal.classList.toggle('hidden')
+// })
+
 
 export default CartModel;
+
