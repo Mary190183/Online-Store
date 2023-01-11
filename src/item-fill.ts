@@ -14,12 +14,12 @@ const sectionImgs = sectionWrapper.appendChild(document.createElement(`div`)) as
 sectionImgs.classList.add('section-imgs');
 const teaImage1 = sectionImgs.appendChild(document.createElement(`img`)) as HTMLImageElement;
 teaImage1.classList.add('img-main');
-teaImage1.src = listBuys[id].image1
+teaImage1.src = listBuys[id-1].image1
 teaImage1.alt = 'tea'
 teaImage1.classList.add('active')
 const teaImage2 = sectionImgs.appendChild(document.createElement(`img`)) as HTMLImageElement;
 teaImage2.classList.add('img-extra');
-teaImage2.src = listBuys[id].image2
+teaImage2.src = listBuys[id-1].image2
 teaImage2.alt = 'tea-2'
 const sectionItem = sectionWrapper.appendChild(document.createElement(`div`)) as HTMLDivElement;
 sectionItem.classList.add('section-item');
@@ -29,10 +29,10 @@ const sectionList = sectionItem.appendChild(document.createElement(`ul`)) as HTM
 teaImage2.addEventListener('click', function(e) {
   
   if (teaImage1.classList.contains('active')) {
-  teaImage1.src = listBuys[id].image2
-  teaImage2.src = listBuys[id].image1 } else {
-    teaImage1.src = listBuys[id].image1
-    teaImage2.src = listBuys[id].image2
+  teaImage1.src = listBuys[id-1].image2
+  teaImage2.src = listBuys[id-1].image1 } else {
+    teaImage1.src = listBuys[id-1].image1
+    teaImage2.src = listBuys[id-1].image2
   }
   teaImage1.classList.toggle('active');
 
@@ -46,10 +46,10 @@ const sectionLiProvince = sectionList.appendChild(document.createElement(`li`)) 
 const sectionLiSort = sectionList.appendChild(document.createElement(`li`)) as HTMLLIElement;
 const sectionLiDescription = sectionList.appendChild(document.createElement(`li`)) as HTMLLIElement;
 
-  sectionLiName.textContent = listBuys[id].name;
-  sectionLiProvince.textContent = listBuys[id].province
-  sectionLiSort.textContent = listBuys[id].sort
-  sectionLiDescription.textContent = listBuys[id].description
+  sectionLiName.textContent = listBuys[id-1].name;
+  sectionLiProvince.textContent = listBuys[id-1].province
+  sectionLiSort.textContent = listBuys[id-1].sort
+  sectionLiDescription.textContent = listBuys[id-1].description
 
 
   const sectionControl = sectionItem.appendChild(document.createElement(`div`)) as HTMLDivElement;
@@ -71,7 +71,7 @@ label.setAttribute('for', 'youridhere')
 
 const price = sectionControl.appendChild(document.createElement(`div`)) as HTMLDivElement;
 price.classList.add('price');
-price.textContent = `${listBuys[id].price} $`
+price.textContent = `${listBuys[id-1].price} $`
 const cartButton = sectionControl.appendChild(document.createElement(`button`)) as HTMLButtonElement;
 cartButton.classList.add('cart-button');
 cartButton.type = 'button';
@@ -80,7 +80,15 @@ cartButton.textContent = 'Add to cart'
 
 import {totalPrice} from './header';
 import {amountCart} from './header'
-totalPrice.textContent = `0`;
-amountCart.textContent = `0`
-// totalPrice.textContent = `localStorage.setItem(tprice", JSON.stringify(totalPrice.textContent)))`;
-// amountCart.textContent = `String(localStorage.setItem("cartamount", JSON.stringify(amountCart.textContent)))`;
+
+
+totalPrice.textContent = `Total price: ${localStorage.getItem("cartprice")} $`;
+amountCart.textContent = `${localStorage.getItem("cartamount")}`
+
+function getParamsUrl(x: string, y: string) {
+  const url = new URL(window.location.href);
+  url.searchParams.set(x, y);
+  window.history.pushState({ path: url.href }, '', url.href);
+
+}
+getParamsUrl('page', String(listBuys[id-1].id));
