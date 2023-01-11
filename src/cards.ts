@@ -52,7 +52,7 @@ let newListBuys = listBuys.map(a => Object.assign({}, a)) as Product[];
 
 for (let i = 0; i < newListBuys.length ; i++) {
  
-  getParamsUrl('sort', 'green');
+  
   const teaCardInfo = containerTeaCards.appendChild(document.createElement(`div`)) as HTMLDivElement;
   // teaCardInfo.id = String(listBuys[i].id)
   teaCardInfo.classList.add('tea-card-info');
@@ -62,18 +62,25 @@ for (let i = 0; i < newListBuys.length ; i++) {
 
   filterCategoryCheckboxInput[0].addEventListener('click', () => {
     
-    
+    if(teaCardInfo.classList.contains('hidden-1')) {
+      localStorage.setItem('hidden1', "true");
+      } else {
+      localStorage.setItem('hidden1', "false");
+      }
+      localStorage.getItem('hidden1')
+      
     k = k + 1; 
- 
+    localStorage.setItem('k', String(k));
+    localStorage.getItem(String(k))
     if (
-      k === 1 && 
-      teaCardSort.textContent !== "Green tea") {
+      (k === 1 || localStorage.getItem(String(k)) === '1') && 
+      teaCardSort.textContent !== "Green tea" && filterCategoryCheckboxInput[0].checked === true) {
     teaCardInfo.classList.toggle('hidden-1');
 
     }
     if (
-      k > 1 && 
-      teaCardSort.textContent === "Green tea") {
+      (k > 1 || localStorage.getItem(String(k)) === '1') && 
+      teaCardSort.textContent === "Green tea" && filterCategoryCheckboxInput[0].checked === true) {
       teaCardInfo.classList.toggle('hidden-1');
       
       
@@ -99,7 +106,8 @@ for (let i = 0; i < newListBuys.length ; i++) {
           m = 0;
           getParamsUrl('province', 'none');
           teaCardInfo.classList.remove('hidden-2'); 
-      }   
+      }
+       
   })
      filterCategoryCheckboxInput[1].addEventListener('click', () => {
       k = k + 1;
@@ -415,7 +423,7 @@ inputNavLink2.oninput = function() {
 
     product = {
       id: Date.now(),
-       productId: listBuys[i].id,
+       productId: newListBuys[i].id,
        amount: amountNumber,
      };
  
@@ -429,7 +437,7 @@ inputNavLink2.oninput = function() {
       products.push(product);
     } else {
       products.forEach(item => {
-      if(item.productId == listBuys[i].id) {
+      if(item.productId == newListBuys[i].id) {
         item.amount = amountNumber;
          a = true;
       } 
@@ -439,7 +447,7 @@ inputNavLink2.oninput = function() {
     }
    }
     localStorage.setItem("products", JSON.stringify(products));
-
+   
     amount.textContent= `${amountNumber} piece`;
     price.textContent = `${priceGramm} $`;
     teaCardAmount.textContent = `In stock: ${newListBuys[i].stock - j} piece`;
@@ -470,6 +478,8 @@ inputNavLink2.oninput = function() {
   
     totalPrice.textContent = `Total price: ${resultPrice} $`;
     amountCart.textContent = `${resultAmount}`;
+    localStorage.setItem("cartprice", JSON.stringify(totalPrice.textContent));
+    localStorage.setItem("cartamount", JSON.stringify(amountCart.textContent));
   })
 
   
@@ -490,8 +500,7 @@ inputNavLink2.oninput = function() {
     amount.textContent= `${amountNumber} piece`;
     price.textContent = `${priceGramm}`;
 
-   
-    
+
    
     
     // amountCart.textContent = `${result}`;
@@ -513,29 +522,32 @@ inputNavLink2.oninput = function() {
   
     totalPrice.textContent = `Total price: ${resultPrice} $`;
     amountCart.textContent = `${resultAmount}`;
+    localStorage.setItem("cartprice", JSON.stringify(totalPrice.textContent));
+    localStorage.setItem("cartamount", JSON.stringify(amountCart.textContent));
   })
   let Rating = 0 as number;
   teaCardName.addEventListener('click', () => {
   newListBuys = newListBuys.map(obj => ({ ...obj, rating: 0 as number }))
-  
+const id = newListBuys[i].id as number
+
+const idString = String(id) as string
+ 
+
+ document.addEventListener('click',e => console.log(e.target))
+
   Rating++
-    const setLocalStorage = () => {
+
+      localStorage.setItem("id", idString)
       localStorage.setItem('rating', JSON.stringify(Rating));
-    };
     
-    
-    const getLocalStorage = () => {
-      if (localStorage.getItem('rating')) {
-        Rating = Number(localStorage.getItem('rating'));
-      }
-    };
+
    
   
-    window.addEventListener('beforeunload', setLocalStorage);
-    window.addEventListener('load', getLocalStorage);
+    // window.addEventListener('beforeunload', setLocalStorage);
+    // window.addEventListener('load', getLocalStorage);
 
-    newListBuys[i].rating = Rating;
-    console.log(newListBuys)
+    newListBuys[i].rating = Number(localStorage.getItem('rating'));
+  
     window.open('./item.html')
    
    })
@@ -695,6 +707,14 @@ inputNavLink2.oninput = function() {
         filterCategoryCheckboxInput[5].checked = false;
         filterCategoryCheckboxInput[6].checked = false;
         filterCategoryCheckboxInput[7].checked = false;
+        localStorage.setItem('green', "false");
+        localStorage.setItem('oolong', "false");
+        localStorage.setItem('puer', "false");
+        localStorage.setItem('red', "false");
+        localStorage.setItem('1', "false");
+        localStorage.setItem('2', "false");
+        localStorage.setItem('3', "false");
+        localStorage.setItem('4', "false");
         inputMinStock.value = inputMinStock.min;
         inputMaxStock.value = inputMinStock.max;
         inputMin.value = inputMin.min;
