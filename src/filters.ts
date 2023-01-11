@@ -62,7 +62,7 @@ filterPriceRange.classList.add('filter-range');
 
 const filterPriceRange1 = filterPriceRange.appendChild(document.createElement(`label`)) as HTMLLabelElement;
 filterPriceRange1.classList.add('filter-range-points-1');
-filterPriceRange1.textContent = '0 $';
+filterPriceRange1.textContent = '0.5 $';
 filterPriceRange1.setAttribute(`for`, `min`);
 filterPriceRange1.id = 'value-min'
 
@@ -72,7 +72,7 @@ filterPriceRange2.textContent = '⟷';
 
 const filterPriceRange3 = filterPriceRange.appendChild(document.createElement(`label`)) as HTMLLabelElement;
 filterPriceRange3.classList.add('filter-range-points-2');
-
+filterPriceRange3.textContent = '6 $';
 filterPriceRange3.setAttribute(`for`, `max`);
 filterPriceRange3.id = 'value-max'
 
@@ -186,6 +186,7 @@ filterRangeInput3.oninput = function() {
   if (lowerValStock > upperValStock - 5) {
     filterRangeInput3.value = String(parseInt(filterRangeInput4.value));
   }
+
 }
 
 const filterCategoryCheckboxInput = document.querySelectorAll('.filter-input') as NodeListOf<HTMLInputElement>;
@@ -229,41 +230,22 @@ filterCategoryCheckboxLabel[7].textContent = 'Hong Pao';
 function rangeMove(labelId: string, inputId: string) {
   const value = document.querySelector(labelId) as HTMLLabelElement
   const input = document.querySelector(inputId) as HTMLInputElement
-  value.textContent = input.value;
+  value.innerHTML = input.value;
   if (!inputId.includes('stock')) {
-    value.textContent = input.value + ' $';
+    value.innerHTML = input.value + ' $';
   }
   input.addEventListener("input", () => {
     if (!inputId.includes('stock')) {
-      value.textContent = input.value + ' $';
-
-
-    // for (let i=0; i < listBuys.length; i++) {
-
-    //   const teaCardInfo = document.querySelectorAll('.tea-card-info') as NodeListOf<HTMLDivElement>;
-
-        // if(inputId === '#min') {
-        //   if(Number(input.value) > listBuys[i].price) {
-        //      teaCardInfo[i].classList.add('hidden')
-        //   } 
-
-
-    // }
-
-
-
+      value.innerHTML = input.value + ' $';
     }
   value.textContent = input.value;
   if (!inputId.includes('stock')) {
-    value.textContent = input.value + ' $';
+    value.innerHTML = input.value + ' $';
   }
 })
 }
 
-rangeMove('#value-min', '#min');
-rangeMove('#value-max', '#max');
-rangeMove('#value-min-stock', '#min-stock');
-rangeMove('#value-max-stock', '#max-stock'); 
+
 
 
 
@@ -288,31 +270,154 @@ export {filterCategoryCheckboxInput}
 export {buttonResert}
 
 
-// const setLocalStorage = () => {
-//   localStorage.setItem('inputMinStock', filterRangeInput3.value);
-//   localStorage.setItem('inputMaxStock', filterRangeInput4.value);
-//   localStorage.setItem('inputMax', filterPriceRangeInput2.value);
-//   localStorage.setItem('inputMin', filterPriceRangeInput1.value);
-// };
-
-// const getLocalStorage = () => {
-//   if (localStorage.getItem('inputMinStock')) {filterRangeInput3.value = JSON.stringify(localStorage.getItem('inputMinStock'));}
-//   if (localStorage.getItem('inputMaxStock')) {filterRangeInput4.value = JSON.stringify(localStorage.getItem('inputMaxStock'));}
-//   if (localStorage.getItem('inputMax')) {filterPriceRangeInput2.value = `localStorage.getItem('inputMax')`;}
-//   if (localStorage.getItem('inputMin')) {filterPriceRangeInput1.value = `localStorage.getItem('inputMin')`;}
-// };
-
-// window.addEventListener('beforeunload', setLocalStorage);
-// window.addEventListener('load', getLocalStorage);
+const setLocalStorage = () => {
+  localStorage.setItem('inputMinStock', filterRangeInput3.value);
+  localStorage.setItem('inputMaxStock', filterRangeInput4.value);
+  localStorage.setItem('inputMax', filterPriceRangeInput2.value);
+  localStorage.setItem('inputMin', filterPriceRangeInput1.value);
+};
 
 
-// filterRangeInput3.onclick = function() {
-//   if(filterRangeInput3.checked) {
-//   localStorage.setItem('4', "filterRangeInput3.value");
-//   } else {
-//   localStorage.setItem('4', "false");
-//   }
-//   }
-//   if (localStorage.getItem('4') == "filterRangeInput3.value") {
-//     filterRangeInput3.setAttribute('checked','checked');
-//   }
+const getLocalStorage = () => {
+  if (localStorage.getItem('inputMinStock')) {
+    filterRangeInput3.value = JSON.stringify(Number(localStorage.getItem('inputMinStock')));
+    filterStockRange1.textContent = JSON.stringify(Number(localStorage.getItem('inputMinStock')))
+}
+  if (localStorage.getItem('inputMaxStock')) {
+    filterRangeInput4.value = JSON.stringify(Number(localStorage.getItem('inputMaxStock')));
+    filterStockRange3.textContent = JSON.stringify(Number(localStorage.getItem('inputMaxStock')))
+  }
+  if (localStorage.getItem('inputMax')) {
+    filterPriceRangeInput2.value = JSON.stringify(Number(localStorage.getItem('inputMax')));
+    filterPriceRange3.textContent = JSON.stringify(Number(localStorage.getItem('inputMax')))
+  }
+  if (localStorage.getItem('inputMin')) {
+    filterPriceRangeInput1.value = JSON.stringify(Number(localStorage.getItem('inputMin')));
+    filterPriceRange1.textContent = JSON.stringify(Number(localStorage.getItem('inputMin')))
+  }
+};
+
+window.addEventListener('beforeunload', setLocalStorage);
+window.addEventListener('load', getLocalStorage);
+
+
+filterRangeInput3.onclick = function() {
+  if(filterRangeInput3.checked) {
+  localStorage.setItem('4', "filterRangeInput3.value");
+  } else {
+  localStorage.setItem('4', "false");
+  }
+  }
+  if (localStorage.getItem('4') == "filterRangeInput3.value") {
+    filterRangeInput3.setAttribute('checked','checked');
+  }
+
+  rangeMove('#value-min', '#min');
+  rangeMove('#value-max', '#max');
+  rangeMove('#value-min-stock', '#min-stock');
+  rangeMove('#value-max-stock', '#max-stock');
+
+
+const sort1 = document.querySelector('#green-tea') as HTMLInputElement
+
+sort1.onclick = function() {
+if(filterCategoryCheckboxInput[0].checked) {
+  localStorage.setItem('green', "true");
+  
+} else {
+  localStorage.setItem('green', "false");
+}
+}
+
+if (localStorage.getItem('green') == "true") {
+filterCategoryCheckboxInput[0].setAttribute('checked','checked');
+}
+const sort2 = document.querySelector('#oolong') as HTMLInputElement
+
+sort2.onclick = function() {
+if(filterCategoryCheckboxInput[1].checked) {
+localStorage.setItem('oolong', "true");
+} else {
+localStorage.setItem('oolong', "false");
+}
+}
+if (localStorage.getItem('oolong') == "true") {
+filterCategoryCheckboxInput[1].setAttribute('checked','checked');
+}
+const sort3 = document.querySelector('#puer') as HTMLInputElement
+
+sort3.onclick = function() {
+if(filterCategoryCheckboxInput[2].checked) {
+localStorage.setItem('puer', "true");
+} else {
+localStorage.setItem('puer', "false");
+}
+}
+if (localStorage.getItem('puer') == "true") {
+filterCategoryCheckboxInput[2].setAttribute('checked','checked');
+}
+const sort4 = document.querySelector('#red-tea') as HTMLInputElement
+
+sort4.onclick = function() {
+if(filterCategoryCheckboxInput[3].checked) {
+localStorage.setItem('red', "true");
+} else {
+localStorage.setItem('red', "false");
+}
+}
+if (localStorage.getItem('red') == "true") {
+filterCategoryCheckboxInput[3].setAttribute('checked','checked');
+}
+
+const sort5 = document.querySelector('#taiwan') as HTMLInputElement
+
+sort5.onclick = function() {
+if(filterCategoryCheckboxInput[4].checked) {
+localStorage.setItem('1', "true");
+
+} else {
+localStorage.setItem('1', "false");
+}
+}
+if (localStorage.getItem('1') == "true") {
+filterCategoryCheckboxInput[4].setAttribute('checked','checked');
+}
+const sort6 = document.querySelector('#huang-shan') as HTMLInputElement
+
+sort6.onclick = function() {
+  if(filterCategoryCheckboxInput[5].checked) {
+  localStorage.setItem('2', "true");
+  } else {
+  localStorage.setItem('2', "false");
+  }
+  }
+  if (localStorage.getItem('2') == "true") {
+  filterCategoryCheckboxInput[5].setAttribute('checked','checked');
+  }
+  const sort7 = document.querySelector('#myung-ku') as HTMLInputElement
+  
+  sort7.onclick = function() {
+  if(filterCategoryCheckboxInput[6].checked) {
+  localStorage.setItem('3', "true");
+  } else {
+  localStorage.setItem('3', "false");
+  }
+  }
+  if (localStorage.getItem('3') == "true") {
+  filterCategoryCheckboxInput[6].setAttribute('checked','checked');
+  }
+  const sort8 = document.querySelector('#hong-pao') as HTMLInputElement
+  
+  sort8.onclick = function() {
+  if(filterCategoryCheckboxInput[7].checked) {
+  localStorage.setItem('4', "true");
+  } else {
+  localStorage.setItem('4', "false");
+  }
+  }
+  if (localStorage.getItem('4') == "true") {
+  filterCategoryCheckboxInput[7].setAttribute('checked','checked');
+  }
+
+
+ 

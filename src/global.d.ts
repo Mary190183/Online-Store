@@ -9,6 +9,7 @@ interface Product {
   image3?: string;
   price: number;
   stock: number;
+  rating: number;
 }
 
 interface CartItemProps {

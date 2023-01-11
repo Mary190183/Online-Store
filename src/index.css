@@ -24,7 +24,7 @@ html {
   overflow-x: hidden;
  }
 body {
-  background-image: url("https://images.unsplash.com/photo-1561296180-e8100fd714e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1234&q=80");
+  background-image: url(./assets/img/background.avif);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -412,6 +412,7 @@ input[type=range]:nth-child(2)::-webkit-slider-thumb {
 .card-list .tea-card-name {
   /* font-size: 1.5rem; */
   margin: 10px;
+  height: 40px;
   padding: 10px;
 }
 .card-list .tea-card-sort, .card-list .tea-card-province, .card-list .tea-card-description, .card-list .amount-price, .card-list .delete-button, .card-list .add-button {
@@ -477,13 +478,25 @@ input[type=range]:nth-child(2)::-webkit-slider-thumb {
 
 .tea-card-name {
   margin: 5px;
+  border: none;
+  height: 25px;
   padding: 0 10px 0 10px;
   color: #093b0a;
   background: #bed110ea;
   border-radius: 10px;
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 140%;
+  transition: all 1s;
+  cursor: pointer;
 }
 .tea-card-name:hover {
   background: #fa9a09ea;
+}
+.tea-card-name:active {
+  background: #a7690dea;
 }
 .tea-card-sort {
   width: 110px;

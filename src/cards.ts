@@ -44,55 +44,71 @@ teaFiltersRulerTilesSvg.classList.add('tea-filters-ruler-item-tiles');
 
 const arrAmount: number[] = [];
 const arrPrice: number[] = [];
+let newListBuys = listBuys.map(a => Object.assign({}, a)) as Product[];
 
-for (let i = 0; i < listBuys.length ; i++) {
+// newListBuys = newListBuys.map(obj => ({ ...obj, rating: 0 }))
 
+
+
+for (let i = 0; i < newListBuys.length ; i++) {
+ 
+  getParamsUrl('sort', 'green');
   const teaCardInfo = containerTeaCards.appendChild(document.createElement(`div`)) as HTMLDivElement;
-  teaCardInfo.id = String(listBuys[i].id)
+  // teaCardInfo.id = String(listBuys[i].id)
   teaCardInfo.classList.add('tea-card-info');
 
   let k = 0 as number;
   let m = 0 as number;
+
   filterCategoryCheckboxInput[0].addEventListener('click', () => {
+    
+    
     k = k + 1; 
+ 
     if (
       k === 1 && 
-    teaCardSort.textContent !== "Green tea") {
-      teaCardInfo.classList.toggle('hidden-1');
+      teaCardSort.textContent !== "Green tea") {
+    teaCardInfo.classList.toggle('hidden-1');
 
     }
     if (
       k > 1 && 
-    teaCardSort.textContent === "Green tea") {
+      teaCardSort.textContent === "Green tea") {
       teaCardInfo.classList.toggle('hidden-1');
       
       
     } 
-  
     getParamsUrl('sort', 'green');
+
     if (
       filterCategoryCheckboxInput[0].checked === false &&
-    filterCategoryCheckboxInput[1].checked === false &&
-    filterCategoryCheckboxInput[2].checked === false &&
-    filterCategoryCheckboxInput[3].checked === false) {
-      k = 0;
-      teaCardInfo.classList.remove('hidden-1');
-      getParamsUrl('sort', 'none');
-    }
-     if (filterCategoryCheckboxInput[4].checked === false &&
-      filterCategoryCheckboxInput[5].checked === false &&
-      filterCategoryCheckboxInput[6].checked === false &&
-      filterCategoryCheckboxInput[7].checked === false) {
-        m = 0;
-       
-        
-        teaCardInfo.classList.remove('hidden-2');
-        
-        getParamsUrl('province', 'none');
+      filterCategoryCheckboxInput[1].checked === false &&
+      filterCategoryCheckboxInput[2].checked === false &&
+      filterCategoryCheckboxInput[3].checked === false) {
+        k = 0;
+        getParamsUrl('sort', 'none');
+        teaCardInfo.classList.remove('hidden-1');
       }
+    
+    
+     if (
+        filterCategoryCheckboxInput[4].checked === false &&
+        filterCategoryCheckboxInput[5].checked === false &&
+        filterCategoryCheckboxInput[6].checked === false &&
+        filterCategoryCheckboxInput[7].checked === false) {
+          m = 0;
+          getParamsUrl('province', 'none');
+          teaCardInfo.classList.remove('hidden-2'); 
+      }   
   })
-    filterCategoryCheckboxInput[1].addEventListener('click', () => {
+     filterCategoryCheckboxInput[1].addEventListener('click', () => {
       k = k + 1;
+  // if (filterCategoryCheckboxInput[1].checked !== false) {
+    
+  //   newListBuys = newListBuys.filter((e) => e.sort ==="Oolong") 
+  //   console.log(newListBuys)
+  // } else { newListBuys = listBuys
+  //   console.log(newListBuys)}
     if (
       k === 1 && 
       teaCardSort.textContent !== "Oolong") {
@@ -102,6 +118,7 @@ for (let i = 0; i < listBuys.length ; i++) {
       teaCardInfo.classList.toggle('hidden-1');
     }
     getParamsUrl('sort', 'oolong');
+    
     if (
       filterCategoryCheckboxInput[0].checked === false &&
     filterCategoryCheckboxInput[1].checked === false &&
@@ -309,46 +326,28 @@ for (let i = 0; i < listBuys.length ; i++) {
       teaCardInfo.classList.add('card-list');
       teaFiltersRulerList.classList.add('active');
       teaFiltersRulerTiles.classList.remove('active');
+      getParamsUrl('list', 'true');
   })
 
   teaFiltersRulerTiles.addEventListener('click', () => {  
     teaCardInfo.classList.remove('card-list');
     teaFiltersRulerList.classList.remove('active');
     teaFiltersRulerTiles.classList.add('active');
+    getParamsUrl('list', 'false');
 })
 
-// navLink2.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   // var keyword = document.getElementById("search_input");
-//   const words = inputNavLink2.value as string;
-//   const word = words;
-//   const queue = [document.body] as HTMLElement[];
-//   let curr;
-//   while (curr = queue.pop()) {
-//       if (!curr.textContent.toUpperCase().match(word.toUpperCase())) continue;
-//       for (let i = 0; i < curr.childNodes.length; ++i) {
-//           switch (curr.childNodes[i].nodeType) {
-//               case Node.TEXT_NODE: // 3
-//                   if (curr.childNodes[i].textContent.toUpperCase().match(word.toUpperCase())) {
-//                       console.log("Found!");
-//                       console.log(curr);
-//                       curr.scrollIntoView();
-//                   }
-//                   break;
-//               case Node.ELEMENT_NODE: // 1
-//                   queue.push(curr.childNodes[i]);
-//                   break;
-//           }
-//       }
-//   }
-// })
+inputNavLink2.oninput = function() {
+  if(inputNavLink2.textContent !== "Green tea") {
+    teaCardInfo.classList.add('hidden-4')
+  } else teaCardInfo.classList.remove('hidden-4')
+}
   const teaCard = teaCardInfo.appendChild(document.createElement(`img`)) as HTMLImageElement;
   teaCard.classList.add('tea-card');
 
   const teaCardContainer = teaCardInfo.appendChild(document.createElement(`div`)) as HTMLDivElement;
   teaCardContainer.classList.add('tea-card-container');
 
-  const teaCardName = teaCardContainer.appendChild(document.createElement(`p`)) as HTMLParagraphElement;
+  const teaCardName = teaCardContainer.appendChild(document.createElement(`button`)) as HTMLButtonElement;
   teaCardName.classList.add('tea-card-name');
   
 
@@ -412,7 +411,7 @@ for (let i = 0; i < listBuys.length ; i++) {
     j =  j + 1;
     
     amountNumber = amountNumber + 1;
-    priceGramm = amountNumber * listBuys[i].price;
+    priceGramm = amountNumber * newListBuys[i].price;
 
     product = {
       id: Date.now(),
@@ -443,24 +442,24 @@ for (let i = 0; i < listBuys.length ; i++) {
 
     amount.textContent= `${amountNumber} piece`;
     price.textContent = `${priceGramm} $`;
-    teaCardAmount.textContent = `In stock: ${listBuys[i].stock - j} piece`;
+    teaCardAmount.textContent = `In stock: ${newListBuys[i].stock - j} piece`;
 
     amountItem = 1;
-    priceItem = listBuys[i].price;
-  if (amountNumber < listBuys[i].stock) {
+    priceItem = newListBuys[i].price;
+  if (amountNumber < newListBuys[i].stock) {
     arrAmount.push(amountItem);
     arrPrice.push(priceItem)
   }
    
 
     
-    if (amountNumber > listBuys[i].stock) {
+    if (amountNumber > newListBuys[i].stock) {
       j = 0;
       finish = 1;
 
-      listBuys[i].stock = listBuys[i].stock + 0;
-      amountNumber = listBuys[i].stock;
-      priceGramm = amountNumber * listBuys[i].price;
+      newListBuys[i].stock = newListBuys[i].stock + 0;
+      amountNumber = newListBuys[i].stock;
+      priceGramm = amountNumber * newListBuys[i].price;
       amount.textContent= `${amountNumber} piece`;
       price.textContent = `${priceGramm} $`;
       teaCardAmount.textContent = `In stock: ${0} piece`;      
@@ -480,14 +479,14 @@ for (let i = 0; i < listBuys.length ; i++) {
   deleteButton.addEventListener('click', () => {
     j = j - 1;
 
-    const index = arrPrice.indexOf(listBuys[i].price);
+    const index = arrPrice.indexOf(newListBuys[i].price);
     if (index >= 0) {
       arrPrice.splice( index, 1 );
       arrAmount.splice( index, 1 );
     }
      
     amountNumber = amountNumber - 1;
-    priceGramm = amountNumber * listBuys[i].price;
+    priceGramm = amountNumber * newListBuys[i].price;
     amount.textContent= `${amountNumber} piece`;
     price.textContent = `${priceGramm}`;
 
@@ -503,7 +502,7 @@ for (let i = 0; i < listBuys.length ; i++) {
       priceGramm = 0;
       amount.textContent= `${amountNumber} piece`;
       price.textContent = `${priceGramm} $`;
-      teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
+      teaCardAmount.textContent = `In stock: ${newListBuys[i].stock} piece`;
  
     }
     if (finish >= 1) {
@@ -515,30 +514,93 @@ for (let i = 0; i < listBuys.length ; i++) {
     totalPrice.textContent = `Total price: ${resultPrice} $`;
     amountCart.textContent = `${resultAmount}`;
   })
- 
-
-
-
-
+  let Rating = 0 as number;
   teaCardName.addEventListener('click', () => {
-    window.open('./item.html')
-   })
+  newListBuys = newListBuys.map(obj => ({ ...obj, rating: 0 as number }))
+  
+  Rating++
+    const setLocalStorage = () => {
+      localStorage.setItem('rating', JSON.stringify(Rating));
+    };
+    
+    
+    const getLocalStorage = () => {
+      if (localStorage.getItem('rating')) {
+        Rating = Number(localStorage.getItem('rating'));
+      }
+    };
    
-   teaFiltersRulerPriceLow.addEventListener('click', () => { 
+  
+    window.addEventListener('beforeunload', setLocalStorage);
+    window.addEventListener('load', getLocalStorage);
 
-    listBuys.sort((a, b) => b.price - a.price);
+    newListBuys[i].rating = Rating;
+    console.log(newListBuys)
+    window.open('./item.html')
+   
+   })
+
+
+  // let Rating = 0 as number;
+
+   teaFiltersRulerRatingLow.addEventListener('click', () => { 
+    
+    newListBuys.sort((a, b) => b.rating - a.rating);
+
+    teaFiltersRulerRatingLow.classList.add('active');
+    teaFiltersRulerRatingHigh.classList.remove('active');
+
+    teaCard.src =  newListBuys[i].image1;
+    teaCard.alt = newListBuys[i].name;
+    teaCardName.textContent = newListBuys[i].name;
+    teaCardSort.textContent = newListBuys[i].sort;
+    teaCardProvince.textContent = newListBuys[i].province;
+    teaCardDescription.textContent = newListBuys[i].description;
+    teaCardAmount.textContent = `In stock: ${newListBuys[i].stock} piece`;
+    teaCardPrice.textContent = `Price: ${newListBuys[i].price} $`;
+
+    getParamsUrl('ratinghigh', 'true');
+    
+    })
+    teaFiltersRulerRatingHigh.addEventListener('click', () => { 
+
+
+
+      newListBuys.sort((a, b) => a.rating - b.rating);
+
+      teaFiltersRulerRatingHigh.classList.add('active');
+      teaFiltersRulerRatingLow.classList.remove('active');
+  
+      
+
+      teaCard.src =  newListBuys[i].image1;
+      teaCard.alt = newListBuys[i].name;
+      teaCardName.textContent = newListBuys[i].name;
+      teaCardSort.textContent = newListBuys[i].sort;
+      teaCardProvince.textContent = newListBuys[i].province;
+      teaCardDescription.textContent = newListBuys[i].description;
+      teaCardAmount.textContent = `In stock: ${newListBuys[i].stock} piece`;
+      teaCardPrice.textContent = `Price: ${newListBuys[i].price} $`;
+
+      getParamsUrl('ratinghigh', 'false');
+
+      })
+
+   teaFiltersRulerPriceLow.addEventListener('click', () => { 
+    
+    newListBuys.sort((a, b) => b.price - a.price);
 
     teaFiltersRulerPriceLow.classList.add('active');
     teaFiltersRulerPriceHigh.classList.remove('active');
 
-    teaCard.src =  listBuys[i].image1;
-    teaCard.alt = listBuys[i].name;
-    teaCardName.textContent = listBuys[i].name;
-    teaCardSort.textContent = listBuys[i].sort;
-    teaCardProvince.textContent = listBuys[i].province;
-    teaCardDescription.textContent = listBuys[i].description;
-    teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
-    teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
+    teaCard.src =  newListBuys[i].image1;
+    teaCard.alt = newListBuys[i].name;
+    teaCardName.textContent = newListBuys[i].name;
+    teaCardSort.textContent = newListBuys[i].sort;
+    teaCardProvince.textContent = newListBuys[i].province;
+    teaCardDescription.textContent = newListBuys[i].description;
+    teaCardAmount.textContent = `In stock: ${newListBuys[i].stock} piece`;
+    teaCardPrice.textContent = `Price: ${newListBuys[i].price} $`;
 
     getParamsUrl('pricehigh', 'true');
     
@@ -546,35 +608,36 @@ for (let i = 0; i < listBuys.length ; i++) {
     teaFiltersRulerPriceHigh.addEventListener('click', () => { 
 
 
-      listBuys.sort((a, b) => a.price - b.price);
+
+      newListBuys.sort((a, b) => a.price - b.price);
 
       teaFiltersRulerPriceHigh.classList.add('active');
       teaFiltersRulerPriceLow.classList.remove('active');
   
       
 
-      teaCard.src =  listBuys[i].image1;
-      teaCard.alt = listBuys[i].name;
-      teaCardName.textContent = listBuys[i].name;
-      teaCardSort.textContent = listBuys[i].sort;
-      teaCardProvince.textContent = listBuys[i].province;
-      teaCardDescription.textContent = listBuys[i].description;
-      teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
-      teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
+      teaCard.src =  newListBuys[i].image1;
+      teaCard.alt = newListBuys[i].name;
+      teaCardName.textContent = newListBuys[i].name;
+      teaCardSort.textContent = newListBuys[i].sort;
+      teaCardProvince.textContent = newListBuys[i].province;
+      teaCardDescription.textContent = newListBuys[i].description;
+      teaCardAmount.textContent = `In stock: ${newListBuys[i].stock} piece`;
+      teaCardPrice.textContent = `Price: ${newListBuys[i].price} $`;
 
       getParamsUrl('pricehigh', 'false');
 
       })
 
-
-      teaCard.src =  listBuys[i].image1;
-      teaCard.alt = listBuys[i].name;
-      teaCardName.textContent = listBuys[i].name;
-      teaCardProvince.textContent = listBuys[i].province;
-      teaCardSort.textContent = listBuys[i].sort;
-      teaCardDescription.textContent = listBuys[i].description;
-      teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
-      teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
+      
+      teaCard.src =  newListBuys[i].image1;
+      teaCard.alt = newListBuys[i].name;
+      teaCardName.textContent = newListBuys[i].name;
+      teaCardProvince.textContent = newListBuys[i].province;
+      teaCardSort.textContent = newListBuys[i].sort;
+      teaCardDescription.textContent = newListBuys[i].description;
+      teaCardAmount.textContent = `In stock: ${newListBuys[i].stock} piece`;
+      teaCardPrice.textContent = `Price: ${newListBuys[i].price} $`;
 
       
  
@@ -589,7 +652,7 @@ for (let i = 0; i < listBuys.length ; i++) {
       
       const inputMin = document.querySelector('#min') as HTMLInputElement;
       inputMin.addEventListener('click', () => { 
-          if(Number(inputMin.value) > listBuys[i].price) {
+          if(Number(inputMin.value) > newListBuys[i].price) {
              teaCardInfo.classList.add('hidden-min')
           }   else teaCardInfo.classList.remove('hidden-min')
           getParamsUrl('pricemin', inputMin.value);
@@ -597,7 +660,7 @@ for (let i = 0; i < listBuys.length ; i++) {
       
       const inputMaxStock = document.querySelector('#max-stock') as HTMLInputElement;
       inputMaxStock.addEventListener('click', () => { 
-          if(Number(inputMaxStock.value) < listBuys[i].stock) {
+          if(Number(inputMaxStock.value) < newListBuys[i].stock) {
              teaCardInfo.classList.add('hidden-max-stock')
           }   else teaCardInfo.classList.remove('hidden-max-stock')
           getParamsUrl('stockmax', inputMaxStock.value);
@@ -607,7 +670,7 @@ for (let i = 0; i < listBuys.length ; i++) {
       
       const inputMinStock = document.querySelector('#min-stock') as HTMLInputElement;
       inputMinStock.addEventListener('click', () => { 
-          if(Number(inputMinStock.value) > listBuys[i].stock) {
+          if(Number(inputMinStock.value) > newListBuys[i].stock) {
              teaCardInfo.classList.add('hidden-min-stock')
           }   else teaCardInfo.classList.remove('hidden-min-stock')
           getParamsUrl('stockmin', inputMinStock.value);
@@ -618,18 +681,6 @@ for (let i = 0; i < listBuys.length ; i++) {
           
           
       })   
-
-
-
-
-
-
-
-
-
-
-
-      
 
       buttonResert.addEventListener('click', () => { 
         m = 0; k = 0;
@@ -656,23 +707,20 @@ for (let i = 0; i < listBuys.length ; i++) {
       
         listBuys.sort((a, b) => a.price - b.price);   
   
-        teaCard.src =  listBuys[i].image1;
-        teaCard.alt = listBuys[i].name;
-        teaCardName.textContent = listBuys[i].name;
-        teaCardSort.textContent = listBuys[i].sort;
-        teaCardProvince.textContent = listBuys[i].province;
-        teaCardDescription.textContent = listBuys[i].description;
-        teaCardAmount.textContent = `In stock: ${listBuys[i].stock} piece`;
-        teaCardPrice.textContent = `Price: ${listBuys[i].price} $`;
+        teaCard.src =  newListBuys[i].image1;
+        teaCard.alt = newListBuys[i].name;
+        teaCardName.textContent= newListBuys[i].name;
+        teaCardSort.textContent = newListBuys[i].sort;
+        teaCardProvince.textContent = newListBuys[i].province;
+        teaCardDescription.textContent = newListBuys[i].description;
+        teaCardAmount.textContent = `In stock: ${newListBuys[i].stock} piece`;
+        teaCardPrice.textContent = `Price: ${newListBuys[i].price} $`;
   
         window.history.pushState("object or string", "Title", "/"+window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split("?")[0]);
 
       })  
-      
-    
-    }    
-   
-
+ 
+    }
 function getParamsUrl(x: string, y: string) {
   const url = new URL(window.location.href);
   url.searchParams.set(x, y);
@@ -680,105 +728,4 @@ function getParamsUrl(x: string, y: string) {
 }
 
 
-const sort1 = document.querySelector('#green-tea') as HTMLInputElement
-
-      sort1.onclick = function() {
-      if(filterCategoryCheckboxInput[0].checked) {
-        localStorage.setItem('green', "true");
-      } else {
-        localStorage.setItem('green', "false");
-      }
-    }
-    if (localStorage.getItem('green') == "true") {
-      filterCategoryCheckboxInput[0].setAttribute('checked','checked');
-    }
-const sort2 = document.querySelector('#oolong') as HTMLInputElement
-
-sort2.onclick = function() {
-if(filterCategoryCheckboxInput[1].checked) {
-  localStorage.setItem('oolong', "true");
-} else {
-  localStorage.setItem('oolong', "false");
-}
-}
-if (localStorage.getItem('oolong') == "true") {
-filterCategoryCheckboxInput[1].setAttribute('checked','checked');
-}
-const sort3 = document.querySelector('#puer') as HTMLInputElement
-
-sort3.onclick = function() {
-if(filterCategoryCheckboxInput[2].checked) {
-localStorage.setItem('puer', "true");
-} else {
-localStorage.setItem('puer', "false");
-}
-}
-if (localStorage.getItem('puer') == "true") {
-filterCategoryCheckboxInput[2].setAttribute('checked','checked');
-}
-const sort4 = document.querySelector('#red-tea') as HTMLInputElement
-
-sort4.onclick = function() {
-if(filterCategoryCheckboxInput[3].checked) {
-localStorage.setItem('red', "true");
-} else {
-localStorage.setItem('red', "false");
-}
-}
-if (localStorage.getItem('red') == "true") {
-filterCategoryCheckboxInput[3].setAttribute('checked','checked');
-}
-
-const sort5 = document.querySelector('#taiwan') as HTMLInputElement
-
-sort5.onclick = function() {
-if(filterCategoryCheckboxInput[4].checked) {
-  localStorage.setItem('1', "true");
-} else {
-  localStorage.setItem('1', "false");
-}
-}
-if (localStorage.getItem('1') == "true") {
-filterCategoryCheckboxInput[4].setAttribute('checked','checked');
-}
-const sort6 = document.querySelector('#huang-shan') as HTMLInputElement
-
-sort6.onclick = function() {
-if(filterCategoryCheckboxInput[5].checked) {
-  localStorage.setItem('2', "true");
-} else {
-  localStorage.setItem('2', "false");
-}
-}
-if (localStorage.getItem('2') == "true") {
-filterCategoryCheckboxInput[5].setAttribute('checked','checked');
-}
-const sort7 = document.querySelector('#myung-ku') as HTMLInputElement
-
-sort7.onclick = function() {
-if(filterCategoryCheckboxInput[6].checked) {
-localStorage.setItem('3', "true");
-} else {
-localStorage.setItem('3', "false");
-}
-}
-if (localStorage.getItem('3') == "true") {
-filterCategoryCheckboxInput[6].setAttribute('checked','checked');
-}
-const sort8 = document.querySelector('#hong-pao') as HTMLInputElement
-
-sort8.onclick = function() {
-if(filterCategoryCheckboxInput[7].checked) {
-localStorage.setItem('4', "true");
-} else {
-localStorage.setItem('4', "false");
-}
-}
-if (localStorage.getItem('4') == "true") {
-filterCategoryCheckboxInput[7].setAttribute('checked','checked');
-}
-
-
-
-
-
+  
