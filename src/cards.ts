@@ -414,7 +414,8 @@ inputNavLink2.oninput = function() {
   let products: CartItem[] = [];
   let a = false;
   let product: CartItem;
-
+  let resultAmount = 0 as number;
+  let resultPrice = 0 as number;
   addButton.addEventListener('click', () => {
     j =  j + 1;
     
@@ -473,13 +474,13 @@ inputNavLink2.oninput = function() {
       teaCardAmount.textContent = `In stock: ${0} piece`;      
 
     }
-    const resultAmount = arrAmount.reduce((partialSum, a) => partialSum + a, 0);
-    const resultPrice = arrPrice.reduce((partialSum, a) => partialSum + a, 0);
+    resultAmount = arrAmount.reduce((partialSum, a) => partialSum + a, 0);
+    resultPrice = arrPrice.reduce((partialSum, a) => partialSum + a, 0);
   
     totalPrice.textContent = `Total price: ${resultPrice} $`;
     amountCart.textContent = `${resultAmount}`;
-    localStorage.setItem("cartprice", JSON.stringify(totalPrice.textContent));
-    localStorage.setItem("cartamount", JSON.stringify(amountCart.textContent));
+    localStorage.setItem("cartprice", JSON.stringify(resultPrice));
+    localStorage.setItem("cartamount", JSON.stringify(resultAmount));
   })
 
   
@@ -517,14 +518,16 @@ inputNavLink2.oninput = function() {
     if (finish >= 1) {
       teaCardAmount.textContent = `In stock: ${- j} piece`;
     }
-    const resultAmount = arrAmount.reduce((partialSum, a) => partialSum + a, 0);
-    const resultPrice = arrPrice.reduce((partialSum, a) => partialSum + a, 0);
+    resultAmount = arrAmount.reduce((partialSum, a) => partialSum + a, 0);
+    resultPrice = arrPrice.reduce((partialSum, a) => partialSum + a, 0);
   
     totalPrice.textContent = `Total price: ${resultPrice} $`;
     amountCart.textContent = `${resultAmount}`;
-    localStorage.setItem("cartprice", JSON.stringify(totalPrice.textContent));
-    localStorage.setItem("cartamount", JSON.stringify(amountCart.textContent));
+    localStorage.setItem("cartprice", JSON.stringify(resultPrice));
+    localStorage.setItem("cartamount", JSON.stringify(resultAmount));
   })
+
+
   let Rating = 0 as number;
   teaCardName.addEventListener('click', () => {
   newListBuys = newListBuys.map(obj => ({ ...obj, rating: 0 as number }))
@@ -533,18 +536,14 @@ const id = newListBuys[i].id as number
 const idString = String(id) as string
  
 
- document.addEventListener('click',e => console.log(e.target))
+
 
   Rating++
 
-      localStorage.setItem("id", idString)
+      localStorage.setItem("id", JSON.stringify(id))
       localStorage.setItem('rating', JSON.stringify(Rating));
     
 
-   
-  
-    // window.addEventListener('beforeunload', setLocalStorage);
-    // window.addEventListener('load', getLocalStorage);
 
     newListBuys[i].rating = Number(localStorage.getItem('rating'));
   
@@ -748,4 +747,3 @@ function getParamsUrl(x: string, y: string) {
 }
 
 
-  
