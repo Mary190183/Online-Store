@@ -61,13 +61,12 @@ for (let i = 0; i < newListBuys.length ; i++) {
   let m = 0 as number;
 
   filterCategoryCheckboxInput[0].addEventListener('click', () => {
-    
-    if(teaCardInfo.classList.contains('hidden-1')) {
-      localStorage.setItem('hidden1', "true");
-      } else {
-      localStorage.setItem('hidden1', "false");
-      }
-      localStorage.getItem('hidden1')
+    // if(teaCardInfo.classList.contains('hidden-1')) {
+    //   localStorage.setItem('hidden1', "true");
+    //   } else {
+    //   localStorage.setItem('hidden1', "false");
+    //   }
+    //   localStorage.getItem('hidden1')
       
     k = k + 1; 
     localStorage.setItem('k', String(k));
@@ -384,11 +383,15 @@ inputNavLink2.oninput = function() {
 
   const addButton = buttonsAmount.appendChild(document.createElement(`button`)) as HTMLButtonElement;
   addButton.classList.add('add-button');
-  addButton.textContent = `Add`;
+  addButton.textContent = `+`;
   
   const deleteButton = buttonsAmount.appendChild(document.createElement(`button`)) as HTMLButtonElement;
   deleteButton.classList.add('delete-button');
-  deleteButton.textContent = `Delete`;
+  deleteButton.textContent = `-`;
+
+  const binButton = buttonsAmount.appendChild(document.createElement(`button`)) as HTMLButtonElement;
+  binButton.classList.add('bin-button');
+  binButton.textContent = `Add to cart`;
 
   const amountPrice = cartInfo.appendChild(document.createElement(`span`)) as HTMLSpanElement;
   amountPrice.classList.add('amount-price');
@@ -483,7 +486,118 @@ inputNavLink2.oninput = function() {
     localStorage.setItem("cartamount", JSON.stringify(resultAmount));
   })
 
+  binButton.addEventListener('click', () => {
+    
+    binButton.classList.toggle('active')
+    if (binButton.classList.contains('active')) {
+    j =  j + 1;
+    binButton.textContent = 'delete from cart'
+    amountNumber = amountNumber + 1;
+    priceGramm = amountNumber * newListBuys[i].price;
+
+    product = {
+      id: Date.now(),
+       productId: newListBuys[i].id,
+       amount: amountNumber,
+     };
+ 
+     if (localStorage.getItem("products") !== null) {
+      products = JSON.parse(localStorage.getItem("products") as string);
+     } else {
+      products = [];
+     }
+    
+    if(products.length === 0) {
+      products.push(product);
+    } else {
+      products.forEach(item => {
+      if(item.productId == newListBuys[i].id) {
+        item.amount = amountNumber;
+         a = true;
+      } 
+    }) 
+    if(!a) {
+      products.push(product);
+    }
+   }
+    localStorage.setItem("products", JSON.stringify(products));
+   
+    amount.textContent= `${amountNumber} piece`;
+    price.textContent = `${priceGramm} $`;
+    teaCardAmount.textContent = `In stock: ${newListBuys[i].stock - j} piece`;
+
+    amountItem = 1;
+    priceItem = newListBuys[i].price;
+  if (amountNumber < newListBuys[i].stock) {
+    arrAmount.push(amountItem);
+    arrPrice.push(priceItem)
+  }
+   
+
+    
+    if (amountNumber > newListBuys[i].stock) {
+      j = 0;
+      finish = 1;
+
+      newListBuys[i].stock = newListBuys[i].stock + 0;
+      amountNumber = newListBuys[i].stock;
+      priceGramm = amountNumber * newListBuys[i].price;
+      amount.textContent= `${amountNumber} piece`;
+      price.textContent = `${priceGramm} $`;
+      teaCardAmount.textContent = `In stock: ${0} piece`;      
+
+    }
+    resultAmount = arrAmount.reduce((partialSum, a) => partialSum + a, 0);
+    resultPrice = arrPrice.reduce((partialSum, a) => partialSum + a, 0);
   
+    totalPrice.textContent = `Total price: ${resultPrice} $`;
+    amountCart.textContent = `${resultAmount}`;
+    localStorage.setItem("cartprice", JSON.stringify(resultPrice));
+    localStorage.setItem("cartamount", JSON.stringify(resultAmount));
+  }
+else {
+  binButton.textContent = 'add to cart'
+  j = j - 1;
+
+  const index = arrPrice.indexOf(newListBuys[i].price);
+  if (index >= 0) {
+    arrPrice.splice( index, 1 );
+    arrAmount.splice( index, 1 );
+  }
+   
+  amountNumber = amountNumber - 1;
+  priceGramm = amountNumber * newListBuys[i].price;
+  amount.textContent= `${amountNumber} piece`;
+  price.textContent = `${priceGramm}`;
+
+
+ 
+  
+  // amountCart.textContent = `${result}`;
+  if (amountNumber < 0) {
+    j = 0;
+    finish = 0;
+    amountNumber = 0;
+    priceGramm = 0;
+    amount.textContent= `${amountNumber} piece`;
+    price.textContent = `${priceGramm} $`;
+    teaCardAmount.textContent = `In stock: ${newListBuys[i].stock} piece`;
+
+  }
+  if (finish >= 1) {
+    teaCardAmount.textContent = `In stock: ${- j} piece`;
+  }
+  resultAmount = arrAmount.reduce((partialSum, a) => partialSum + a, 0);
+  resultPrice = arrPrice.reduce((partialSum, a) => partialSum + a, 0);
+
+  totalPrice.textContent = `Total price: ${resultPrice} $`;
+  amountCart.textContent = `${resultAmount}`;
+  localStorage.setItem("cartprice", JSON.stringify(resultPrice));
+  localStorage.setItem("cartamount", JSON.stringify(resultAmount));
+}
+
+  })
+
   
   
 
@@ -526,15 +640,15 @@ inputNavLink2.oninput = function() {
     localStorage.setItem("cartprice", JSON.stringify(resultPrice));
     localStorage.setItem("cartamount", JSON.stringify(resultAmount));
   })
-
-
-  let Rating = 0 as number;
+ 
+  
   teaCardName.addEventListener('click', () => {
   newListBuys = newListBuys.map(obj => ({ ...obj, rating: 0 as number }))
 const id = newListBuys[i].id as number
 
 const idString = String(id) as string
  
+let Rating = 0 as number;
 
 
 
@@ -542,20 +656,23 @@ const idString = String(id) as string
 
       localStorage.setItem("id", JSON.stringify(id))
       localStorage.setItem('rating', JSON.stringify(Rating));
-    
+      
 
 
-    newListBuys[i].rating = Number(localStorage.getItem('rating'));
+    // newListBuys[i].rating = Number(localStorage.getItem('rating'));
   
     window.open('./item.html')
-   
+    
+  
+   localStorage.getItem('rating')
+    
    })
 
 
   // let Rating = 0 as number;
 
    teaFiltersRulerRatingLow.addEventListener('click', () => { 
-    
+    newListBuys[i].rating = newListBuys[i].stock / 1000;
     newListBuys.sort((a, b) => b.rating - a.rating);
 
     teaFiltersRulerRatingLow.classList.add('active');
@@ -575,7 +692,7 @@ const idString = String(id) as string
     })
     teaFiltersRulerRatingHigh.addEventListener('click', () => { 
 
-
+      newListBuys[i].rating = newListBuys[i].stock / 1000;
 
       newListBuys.sort((a, b) => a.rating - b.rating);
 
@@ -738,7 +855,7 @@ const idString = String(id) as string
         window.history.pushState("object or string", "Title", "/"+window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split("?")[0]);
 
       })  
- 
+      
     }
 function getParamsUrl(x: string, y: string) {
   const url = new URL(window.location.href);

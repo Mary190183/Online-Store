@@ -52,7 +52,7 @@ function render({ items, totalPrice, totalAmount, page, limitItems, promo, isOpe
                 <p class="modal__comment"> Please enter your first and last name</p>
               </div>
               <div class="modal__phone no-arrows">
-                <input class="modal__input tel" type="tel" pattern="[6789][0-9]{10}" required  placeholder="Phone: 79211234567" />
+                <input class="modal__input tel" type="tel" pattern="[+][6789][0-9]{10}" required  placeholder="Phone: +79211234567" />
                 <p class="modal__comment"> Please enter your phone number </p>
               </div>
               <div class="modal__address">
@@ -67,7 +67,7 @@ function render({ items, totalPrice, totalAmount, page, limitItems, promo, isOpe
               <div class="modal__card-block">
                 <div class="modal__card-top no-arrows">
                 <div class="modal__card-logo"></div>
-                  <input class="modal__card-number" type="tel" pattern="[0-9]{4}[ ][0-9]{4}[ ][0-9]{4}[ ][0-9]{4}" maxLength = "19" required placeholder="0000 0000 0000 0000"/>
+                  <input class="modal__card-number" type="tel" pattern="[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}" maxLength = "16" required placeholder="0000000000000000"/>
                 </div>
               <div class="modal__card-bottom">
                 <div class="modal__card-data no-arrows">
