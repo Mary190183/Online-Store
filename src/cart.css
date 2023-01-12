@@ -1,3 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 140%;
+  src: url("./assets/fonts/Red_Hat_Text/RedHatText-Light.ttf");
+}
+@font-face {
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 140%;
+  src: url("./assets/fonts/Red_Hat_Text/RedHatText-Medium.ttf");
+}
 body {
   background-image: url("https://images.unsplash.com/photo-1561296180-e8100fd714e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1234&q=80");
   background-repeat: no-repeat;
@@ -26,17 +45,17 @@ body {
   transform: translate(-50%,-50%);
   width: 100%;
   text-align: center;
-  background-color: #fff;
-  color: #093b0a;
+  background-color: rgba(72, 104, 18);
+  color: #F9F0DA;
   padding: 15px;
   border-radius: 10px;
   z-index: 100;
-  max-width: 90%;
-  z-index: 0;
+  max-width: 50%;
+  font-size: 1.5rem;
 }
 
 .modal {
-  
+ 
 position: fixed;
 top: 0;
 left: 0;
@@ -44,30 +63,83 @@ right: 0;
 bottom: 0;
 width: 100vw;
 height: 100vh;
-background-color: rgba(0,0,0,.4);
+background-color: #F9F0DA;
+
 z-index: 99;
 cursor: pointer;
-z-index: 0;
+
 }
 .hidden {
   display: none;
 }
-
+.modal__submit {
+  background-color: #093b0a;
+  color: #F9F0DA;
+  width: 150px;
+  height: 70px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.5rem;
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 10px;
+}
+.modal__submit:hover {
+  background-color: rgb(174, 231, 17);
+  color: #093b0a;
+}
 .model__close {
   position:absolute;
   top: 3%;
   left: 95%;
-  z-index: 1;
+ 
 }
-
+input[type="tel"]:nth-child(3), input[type="tel"]:nth-child(4) {
+  width: 100px;
+}
+input[type="tel"]:valid, .email:valid {
+  background-color: #F9F0DA;
+}
+input[type="tel"]:invalid, .email:invalid {
+  
+  background-color: rgb(174, 231, 17);
+  
+  }
+  input[type="text"]:valid, .email:valid {
+    background-color: #F9F0DA;
+    }
+    input[type="text"]:invalid, .email:invalid {
+      background-color: rgb(174, 231, 17);
+      }
 .section-content {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  
 }
-
+input, input::placeholder {
+  width: 200px;
+  height: 30px;
+  text-align: center;
+  margin: 5px;
+  border-radius: 5px;
+  font-family: "Red-Hat-Text";
+  font-style: normal;
+  font-weight: 400;
+  color: rgba(72, 104, 18);
+  font-size: 1rem;
+}
+.modal__card-block {
+  width: 400px;
+  height: 150px;
+  background-color: #ee9105;
+  border-radius: 10px;
+  padding: 10px;
+  margin: auto;
+}
 .section-wrapper {
   border-radius: 10px;
   background-color: rgba(135, 130, 120, 0.657);
