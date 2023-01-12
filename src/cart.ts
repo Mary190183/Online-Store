@@ -43,9 +43,9 @@ function render({ items, totalPrice, totalAmount, page, limitItems, promo, isOpe
               }
             </div>
             <button class="checkout-button" onclick="cartController.openCheckout()">Checkout</button>
-          ${isOpen === true ? 
-          `<div class="modal">
-          <div class="modal-content">
+            ${isOpen === true ? 
+          `<div class="modal" onclick="cartController.closeCheckout()"></div>
+            <div class="modal-content">
             <p class="modal__title">Personal details</p>
             <button class="model__close" onclick="cartController.closeCheckout()">X</button>
             <form action="#">
@@ -85,7 +85,7 @@ function render({ items, totalPrice, totalAmount, page, limitItems, promo, isOpe
             </div>
             <button class="modal__submit">Confirm</button>
           </form>
-        </div>
+        
         </div>` : ""
           }
         </div>
