@@ -50,6 +50,13 @@ cursor: pointer;
 .hidden {
   display: none;
 }
+
+.model__close {
+  position:absolute;
+  top: 3%;
+  left: 95%;
+}
+
 .section-content {
   width: 100%;
   display: flex;

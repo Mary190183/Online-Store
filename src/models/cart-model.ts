@@ -5,12 +5,14 @@ class CartModel {
   public page: number;
   public limitItems: number;
   public promo: string[];
+  public isOpen: boolean;
 
   public constructor() {
     this._items = [];
     this.page = 1;
     this.limitItems = 2;
     this.promo = [];
+    this.isOpen = false;
 
     if (localStorage.getItem("products") !== null) {
       this._items = JSON.parse(localStorage.getItem("products") as string);
@@ -98,13 +100,15 @@ class CartModel {
   public deletePromoById() {
     this.promo = this.promo.filter((item) => item !== "RS");
   }
-}
-// const modal = document.querySelector('.modal-content') as HTMLElement
-// const check = document.querySelector('.checkout-button') as HTMLButtonElement
-// check.addEventListener('click', function(e) {
-//   modal.classList.toggle('hidden')
-// })
 
+  public openCheckoutButton() {
+    this.isOpen = true;
+  }
+
+  public closeCheckoutButton() {
+  this.isOpen = false;
+}
+}
 
 export default CartModel;
 

@@ -61,6 +61,16 @@ class CartController {
     this._model.deletePromoById();
     this.updateView();
   }
+
+  public openCheckout() {
+    this._model.openCheckoutButton();
+    this.updateView();
+  }
+
+  public closeCheckout() {
+    this._model.closeCheckoutButton();
+    this.updateView();
+  }
 }
 
 export default CartController;
