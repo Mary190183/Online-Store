@@ -17,7 +17,7 @@ window.onload = function () {
   window.cartController.updateView();
 };
 
-function render({ items, totalPrice, totalAmount, page, limitItems, promo }: CartModel) {
+function render({ items, totalPrice, totalAmount, page, limitItems, promo, isOpen }: CartModel) {
   return `
   ${renderHeader({ totalAmount, totalPrice })} 
     <section class="section-content">
@@ -42,8 +42,53 @@ function render({ items, totalPrice, totalAmount, page, limitItems, promo }: Car
                         </div>`
               }
             </div>
-            <button class="checkout-button">Checkout</button>
-          </div>
+            <button class="checkout-button" onclick="cartController.openCheckout()">Checkout</button>
+          ${isOpen === true ? 
+          `<div class="modal">
+          <div class="modal-content">
+            <p class="modal__title">Personal details</p>
+            <button class="model__close" onclick="cartController.closeCheckout()">X</button>
+            <form action="#">
+              <div class="modal__name">
+                <input class="modal__input" type="text" placeholder="Name: Ivan Ivanov">
+                <p class="is-invalid"> Please enter your first and last name . First letters should be a capital </p>
+              </div>
+              <div class="modal__phone no-arrows">
+                <input class="modal__input" type="text" placeholder="Phone: +375290000">
+                <p class="is-invalid"> Number must contain at least 9 digits and starts with + </p>
+              </div>
+              <div class="modal__address">
+                <input class="modal__input" type="text" placeholder="Delivery address">
+                <p class="is-invalid"> Address cannot contain less than 3 words. Every word must contain at least 5 symbols </p>
+              </div>
+              <div class="modal__email">
+                <input class="modal__input" type="text" placeholder="E-mail: ivanov@gmail.com">
+                <p class="is-invalid">Please enter correct e-mail</p>
+              </div>
+              <p class="modal__card-title">Credit card details</p>
+              <div class="modal__card-block">
+                <div class="modal__card-top no-arrows">
+                  <div class="modal__card-logo"></div>
+                  <input class="modal__card-number" type="text" placeholder="0000 0000 0000 0000">
+                </div>
+              <div class="modal__card-bottom">
+                <div class="modal__card-data no-arrows">
+                  <label for="validThru">Valid:</label>
+                  <input id="validThru" type="text" placeholder="12 23">
+                </div>
+                <div class="modal__card-cvv no-arrows">
+                  <label for="cvv">CVV:</label>
+                  <input id="cvv" type="text" placeholder="000">
+                </div>
+              </div>
+              <p class="is-invalid">Card invalid</p>
+            </div>
+            <button class="modal__submit">Confirm</button>
+          </form>
+        </div>
+        </div>` : ""
+          }
+        </div>
         </div>
         ${
           items.length > 0
@@ -84,6 +129,7 @@ function render({ items, totalPrice, totalAmount, page, limitItems, promo }: Car
               } else {
                 return ``;
               }
+
             })
             .join("")}
         </div>
@@ -107,4 +153,3 @@ function render({ items, totalPrice, totalAmount, page, limitItems, promo }: Car
     ${renderFooter()}
   `;
 }
-
